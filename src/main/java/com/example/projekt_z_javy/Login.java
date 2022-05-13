@@ -3,6 +3,7 @@ package com.example.projekt_z_javy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -12,10 +13,12 @@ import java.sql.SQLException;
 public class Login {
 
     //Konstruktor
-    public Login(){
+    public Login() {
 
     }
 
+    @FXML
+    private Label problem;
     @FXML
     private Button rejestracjaButton;
     @FXML
@@ -38,11 +41,18 @@ public class Login {
         goToRegistration();
     }
 
-    private void checkLogin() throws IOException{
+    private void checkLogin() throws IOException {
         Main m = new Main();
+        if (name.getText().isEmpty() && password.getText().isEmpty()) {
+
+        } else if (name.getText().isEmpty() && password.getText().isEmpty()) {
+            problem.setText("Wprowadz dane!");
+        } else {
+            problem.setText("Wprowadz dane!");
+        }
     }
 
-    private void goToRegistration() throws IOException{
+    private void goToRegistration() throws IOException {
         Main m = new Main();
         m.changeScene("register-view.fxml");
     }

@@ -15,11 +15,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        int widthScene, hightScene;
+        widthScene = 262;
+        hightScene = 300;
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         primaryStage.setTitle("Login");
-        primaryStage.setScene( new Scene(root, 262, 300)); //254x345 rejestracja
+        primaryStage.setScene( new Scene(root, widthScene, hightScene)); //254x345 rejestracja
         primaryStage.show();
     }
 
@@ -27,6 +30,7 @@ public class Main extends Application {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
+
 
     public static void main(String[] args) {
         launch(args);
