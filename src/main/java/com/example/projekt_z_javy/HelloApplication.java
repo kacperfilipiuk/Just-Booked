@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
         primaryStage.setResizable(false);
         Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-viev.fxml")));
         primaryStage.setTitle("Login");
-        primaryStage.setScene( new Scene(root, 262, 300));
+        primaryStage.setScene( new Scene(root, 262, 300)); //274x300 rejestracja
         primaryStage.show();
     }
 
