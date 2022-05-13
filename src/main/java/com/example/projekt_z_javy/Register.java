@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
-public class Controller {
+public class Register {
 
     @FXML
     private Button submitButton;
