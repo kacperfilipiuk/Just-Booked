@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Register">
    <children>
       <TextField fx:id="name" layoutX="285.0" layoutY="188.0" />
       <TextField fx:id="email" layoutX="285.0" layoutY="235.0" />
