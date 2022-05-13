@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Register {
@@ -19,10 +20,17 @@ public class Register {
     @FXML
     private PasswordField password;
 
-    public void getData(ActionEvent actionEvent) throws SQLException {
+    public void getData(ActionEvent actionEvent) throws SQLException, IOException {
+        Main m = new Main();
         System.out.println(name.getText());
         System.out.println(email.getText());
         System.out.println(password.getText());
         JavaPostgreSQL.writeToDatabase(name.getText(),email.getText(),password.getText());
+        m.changeScene("login-view.fxml");
+    }
+
+    public void backToMain(ActionEvent actionEvent) throws SQLException, IOException {
+        Main m = new Main();
+        m.changeScene("login-view.fxml");
     }
 }

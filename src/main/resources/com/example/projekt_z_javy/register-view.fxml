@@ -8,16 +8,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="274.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Register">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="275.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Register">
    <children>
-      <TextField fx:id="name" layoutX="81.0" layoutY="96.0" promptText="Username" />
-      <TextField fx:id="email" layoutX="81.0" layoutY="150.0" promptText="Email" />
-      <Label layoutX="25.0" layoutY="100.0" text="Name" />
-      <Label layoutX="24.0" layoutY="154.0" text="E-mail" />
-      <Label layoutX="16.0" layoutY="206.0" text="Password" />
-      <PasswordField fx:id="password" layoutX="81.0" layoutY="202.0" promptText="Password" />
-      <Button fx:id="submitButton" layoutX="103.0" layoutY="246.0" mnemonicParsing="false" onAction="#getData" text="Zatwierdz" />
-      <Text layoutX="52.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zarejestruj się!">
+      <TextField fx:id="name" layoutX="81.0" layoutY="135.0" promptText="Username" />
+      <TextField fx:id="email" layoutX="81.0" layoutY="189.0" promptText="Email" />
+      <Label layoutX="25.0" layoutY="139.0" text="Name" />
+      <Label layoutX="24.0" layoutY="193.0" text="E-mail" />
+      <Label layoutX="16.0" layoutY="245.0" text="Password" />
+      <PasswordField fx:id="password" layoutX="81.0" layoutY="241.0" promptText="Password" />
+      <Button fx:id="submitButton" layoutX="101.0" layoutY="282.0" mnemonicParsing="false" onAction="#getData" text="Zatwierdz" />
+      <Button fx:id="backButton" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" text="Wroc" />
+      <Text layoutX="52.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zarejestruj się!">
          <font>
             <Font name="Arial" size="26.0" />
          </font>

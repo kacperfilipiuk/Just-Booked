@@ -17,14 +17,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
         primaryStage.setResizable(false);
-        Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-viev.fxml")));
+        Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         primaryStage.setTitle("Login");
-        primaryStage.setScene( new Scene(root, 262, 300)); //274x300 rejestracja
+        primaryStage.setScene( new Scene(root, 262, 300)); //254x345 rejestracja
         primaryStage.show();
     }
 
     public void changeScene(String fxml) throws IOException{
-        Parent pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
 
