@@ -17,8 +17,8 @@ public class HelloApplication extends Application {
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root  = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        primaryStage.setTitle("Rejestracaja");
-        primaryStage.setScene( new Scene(root, 600, 400));
+        primaryStage.setTitle("Rejestrcja");
+        primaryStage.setScene( new Scene(root, 275, 269));
         primaryStage.show();
     }
 
