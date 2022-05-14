@@ -8,9 +8,9 @@
 
 <Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Strona główna">
+          <Tab fx:id="glownaTable" text="Strona główna">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="353.0">
                      <children>
@@ -22,17 +22,17 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Dodaj rezerwację">
+          <Tab fx:id="dodajTable" text="Dodaj rezerwację">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="440.0" layoutY="330.0" mnemonicParsing="false" text="Zapisz" />
+                        <Button fx:id="zapiszDodajButton" layoutX="440.0" layoutY="330.0" mnemonicParsing="false" onAction="#goToHomePageReservation" text="Zapisz" />
                         <Button layoutX="520.0" layoutY="330.0" mnemonicParsing="false" text="Zakończ" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Edytuj rezerwację">
+            <Tab fx:id="edytujTable" text="Edytuj rezerwację">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -42,7 +42,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Moje rezerwacje">
+            <Tab fx:id="wyswietlTable" text="Moje rezerwacje">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
