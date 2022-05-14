@@ -15,8 +15,8 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="353.0">
                      <children>
                         <Button fx:id="dodajButton" layoutX="60.0" layoutY="105.0" mnemonicParsing="false" onAction="#goToAddReservation" text="Dodaj rezerwację" />
-                        <Button layoutX="60.0" layoutY="175.0" mnemonicParsing="false" text="Edytuj rezerwację" />
-                        <Button layoutX="60.0" layoutY="245.0" mnemonicParsing="false" text="Wyświetl moje rezerwacje" />
+                        <Button fx:id="edytujButton" layoutX="60.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToEditReservation" text="Edytuj rezerwację" />
+                        <Button fx:id="wyswietlButton" layoutX="60.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToShowReservation" text="Wyświetl moje rezerwacje" />
                         <Button fx:id="wylogujButton" layoutX="510.0" layoutY="330.0" mnemonicParsing="false" onAction="#userLogout" text="Wyloguj" />
                      </children>
                   </AnchorPane>
