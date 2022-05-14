@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Lobby {
@@ -22,9 +23,11 @@ public class Lobby {
     private Button wyswietlButton;
 
 
-    public void userLogout(ActionEvent actionEvent) throws SQLException {
+    public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
-        //checkLogin();
+        Main m = new Main();
+        m.changeScene("login-view.fxml");
+        m.onScene();
     }
 
     public void goToAddReservation(ActionEvent actionEvent) throws SQLException {
