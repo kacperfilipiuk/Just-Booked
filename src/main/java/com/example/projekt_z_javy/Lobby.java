@@ -2,10 +2,9 @@ package com.example.projekt_z_javy;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
+
+import java.time.LocalDate;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +14,8 @@ public class Lobby {
     @FXML
     private TabPane tabPane;
 
+    @FXML
+    private DatePicker myDataPicker;
     @FXML
     private Button wylogujButton;
     @FXML
@@ -33,6 +34,11 @@ public class Lobby {
     @FXML
     private Tab wyswietlTable;
 
+
+    public void getDate(ActionEvent event){
+        LocalDate myDate = myDataPicker.getValue();
+        System.out.println(myDate.toString());
+    }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
