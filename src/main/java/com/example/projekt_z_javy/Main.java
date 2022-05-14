@@ -20,15 +20,26 @@ public class Main extends Application {
         hightScene = 310;
         stg = primaryStage;
         primaryStage.setResizable(false);
-        Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
         primaryStage.setTitle("Login");
-        primaryStage.setScene( new Scene(root, widthScene, hightScene)); //254x345 rejestracja
+        primaryStage.setScene(new Scene(root, widthScene, hightScene)); //254x345 rejestracja
         primaryStage.show();
     }
 
-    public void changeScene(String fxml) throws IOException{
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
+    public void changeScene(String fxml) throws IOException {
+        if (fxml.contains("lobby")) {
+            System.out.println("Hello");
+            stg.hide();
+            Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+            stg.getScene().setRoot(pane);
+        } else {
+            Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+            stg.getScene().setRoot(pane);
+        }
+    }
+
+    public void offScene() throws IOException {
+        stg.hide();
     }
 
 
