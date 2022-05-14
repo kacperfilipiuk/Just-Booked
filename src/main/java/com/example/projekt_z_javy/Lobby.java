@@ -10,14 +10,20 @@ import java.sql.SQLException;
 public class Lobby {
 
     @FXML
-    private Button wylButton;
+    private Button wylogujButton;
+
+    @FXML
+    private Button dodajButton;
 
     public void userLogout(ActionEvent actionEvent) throws SQLException {
         System.out.println("Wylogowuje...");
         //checkLogin();
     }
 
+    public void goToAddReservation(ActionEvent actionEvent) throws SQLException {
+        System.out.println("Dodaje rezerwacje...");
 
+    }
 }
 
 
