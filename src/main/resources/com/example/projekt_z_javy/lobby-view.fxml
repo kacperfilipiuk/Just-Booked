@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.LobbyView">
+<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -17,7 +17,7 @@
                         <Button layoutX="60.0" layoutY="105.0" mnemonicParsing="false" text="Dodaj rezerwację" />
                         <Button layoutX="60.0" layoutY="175.0" mnemonicParsing="false" text="Edytuj rezerwację" />
                         <Button layoutX="60.0" layoutY="245.0" mnemonicParsing="false" text="Wyświetl moje rezerwacje" />
-                        <Button fx:id="wylogujButton" layoutX="510.0" layoutY="330.0" mnemonicParsing="false" onAction="#userLogout" text="Wyloguj" />
+                        <Button fx:id="wylButton" layoutX="510.0" layoutY="330.0" mnemonicParsing="false" onAction="#userLogout" text="Wyloguj" />
                      </children>
                   </AnchorPane>
             </content>

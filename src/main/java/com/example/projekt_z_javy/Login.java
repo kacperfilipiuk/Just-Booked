@@ -31,9 +31,9 @@ public class Login {
     public void getData(ActionEvent actionEvent) throws SQLException {
     }
 
-    public void userLogIn(ActionEvent actionEvent) throws SQLException {
+    public void userLogIn(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Loguje...");
-        //checkLogin();
+        checkLogin();
     }
 
     public void userSignUp(ActionEvent actionEvent) throws SQLException, IOException {
@@ -43,13 +43,15 @@ public class Login {
 
     private void checkLogin() throws IOException {
         Main m = new Main();
-        if (name.getText().isEmpty() && password.getText().isEmpty()) {
+       /* if (name.getText().isEmpty() && password.getText().isEmpty()) {
 
         } else if (name.getText().isEmpty() && password.getText().isEmpty()) {
             problem.setText("Wprowadz dane!");
         } else {
             problem.setText("Wprowadz dane!");
-        }
+        }*/
+
+        m.changeScene("lobby-view.fxml");
     }
 
     private void goToRegistration() throws IOException {
