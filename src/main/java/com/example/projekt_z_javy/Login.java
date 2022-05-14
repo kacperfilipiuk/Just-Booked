@@ -2,10 +2,14 @@ package com.example.projekt_z_javy;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,7 +46,19 @@ public class Login {
     }
 
     private void checkLogin() throws IOException {
-        Main m = new Main();
+        try {
+            Main m = new Main();
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Pane root = fxmlLoader.load(getClass().getResource("lobby-view.fxml").openStream());
+
+            stage.setScene(new Scene(root, 600,400));
+            m.offScene();
+            stage.show();
+
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
        /* if (name.getText().isEmpty() && password.getText().isEmpty()) {
 
         } else if (name.getText().isEmpty() && password.getText().isEmpty()) {
@@ -50,8 +66,6 @@ public class Login {
         } else {
             problem.setText("Wprowadz dane!");
         }*/
-
-        m.changeScene("lobby-view.fxml");
     }
 
     private void goToRegistration() throws IOException {
