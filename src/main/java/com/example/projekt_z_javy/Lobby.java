@@ -15,6 +15,13 @@ public class Lobby {
     @FXML
     private Button dodajButton;
 
+    @FXML
+    private Button edytujButton;
+
+    @FXML
+    private Button wyswietlButton;
+
+
     public void userLogout(ActionEvent actionEvent) throws SQLException {
         System.out.println("Wylogowuje...");
         //checkLogin();
@@ -22,8 +29,16 @@ public class Lobby {
 
     public void goToAddReservation(ActionEvent actionEvent) throws SQLException {
         System.out.println("Dodaje rezerwacje...");
-
     }
+
+    public void goToEditReservation(ActionEvent actionEvent) throws SQLException {
+        System.out.println("Edytuje rezerwacje...");
+    }
+
+    public void goToShowReservation(ActionEvent actionEvent) throws SQLException {
+        System.out.println("Wyswietlam rezerwacje...");
+    }
+
 }
 
 
