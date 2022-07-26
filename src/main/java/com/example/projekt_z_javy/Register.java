@@ -22,16 +22,25 @@ public class Register {
 
     public void getData(ActionEvent actionEvent) throws SQLException, IOException {
         Main m = new Main();
-        System.out.println(name.getText());
-        System.out.println(email.getText());
-        System.out.println(password.getText());
-        //check
-        //if(ture)
-        JavaPostgreSQL.writeToDatabase(name.getText(),password.getText(),email.getText());
+        if(name.getText().isEmpty() || email.getText().isEmpty() || password.getText().isEmpty()){
+            name.setPromptText("Brak nazywy ");
+            email.setPromptText("Brak maila");
+            password.setPromptText("Brak hasła");
+
+        }
+        else {
+
+            if(JavaPostgreSQL.checkDatabase(name.getText(),email.getText())){
+                System.out.println("Login lub maile jest już używany!");
+                m.changeScene("register-view-error.fxml");
+            } else {
+                JavaPostgreSQL.writeToDatabase(name.getText(),password.getText(),email.getText());
+                m.changeScene("login-view.fxml");
+            }
+        }
         //else -> wyczyscicic i dac powidomienie ze juz istneieje
             //if(uzytkownik)
             //else if(email)213
-        m.changeScene("login-view.fxml");
     }
 
     public void backToMain(ActionEvent actionEvent) throws SQLException, IOException {
