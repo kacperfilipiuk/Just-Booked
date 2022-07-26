@@ -10,15 +10,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Login">
    <children>
-      <PasswordField fx:id="password" layoutX="57.0" layoutY="165.0" promptText="Password" />
-      <TextField fx:id="name" layoutX="57.0" layoutY="107.0" promptText="Login" />
-      <Button fx:id="zalogujButton" layoutX="57.0" layoutY="239.0" mnemonicParsing="false" onAction="#userLogIn" text="Zaloguj" />
-      <Button fx:id="rejestracjaButton" layoutX="131.0" layoutY="239.0" mnemonicParsing="false" onAction="#userSignUp" text="Rejestracja" />
+      <PasswordField fx:id="password" layoutX="57.0" layoutY="188.0" promptText="Password" />
+      <TextField fx:id="name" layoutX="57.0" layoutY="130.0" promptText="Login" />
+      <Button fx:id="zalogujButton" layoutX="57.0" layoutY="262.0" mnemonicParsing="false" onAction="#userLogIn" text="Zaloguj" />
+      <Button fx:id="rejestracjaButton" layoutX="131.0" layoutY="262.0" mnemonicParsing="false" onAction="#userSignUp" text="Rejestracja" />
       <Text layoutX="64.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zaloguj się!">
          <font>
             <Font name="Arial" size="26.0" />
          </font>
       </Text>
       <Label fx:id="problem" layoutX="117.0" layoutY="77.0" textAlignment="CENTER" textFill="RED" />
+      <Label layoutX="40.0" layoutY="86.0" text="Podano złe lub nie istniejące dane!" textFill="RED" />
    </children>
 </Pane>

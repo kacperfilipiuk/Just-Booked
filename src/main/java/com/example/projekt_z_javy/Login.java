@@ -36,8 +36,19 @@ public class Login {
     }
 
     public void userLogIn(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Loguje...");
-        checkLogin();
+        Main m = new Main();
+        if (name.getText().isEmpty() || password.getText().isEmpty()) {
+            m.changeScene("login-view-error.fxml");
+            name.setPromptText("Brak nazywy ");
+            password.setPromptText("Brak hasła");
+        } else {
+            if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
+                goToMainPage();
+            } else {
+                m.changeScene("login-view-error.fxml");
+                System.out.println("Nie ma przejscia");
+            }
+        }
     }
 
     public void userSignUp(ActionEvent actionEvent) throws SQLException, IOException {
@@ -45,27 +56,20 @@ public class Login {
         goToRegistration();
     }
 
-    private void checkLogin() throws IOException {
+    private void goToMainPage() throws IOException {
         try {
             Main m = new Main();
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader();
             Pane root = fxmlLoader.load(getClass().getResource("lobby-view.fxml").openStream());
 
-            stage.setScene(new Scene(root, 600,400));
+            stage.setScene(new Scene(root, 600, 400));
             m.offScene();
             stage.show();
 
-        } catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-       /* if (name.getText().isEmpty() && password.getText().isEmpty()) {
-
-        } else if (name.getText().isEmpty() && password.getText().isEmpty()) {
-            problem.setText("Wprowadz dane!");
-        } else {
-            problem.setText("Wprowadz dane!");
-        }*/
     }
 
     private void goToRegistration() throws IOException {

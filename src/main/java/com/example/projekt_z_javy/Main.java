@@ -46,7 +46,6 @@ public class Main extends Application {
         stg.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
