@@ -10,9 +10,9 @@ public class JavaPostgreSQL {
     public static void writeToDatabase(String userName, String userEmail, String userPassword) throws SQLException {
 
 
-        String url = "jdbc:postgresql://ec2-99-80-170-190.eu-west-1.compute.amazonaws.com/dfsnc2g98asedu";
-        String user = "ksfgfwspmjmggz";
-        String password = "e5149346b02bfa404c2e5b1c21824d980a5c6008fdcf11d4796fe47ed9de6776";
+        String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
+        String user = "dpbwovovhjsruv";
+        String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
         String name = userName;
         String email = userEmail;
@@ -30,6 +30,7 @@ public class JavaPostgreSQL {
 
             pst.executeUpdate();
             System.out.println("Sucessfully created!");
+
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);

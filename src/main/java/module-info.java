@@ -7,6 +7,8 @@ module com.example.projekt_z_javy {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    //requires hibernate.core;
+    //requires jboss.logging;
 
     opens com.example.projekt_z_javy to javafx.fxml;
     exports com.example.projekt_z_javy;
