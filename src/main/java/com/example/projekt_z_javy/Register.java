@@ -25,7 +25,12 @@ public class Register {
         System.out.println(name.getText());
         System.out.println(email.getText());
         System.out.println(password.getText());
-        JavaPostgreSQL.writeToDatabase(name.getText(),email.getText(),password.getText());
+        //check
+        //if(ture)
+        JavaPostgreSQL.writeToDatabase(name.getText(),password.getText(),email.getText());
+        //else -> wyczyscicic i dac powidomienie ze juz istneieje
+            //if(uzytkownik)
+            //else if(email)213
         m.changeScene("login-view.fxml");
     }
 

@@ -7,7 +7,11 @@ import java.util.logging.Logger;
 
 public class JavaPostgreSQL {
 
-    public static void writeToDatabase(String userName, String userEmail, String userPassword) throws SQLException {
+    /**
+     * @param userEmail mail, który podaje uzytkownik do założenia konta
+     */
+
+    public static void writeToDatabase(String userName, String userPassword,  String userEmail) throws SQLException {
 
 
         String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
@@ -15,18 +19,19 @@ public class JavaPostgreSQL {
         String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
         String name = userName;
-        String email = userEmail;
+        String email2 = userEmail;
         String pass = userPassword;
 
                         /* Tutaj trzeba zmienić w tym  wzorze */
-        String query = "INSERT INTO worker(name, email, password) VALUES(?, ?, ?)";
+        String query = "INSERT INTO uzytkownicy(login, haslo, email) VALUES(?, ?, ?)";
+
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
 
             pst.setString(1, name);
-            pst.setString(2, email);
-            pst.setString(3, pass);
+            pst.setString(2, pass);
+            pst.setString(3, email2);
 
             pst.executeUpdate();
             System.out.println("Sucessfully created!");
@@ -35,6 +40,10 @@ public class JavaPostgreSQL {
             Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
+    }
+
+    public static void checkDatabase(String userName, String userPassword,  String userEmail) throws SQLException {
+
     }
 
     /*public static void readFromDatabase(String userName, String userPassword) throws SQLException {
