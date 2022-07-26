@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class Register {
 
@@ -29,18 +30,19 @@ public class Register {
 
         }
         else {
-
-            if(JavaPostgreSQL.checkDatabase(name.getText(),email.getText())){
-                System.out.println("Login lub maile jest już używany!");
-                m.changeScene("register-view-error.fxml");
-            } else {
-                JavaPostgreSQL.writeToDatabase(name.getText(),password.getText(),email.getText());
-                m.changeScene("login-view.fxml");
+            if(email.getText().contains("@o2.pl") || email.getText().contains("@gmail.com") || email.getText().contains("@wp.pl")){
+                if (JavaPostgreSQL.checkDatabase(name.getText(), email.getText())) {
+                    System.out.println("Login lub maile jest już używany!");
+                    m.changeScene("register-view-error.fxml");
+                } else {
+                    JavaPostgreSQL.writeToDatabase(name.getText(), password.getText(), email.getText());
+                    m.changeScene("login-view.fxml");
+                }
+            } else { //Ewentulanie stowrzyć nowa scenerie
+                email.clear();
+                email.setPromptText("Niepoprawny mail");
             }
         }
-        //else -> wyczyscicic i dac powidomienie ze juz istneieje
-            //if(uzytkownik)
-            //else if(email)213
     }
 
     public void backToMain(ActionEvent actionEvent) throws SQLException, IOException {
