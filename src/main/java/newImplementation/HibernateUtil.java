@@ -1,4 +1,4 @@
-package com.example.projekt_z_javy;
+package newImplementation;
 
 import org.hibernate.SessionFactory;
 

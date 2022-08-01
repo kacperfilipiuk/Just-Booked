@@ -1,8 +1,6 @@
-package com.example.projekt_z_javy;
+package newImplementation;
 
 import org.hibernate.Session;
-
-import static com.example.projekt_z_javy.HibernateUtil.getSessionFactory;
 
 public class HibernateRep {
     public static void writeToDatabase(String userName, String userPassword,  String userEmail){
