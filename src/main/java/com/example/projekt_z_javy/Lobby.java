@@ -91,7 +91,7 @@ public class Lobby implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        salaBox.setItems(List);
+        //salaBox.setItems(List);
     }
 }
 
