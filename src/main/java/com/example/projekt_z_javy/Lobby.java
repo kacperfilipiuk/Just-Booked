@@ -1,19 +1,25 @@
 package com.example.projekt_z_javy;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.net.URL;
+import java.sql.*;
 import java.time.LocalDate;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Lobby {
+public class Lobby implements Initializable {
 
     @FXML
     private TabPane tabPane;
-
     @FXML
     private DatePicker myDataPicker;
     @FXML
@@ -34,8 +40,23 @@ public class Lobby {
     @FXML
     private Tab wyswietlTable;
 
+    @FXML
+    private ComboBox<String> salaBox;
 
-    public void getDate(ActionEvent event){
+    /**
+     * @param List - ObservableList, czyli lista pozwalajaca na śledzenie zmian kiedy sie pojawia
+     */
+    ObservableList<String> List = FXCollections.observableArrayList();
+
+
+    public void fillData(ActionEvent event) {
+
+    }
+
+    /**
+     * Funkcja odpowiedzialna za pobiernia daty z kalendarz
+     */
+    public void getDate(ActionEvent event) throws SQLException {
         LocalDate myDate = myDataPicker.getValue();
         System.out.println(myDate.toString());
     }
@@ -45,6 +66,7 @@ public class Lobby {
         Main m = new Main();
         m.changeScene("login-view.fxml");
         m.onScene();
+
     }
 
     public void goToAddReservation(ActionEvent actionEvent) throws SQLException {
@@ -67,6 +89,10 @@ public class Lobby {
         tabPane.getSelectionModel().select(glownaTable);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        salaBox.setItems(List);
+    }
 }
 
 
