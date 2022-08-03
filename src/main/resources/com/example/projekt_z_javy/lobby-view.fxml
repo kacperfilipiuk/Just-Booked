@@ -1,67 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
-   <children>
-      <TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab fx:id="glownaTable" text="Strona główna">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="353.0">
-                     <children>
-                        <Button fx:id="dodajButton" layoutX="60.0" layoutY="105.0" mnemonicParsing="false" onAction="#goToAddReservation" text="Dodaj rezerwację" />
-                        <Button fx:id="edytujButton" layoutX="60.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToEditReservation" text="Edytuj rezerwację" />
-                        <Button fx:id="wyswietlButton" layoutX="60.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToShowReservation" text="Wyświetl moje rezerwacje" />
-                        <Button fx:id="wylogujButton" layoutX="510.0" layoutY="330.0" mnemonicParsing="false" onAction="#userLogout" text="Wyloguj" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="dodajTable" text="Dodaj rezerwację">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="zapiszDodajButton" layoutX="440.0" layoutY="330.0" mnemonicParsing="false" onAction="#goToHomePageReservation" text="Zapisz" />
-                        <Button layoutX="520.0" layoutY="330.0" mnemonicParsing="false" text="Zakończ" />
-                        <DatePicker fx:id="myDataPicker" layoutX="30.0" layoutY="47.0" onAction="#getDate" />
-                        <Label layoutX="30.0" layoutY="23.0" text="Data" />
-                        <ChoiceBox layoutX="32.0" layoutY="226.0" prefWidth="150.0" />
-                        <Label layoutX="32.0" layoutY="197.0" text="Godziny" />
-                        <Label layoutX="32.0" layoutY="98.0" text="Sala" />
-                        <ChoiceBox layoutX="32.0" layoutY="134.0" prefWidth="150.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab fx:id="edytujTable" text="Edytuj rezerwację">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="440.0" layoutY="330.0" mnemonicParsing="false" text="Zapisz" />
-                        <Button layoutX="520.0" layoutY="330.0" mnemonicParsing="false" text="Zakończ" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab fx:id="wyswietlTable" text="Moje rezerwacje">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="440.0" layoutY="330.0" mnemonicParsing="false" text="Zapisz" />
-                        <Button layoutX="520.0" layoutY="330.0" mnemonicParsing="false" text="Zakończ" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+<Pane prefHeight="350.0" prefWidth="700.0" style="-fx-background-radius: 5mm;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
+    <children>
+        <Pane layoutX="220.0" prefHeight="350.0" prefWidth="480.0" />
+        <VBox prefHeight="350.0" prefWidth="220.0" style="-fx-background-color: #DDFFFF;">
+            <children>
+                <Pane prefHeight="68.0" prefWidth="226.0">
+                    <children>
+                        <Label layoutX="86.0" layoutY="21.0" text="# UMK">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Pane>
+                <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="226.0" text="Strona główna" />
+                <Button fx:id="dodajButton" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="49.0" prefWidth="226.0" text="Dodaj rezerwację" />
+                <Button fx:id="edytujButton" mnemonicParsing="false" onAction="#goToEditReservation" prefHeight="50.0" prefWidth="226.0" text="Edytuj rezerwację" />
+                <Button fx:id="wyswietlButton" mnemonicParsing="false" onAction="#goToShowReservation" prefHeight="45.0" prefWidth="226.0" text="Wyświetl moje rezerwacje" />
+                <Button fx:id="wylogujButton" mnemonicParsing="false" onAction="#userLogout" prefHeight="46.0" prefWidth="226.0" text="Wyloguj" />
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </VBox>
+    </children>
 </Pane>
