@@ -95,6 +95,3 @@ public class Lobby implements Initializable {
     }
 }
 
-
-
-
