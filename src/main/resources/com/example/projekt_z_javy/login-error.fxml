@@ -37,7 +37,11 @@
             <FontAwesomeIcon fill="#0598ff" glyphName="USER" layoutX="36.0" layoutY="183.0" size="20" />
             <FontAwesomeIcon fill="#0598ff" glyphName="KEY" layoutX="35.0" layoutY="238.0" size="20" />
             <Label layoutX="68.0" layoutY="130.0" prefHeight="18.0" prefWidth="189.0" text="Podano złe lub nie istniejące dane!" textFill="RED" />
-            <FontAwesomeIcon fill="#0589ff" glyphName="CLOSE" layoutX="261.0" layoutY="33.0" size="22" />
+            <Button layoutX="250.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontAwesomeIcon fill="#0589ff" glyphName="CLOSE" size="22" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>
