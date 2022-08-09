@@ -24,6 +24,12 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
+
+    /*-----------------------------------------------------------------------------*/
+
     public void changeScene(String fxml) throws IOException {
         if (fxml.contains("lobby")) {
             stg.hide();
@@ -41,9 +47,5 @@ public class Main extends Application {
 
     public void onScene() throws IOException {
         stg.show();
-    }
-
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }
