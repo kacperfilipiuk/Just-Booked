@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TableViewController{
+public class TableViewController implements Initializable {
     @FXML
     public Button dodajButton;
     @FXML
@@ -41,7 +41,7 @@ public class TableViewController{
     @FXML
     private Button refresh;
     @FXML
-    private TableView<Rezerwacja> rezTale;
+    private TableView<Rezerwacja> rezTable;
     @FXML
     private TableColumn<Rezerwacja, String> idCol;
     @FXML
@@ -52,41 +52,46 @@ public class TableViewController{
     private TableColumn<Rezerwacja, String> idGodz;
     @FXML
     private TableColumn<Rezerwacja, String> dateCol;
+
     @FXML
-    private void refreshTable(){
-        /*RezerwacjaList.clear();
+    private void refreshTable() {
+        RezerwacjaList.clear();
 
         query = "SELECT * FROM rezerwacje";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = connection.prepareStatement(query)) {
 
-            resultSet = pst.getResultSet();
+            //resultSet = pst.getResultSet();
+            resultSet = pst.executeQuery();
 
-            while (resultSet.next()){
-                RezerwacjaList.add(new Rezerwacja(
-                        resultSet.getInt("id_rez"),
-                        resultSet.getInt("id_p"),
-                        resultSet.getInt("id_u"),
-                        resultSet.getInt("id_h"),
-                        resultSet.getDate("data")));
-                rezTale.setItems(RezerwacjaList);
+            if (!resultSet.next()) {
+                System.out.println("no data");
+            } else {
+
+                do {
+                    RezerwacjaList.add(new Rezerwacja(
+                            resultSet.getInt("id_rez"),
+                            resultSet.getInt("id_p"),
+                            resultSet.getInt("id_u"),
+                            resultSet.getInt("id_h"),
+                            resultSet.getDate("data")));
+                    rezTable.setItems(RezerwacjaList);
+                } while (resultSet.next());
             }
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
-        */
 
     }
-    /*
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDate();
     }
 
-     */
 
     private void loadDate() {
 
