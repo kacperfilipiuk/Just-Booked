@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.LobbyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.TableViewController">
    <children>
       <BorderPane layoutX="218.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -36,22 +36,22 @@
                <children>
                   <VBox layoutX="50.0" layoutY="70.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXButton onAction="#addReservation" prefHeight="70.0" prefWidth="200.0" text="Dodaj rezerwację" textFill="WHITE">
+                        <JFXButton prefHeight="70.0" prefWidth="200.0" text="Dodaj rezerwację" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#deleteReservation" prefHeight="70.0" prefWidth="200.0" text="Usuń rezerwację" textFill="WHITE">
+                        <JFXButton prefHeight="70.0" prefWidth="200.0" text="Usuń rezerwację" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#myReservation" prefHeight="70.0" prefWidth="200.0" text="Moje rezerwacje" textFill="WHITE">
+                        <JFXButton prefHeight="70.0" prefWidth="200.0" text="Moje rezerwacje" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#otherReservation" prefHeight="70.0" prefWidth="200.0" text="Button4" textFill="WHITE">
+                        <JFXButton prefHeight="70.0" prefWidth="200.0" text="Button4" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -69,6 +69,17 @@
                </children>
             </AnchorPane>
          </left>
+         <center>
+            <TableView fx:id="rezTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="idPok" prefWidth="96.0" text="POKOJ" />
+                  <TableColumn fx:id="idUs" prefWidth="112.0" text="UZYTKOWNIK" />
+                  <TableColumn fx:id="idGodz" prefWidth="72.0" text="GODZINY" />
+                  <TableColumn fx:id="dateCol" prefWidth="82.0" text="DATA" />
+              </columns>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

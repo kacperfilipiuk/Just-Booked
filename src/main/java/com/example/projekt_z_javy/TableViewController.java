@@ -1,15 +1,20 @@
 package com.example.projekt_z_javy;
 
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,14 +24,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TableViewController implements Initializable {
+
     @FXML
-    public Button dodajButton;
+    private Label Menu;
+
     @FXML
-    public Button edytujButton;
+    private Label MenuClose;
+
     @FXML
-    public Button wyswietlButton;
-    @FXML
-    public Button wylogujButton;
+    private AnchorPane slider;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     String query = "";
     ResultSet resultSet = null;
@@ -87,9 +97,50 @@ public class TableViewController implements Initializable {
 
     }
 
+    @FXML
+    private void exit(ActionEvent e) {
+        System.exit(0);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         loadDate();
+
+        slider.setTranslateX(-200);
+
+        Menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-200);
+
+            slide.setOnFinished((ActionEvent e) -> {
+                Menu.setVisible(false);
+                MenuClose.setVisible(true);
+            });
+        });
+
+        MenuClose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-200);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished((ActionEvent e) -> {
+                Menu.setVisible(true);
+                MenuClose.setVisible(false);
+            });
+        });
     }
 
 
@@ -115,12 +166,17 @@ public class TableViewController implements Initializable {
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
-
-        Main m = new Main();
-        m.changeScene("login.fxml");
-        m.onScene();
+        root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
+
+
+    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
+
 
     public void goToAddReservation(ActionEvent actionEvent) throws SQLException {
         System.out.println("Dodaje rezerwacje...");

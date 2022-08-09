@@ -42,7 +42,7 @@ public class LoginController {
                 password.setPromptText("Brak hasła");
             } else {
                 if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
-                Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeRes.fxml")));
+                Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lobby.fxml")));
                 Scene home_page_scene = new Scene(home_page_parent);
                 Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 app_stage.setScene(home_page_scene);

@@ -8,6 +8,7 @@ module com.example.projekt_z_javy {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires org.hibernate.orm.core;
+    requires com.jfoenix;
     //requires hibernate.core;
     //requires jboss.logging;
 
