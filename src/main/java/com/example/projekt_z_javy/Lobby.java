@@ -94,5 +94,8 @@ public class Lobby implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //salaBox.setItems(List);
     }
+
+    public void refreshTable(ActionEvent actionEvent) {
+    }
 }
 

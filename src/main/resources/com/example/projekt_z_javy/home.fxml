@@ -22,9 +22,8 @@
                         <Glow />
                     </effect>
                 </Pane>
-                <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="226.0" text="Strona główna" />
                 <Button fx:id="dodajButton" mnemonicParsing="false" onAction="#goToAddReservation" prefHeight="49.0" prefWidth="226.0" text="Dodaj rezerwację" />
-                <Button fx:id="edytujButton" mnemonicParsing="false" onAction="#goToEditReservation" prefHeight="50.0" prefWidth="226.0" text="Edytuj rezerwację" />
+                <Button fx:id="edytujButton" mnemonicParsing="false" onAction="#goToEditReservation" prefHeight="50.0" prefWidth="226.0" text="Usuń rezerwację" />
                 <Button fx:id="wyswietlButton" mnemonicParsing="false" onAction="#goToShowReservation" prefHeight="45.0" prefWidth="226.0" text="Wyświetl moje rezerwacje" />
                 <Button fx:id="wylogujButton" mnemonicParsing="false" onAction="#userLogout" prefHeight="46.0" prefWidth="226.0" text="Wyloguj" />
             </children>
