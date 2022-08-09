@@ -27,8 +27,6 @@ public class LoginController {
     //Usunąc obramowania z przyiskami funkcyjnymi (zminimalizuj, powieksz zamknij)
     //Zablokowac możliwośc zmiany rozmiaru
 
-
-
     /**
      * Funkcja odpowiedzjaca z aobsulge przycisku logowania - poprawic przejscia miedzy scneanmi (odkomentowac)
      */
@@ -46,6 +44,7 @@ public class LoginController {
                 Scene home_page_scene = new Scene(home_page_parent);
                 Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 app_stage.setScene(home_page_scene);
+                app_stage.centerOnScreen();
                 app_stage.show();
                     System.out.println("Udalo sie");
                 } else {
@@ -78,23 +77,6 @@ public class LoginController {
     /**
      * Funkcja odpowiadajca za zakoncenie działania apliakcji
      */
-
-    /* private void goToMainPage() throws IOException {
-        try {
-            Main m = new Main();
-            Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Pane root = fxmlLoader.load(getClass().getResource("home.fxml").openStream());
-
-            stage.setScene(new Scene(root, 600, 400));
-            m.offScene();
-            stage.show();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    */
     @FXML
     private void exit(ActionEvent e){
         System.exit(0);
