@@ -39,7 +39,7 @@ public class Login {
         Main m = new Main();
         if (name.getText().isEmpty() || password.getText().isEmpty()) {
             m.changeScene("login-view-error.fxml");
-            name.setPromptText("Brak nazywy ");
+            name.setPromptText("Brak nazwy ");
             password.setPromptText("Brak hasła");
         } else {
             if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
