@@ -16,11 +16,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
-        primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        Scene scene  = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.DECORATED.UNDECORATED);
         primaryStage.show();
     }
 

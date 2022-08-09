@@ -33,10 +33,10 @@ public class Register {
             if(email.getText().contains("@o2.pl") || email.getText().contains("@gmail.com") || email.getText().contains("@wp.pl")){
                 if (JavaPostgreSQL.checkDatabase(name.getText(), email.getText())) {
                     System.out.println("Login lub maile jest już używany!");
-                    m.changeScene("register-view-error.fxml");
+                    m.changeScene("register.fxml");
                 } else {
                     JavaPostgreSQL.writeToDatabase(name.getText(), password.getText(), email.getText());
-                    m.changeScene("login-view.fxml");
+                    m.changeScene("login.fxml");
                 }
             } else { //Ewentulanie stowrzyć nowa scenerie
                 email.clear();
@@ -47,6 +47,6 @@ public class Register {
 
     public void backToMain(ActionEvent actionEvent) throws SQLException, IOException {
         Main m = new Main();
-        m.changeScene("login-view.fxml");
+        m.changeScene("login.fxml");
     }
 }

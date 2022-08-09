@@ -19,6 +19,13 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
+    /* DO ZROBIENIA */
+
+    //Usunąc obramowania z przyiskami funkcyjnymi (zminimalizuj, powieksz zamknij)
+    //Zablokowac możliwośc zmiany rozmiaru
+
+
+
     /**
      * Funkcja odpowiedzjaca z aobsulge przycisku logowania - poprawic przejscia miedzy scneanmi (odkomentowac)
      */

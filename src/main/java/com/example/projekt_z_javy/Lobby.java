@@ -65,7 +65,7 @@ public class Lobby implements Initializable {
         System.out.println("Wylogowuje...");
 
         Main m = new Main();
-        m.changeScene("login-view.fxml");
+        m.changeScene("login.fxml");
         m.onScene();
 
     }
