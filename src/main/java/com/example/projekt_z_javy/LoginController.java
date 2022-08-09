@@ -3,6 +3,8 @@ package com.example.projekt_z_javy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -12,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -31,17 +34,27 @@ public class LoginController {
      */
     public void handleButtonPressedLogin(ActionEvent actionEvent) throws SQLException, IOException {
         Main m = new Main();
-        if (name.getText().isEmpty() || password.getText().isEmpty()) {
-            //m.changeScene("login-view-error.fxml");
-            name.setPromptText("Brak nazwy ");
-            password.setPromptText("Brak hasła");
-        } else {
-            if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
-                //goToMainPage();
+        try {
+
+            if (name.getText().isEmpty() || password.getText().isEmpty()) {
+                m.changeScene("login-error.fxml");
+                name.setPromptText("Brak nazwy ");
+                password.setPromptText("Brak hasła");
             } else {
-                //m.changeScene("login-view-error.fxml");
-                System.out.println("Nie ma przejscia");
+                if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
+                Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lobby-view.fxml")));
+                Scene home_page_scene = new Scene(home_page_parent);
+                Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                app_stage.setScene(home_page_scene);
+                app_stage.show();
+                    System.out.println("Udalo sie");
+                } else {
+                    m.changeScene("login-error.fxml");
+                    System.out.println("Nie ma przejscia");
+                }
             }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 

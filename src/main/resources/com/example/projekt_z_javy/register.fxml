@@ -5,29 +5,29 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.RegisterController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="76.0" layoutY="164.0" promptText="Nazwa użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="name" layoutX="76.0" layoutY="164.0" promptText="Nazwa użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="75.0" layoutY="215.0" prefHeight="26.0" prefWidth="175.0" promptText="E-mail użytkownika" style="-fx-background-color: TRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="mail" layoutX="75.0" layoutY="215.0" prefHeight="26.0" prefWidth="175.0" promptText="E-mail użytkownika" style="-fx-background-color: TRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="76.0" layoutY="267.0" promptText="Hasło użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+            <PasswordField fx:id="password" layoutX="76.0" layoutY="267.0" promptText="Hasło użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Button layoutX="106.0" layoutY="318.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0598ff;" text="Zarejestruj" textFill="WHITE" />
+            <Button layoutX="106.0" layoutY="318.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0598ff;" text="Zarejestruj" textFill="WHITE" />
             <Label contentDisplay="CENTER" layoutX="77.0" layoutY="89.0" prefHeight="42.0" prefWidth="168.0" text="REJESTRACJA" textAlignment="CENTER" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="24.0" />
@@ -37,12 +37,12 @@
             <FontAwesomeIcon fill="#0598ff" glyphName="LOCK" layoutX="36.0" layoutY="291.0" size="25" />
             <FontAwesomeIcon fill="#0598ff" glyphName="USER_PLUS" layoutX="144.0" layoutY="74.0" size="30" />
             <FontAwesomeIcon fill="#0598ff" glyphName="AT" layoutX="35.0" layoutY="236.0" size="22" />
-            <Button layoutX="250.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <Button layoutX="250.0" layoutY="17.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: transparent;">
                <graphic>
                   <FontAwesomeIcon fill="#0598ff" glyphName="CLOSE" size="22" />
                </graphic>
             </Button>
-            <Button layoutX="17.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <Button layoutX="17.0" layoutY="17.0" mnemonicParsing="false" onAction="#backToLogin" style="-fx-background-color: transparent;">
                <graphic>
                   <FontAwesomeIcon fill="#0598ff" glyphName="ARROW_LEFT" size="22" text="" />
                </graphic>

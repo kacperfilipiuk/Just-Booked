@@ -17,7 +17,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="77.0" layoutY="212.0" promptText="Hasło użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+            <PasswordField fx:id="password" layoutX="77.0" layoutY="212.0" promptText="Hasło użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="14.0" />
                </font>

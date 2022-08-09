@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="de710thmop4rit@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com" uuid="7fd00922-95df-45ce-b062-725dbcd0b544">
+    <data-source source="LOCAL" name="de710thmop4rit@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com" uuid="a0978a56-e8a8-484a-babe-faeed2671b84">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="32958127-ea2e-402f-9fdd-536053339913">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-C:/Users/kacpe/Desktop/ProjektNaZaliczniei/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
