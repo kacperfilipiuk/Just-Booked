@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="350.0" prefWidth="700.0" style="-fx-background-radius: 5mm;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
+<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 5mm;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.Lobby">
     <children>
-        <Pane layoutX="220.0" prefHeight="350.0" prefWidth="480.0" />
-        <VBox prefHeight="350.0" prefWidth="220.0" style="-fx-background-color: #DDFFFF;">
+        <Pane layoutX="220.0" prefHeight="400.0" prefWidth="600.0" />
+        <VBox prefHeight="400.0" prefWidth="220.0" style="-fx-background-color: #DDFFFF;">
             <children>
-                <Pane prefHeight="68.0" prefWidth="226.0">
+                <Pane prefHeight="85.0" prefWidth="226.0">
                     <children>
-                        <Label layoutX="86.0" layoutY="21.0" text="# UMK">
+                        <Label layoutX="74.0" layoutY="25.0" text="# UMK">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
