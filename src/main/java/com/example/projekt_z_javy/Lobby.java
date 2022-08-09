@@ -63,6 +63,7 @@ public class Lobby implements Initializable {
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
+
         Main m = new Main();
         m.changeScene("login-view.fxml");
         m.onScene();
