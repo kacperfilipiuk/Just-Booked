@@ -44,8 +44,9 @@ public class LoginController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("lobby.fxml"));
                     Parent home_page_parent = loader.load();
                     LobbyController lobbyController = loader.getController();
-                    String output = userName.substring(0,1).toUpperCase() + userName.substring(1);
-                    lobbyController.displayName(output);
+                    //String output = userName.substring(0,1).toUpperCase() + userName.substring(1);
+                    lobbyController.getName(userName);
+                    lobbyController.displayName(userName);
                     //Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lobby.fxml")));
                     Scene home_page_scene = new Scene(home_page_parent);
                     Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 
 public class LobbyController implements Initializable {
 
+    String nameOfUser;
+
     @FXML
     private Label labelName;
     @FXML
@@ -79,13 +81,21 @@ public class LobbyController implements Initializable {
         labelName.setText("Witaj: " + userName);
     }
 
+    public void getName(String userName){
+        nameOfUser = userName;
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     @FXML
     public void addReservation(ActionEvent actionEvent) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+        root = loader.load();
+        AddingController addingController = loader.getController();
+        addingController.getUserName(nameOfUser);
+        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -103,7 +113,11 @@ public class LobbyController implements Initializable {
     }
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("lobbyHistory.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory.fxml"));
+        root = loader.load();
+        TableViewController tableViewController = loader.getController();
+        tableViewController.getUserName(nameOfUser);
+        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

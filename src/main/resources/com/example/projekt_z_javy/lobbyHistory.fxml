@@ -70,7 +70,7 @@
             </AnchorPane>
          </left>
          <center>
-            <TableView fx:id="rezTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="rezTable" prefHeight="200.0" prefWidth="488.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="idPok" prefWidth="96.0" text="POKOJ" />
@@ -80,6 +80,9 @@
               </columns>
             </TableView>
          </center>
+         <right>
+            <Button mnemonicParsing="false" onAction="#setArray" text="Odswiez tabelke" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

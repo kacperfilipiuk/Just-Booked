@@ -30,6 +30,7 @@ public class AddingController implements Initializable {
     private ObservableList<String> roomList = FXCollections.observableArrayList();
 
     LocalDate myDate = null;
+    String myUserName;
 
     @FXML
     private Button reservButton;
@@ -60,6 +61,10 @@ public class AddingController implements Initializable {
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
+    public void getUserName(String username){
+        myUserName = username;
+        System.out.println(myUserName);
+    }
 
     @FXML
     private void exit(ActionEvent e) {
@@ -185,8 +190,8 @@ public class AddingController implements Initializable {
     public void makeReservation(ActionEvent actionEvent) throws SQLException {
         int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
         int id_r = JavaPostgreSQL_adding.getRoomId((String) roomChoiceBox.getValue());
-        //JavaPostgreSQL_adding.getUserId();
-        JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,3);
+        int id_u = JavaPostgreSQL_adding.getUserId(myUserName);
+        JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,id_u);
         //sprawdz czy ta kombincja jest możliwa do rejestracji
         //if(tak){
         // } else {

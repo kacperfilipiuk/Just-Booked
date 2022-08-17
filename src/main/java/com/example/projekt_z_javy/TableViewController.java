@@ -38,9 +38,15 @@ public class TableViewController implements Initializable {
     private Scene scene;
     private Parent root;
 
+
+
     String query = "";
     ResultSet resultSet = null;
     Rezerwacja rezerwacja = null;
+    String myUserName;
+
+    int id_uzyt;
+
 
     public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
     public static final String user = "dpbwovovhjsruv";
@@ -67,10 +73,13 @@ public class TableViewController implements Initializable {
     private void refreshTable() {
         RezerwacjaList.clear();
 
-        query = "SELECT * FROM rezerwacje";
+
+        query = "SELECT * FROM rezerwacje WHERE id_u = ? ";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = connection.prepareStatement(query)) {
+
+            pst.setInt(1,id_uzyt);
 
             //resultSet = pst.getResultSet();
             resultSet = pst.executeQuery();
@@ -96,6 +105,11 @@ public class TableViewController implements Initializable {
         }
 
     }
+    public void getUserName(String username){
+        myUserName = username;
+        id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
+        System.out.println(id_uzyt);
+    }
 
     @FXML
     private void exit(ActionEvent e) {
@@ -105,8 +119,7 @@ public class TableViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        loadDate();
+        //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
         slider.setTranslateX(-200);
 
@@ -191,5 +204,9 @@ public class TableViewController implements Initializable {
     public void goToShowReservation(ActionEvent actionEvent) throws SQLException {
         System.out.println("Wyswietlam rezerwacje...");
         //tabPane.getSelectionModel().select(wyswietlTable);
+    }
+
+    public void setArray(ActionEvent actionEvent) {
+        loadDate();
     }
 }
