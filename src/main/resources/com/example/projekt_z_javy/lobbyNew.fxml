@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.LobbyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_z_javy.AddingController">
    <children>
       <BorderPane layoutX="218.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -69,6 +69,19 @@
                </children>
             </AnchorPane>
          </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <DatePicker fx:id="dataPicker" layoutX="25.0" layoutY="28.0" onAction="#getDate" />
+                  <ChoiceBox fx:id="roomChoiceBox" layoutX="25.0" layoutY="94.0" prefHeight="25.0" prefWidth="171.0" />
+                  <ChoiceBox fx:id="hourChoiceBox" layoutX="25.0" layoutY="154.0" prefHeight="25.0" prefWidth="171.0" />
+                  <Label layoutX="25.0" layoutY="6.0" text="Wybierz date rezerwacji:" />
+                  <Label layoutX="25.0" layoutY="71.0" text="Wybierz pokój do zarezerowania:" />
+                  <Label layoutX="25.0" layoutY="129.0" text="Wybierz przedział godziny do zarezerwowania:" />
+                  <Button layoutX="85.0" layoutY="223.0" mnemonicParsing="false" text="Zarezerwuj" />
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

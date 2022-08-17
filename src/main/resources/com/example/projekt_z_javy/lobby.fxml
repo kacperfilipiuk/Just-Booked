@@ -69,6 +69,13 @@
                </children>
             </AnchorPane>
          </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="labelName" layoutX="37.0" layoutY="24.0" text="Witaj" />
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
