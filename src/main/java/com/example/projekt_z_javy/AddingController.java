@@ -31,7 +31,8 @@ public class AddingController implements Initializable {
 
     LocalDate myDate = null;
 
-
+    @FXML
+    private Button reservButton;
     @FXML
     private ChoiceBox roomChoiceBox;
     @FXML
@@ -178,5 +179,17 @@ public class AddingController implements Initializable {
     public void getDate(ActionEvent actionEvent) {
         myDate = dataPicker.getValue();
         System.out.println(myDate);
+    }
+
+    @FXML
+    public void makeReservation(ActionEvent actionEvent) throws SQLException {
+        int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
+        int id_r = JavaPostgreSQL_adding.getRoomId((String) roomChoiceBox.getValue());
+        //JavaPostgreSQL_adding.getUserId();
+        JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,3);
+        //sprawdz czy ta kombincja jest możliwa do rejestracji
+        //if(tak){
+        // } else {
+        // }
     }
 }

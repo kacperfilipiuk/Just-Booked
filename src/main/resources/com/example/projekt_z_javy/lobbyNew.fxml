@@ -78,7 +78,7 @@
                   <Label layoutX="25.0" layoutY="6.0" text="Wybierz date rezerwacji:" />
                   <Label layoutX="25.0" layoutY="71.0" text="Wybierz pokój do zarezerowania:" />
                   <Label layoutX="25.0" layoutY="129.0" text="Wybierz przedział godziny do zarezerwowania:" />
-                  <Button layoutX="85.0" layoutY="223.0" mnemonicParsing="false" text="Zarezerwuj" />
+                  <Button fx:id="reservButton" layoutX="85.0" layoutY="223.0" mnemonicParsing="false" onAction="#makeReservation" text="Zarezerwuj" />
                </children>
             </AnchorPane>
          </center>
