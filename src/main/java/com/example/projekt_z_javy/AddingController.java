@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -100,6 +99,7 @@ public class AddingController implements Initializable {
         roomChoiceBox.setItems(roomList);
 
 
+
         slider.setTranslateX(-200);
 
         Menu.setOnMouseClicked(event -> {
@@ -148,7 +148,11 @@ public class AddingController implements Initializable {
 
     @FXML
     public void addReservation(ActionEvent actionEvent) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+        root = loader.load();
+        AddingController addingController = loader.getController();
+        addingController.getUserName(myUserName);
+        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -158,7 +162,11 @@ public class AddingController implements Initializable {
     }
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("lobbyDelete.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+        root = loader.load();
+        DeletingController deletingController = loader.getController();
+        deletingController.getUserName1(myUserName);
+        //root = FXMLLoader.load(getClass().getResource("lobbyDelete.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -166,7 +174,11 @@ public class AddingController implements Initializable {
     }
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("lobbyHistory.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory.fxml"));
+        root = loader.load();
+        TableViewController tableViewController = loader.getController();
+        tableViewController.getUserName3(myUserName);
+        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -174,7 +186,11 @@ public class AddingController implements Initializable {
     }
     @FXML
     public void otherReservation(ActionEvent actionEvent) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("lobbyOther.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+        root = loader.load();
+        OtherController otherController = loader.getController();
+        otherController.getUserName2(myUserName);
+        //root = FXMLLoader.load(getClass().getResource("lobbyOther.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

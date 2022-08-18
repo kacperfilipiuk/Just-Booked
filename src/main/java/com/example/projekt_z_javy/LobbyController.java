@@ -1,22 +1,15 @@
 package com.example.projekt_z_javy;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -105,7 +98,11 @@ public class LobbyController implements Initializable {
     }
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("lobbyDelete.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+        root = loader.load();
+        DeletingController deletingController = loader.getController();
+        deletingController.getUserName1(nameOfUser);
+        //root = FXMLLoader.load(getClass().getResource("lobbyDelete.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -116,7 +113,7 @@ public class LobbyController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory.fxml"));
         root = loader.load();
         TableViewController tableViewController = loader.getController();
-        tableViewController.getUserName(nameOfUser);
+        tableViewController.getUserName3(nameOfUser);
         //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -125,7 +122,11 @@ public class LobbyController implements Initializable {
     }
     @FXML
     public void otherReservation(ActionEvent actionEvent) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("lobbyOther.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+        root = loader.load();
+        OtherController otherController = loader.getController();
+        otherController.getUserName2(nameOfUser);
+        //root = FXMLLoader.load(getClass().getResource("lobbyOther.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
