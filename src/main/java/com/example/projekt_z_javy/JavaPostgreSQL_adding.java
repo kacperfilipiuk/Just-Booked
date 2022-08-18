@@ -138,38 +138,37 @@ public class JavaPostgreSQL_adding {
      *
      */
 
-    public static boolean checkDatabase(String userName, String userEmail) throws SQLException {
+    public static boolean checkDatabase(Date pickDate, Integer idPok, Integer idGodz) throws SQLException {
 
         boolean loginisko = false;
-        String name = userName;
-        String email2 = userEmail;
+        Date date = pickDate;
+        Integer numerPokoju = idPok;
+        Integer numerGodziny = idGodz;
 
 
-        String query = "SELECT login FROM uzytkownicy WHERE (login = ? OR email = ?)";
+        String query = "SELECT id_rez FROM rezerwacje WHERE (id_p = ? AND id_h = ? AND data = ?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
 
-            email2.toLowerCase();
-
-            pst.setString(1, name);
-            pst.setString(2, email2);
+            pst.setInt(1, numerPokoju);
+            pst.setInt(2, numerGodziny);
+            pst.setDate(3, date);
 
             ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
 
             while (resultSet.next()){
-                String checkUser = resultSet.getString(1);
-                System.out.println(checkUser);
+                Integer checkReserv = resultSet.getInt(1);
+                System.out.println(checkReserv);
 
-                if (!checkUser.isEmpty()) {
+                if (checkReserv!=null) {
                     loginisko = true;
-                    System.out.println("Jest");
+                    System.out.println("Jest taka rezerwacja");
                     break;
                 }
             //pst.executeUpdate();
         }
-
-            System.out.println("okkk");
+            pst.close();
             resultSet.close();
 
         } catch (SQLException ex) {

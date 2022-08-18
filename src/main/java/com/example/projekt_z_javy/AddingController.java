@@ -186,12 +186,17 @@ public class AddingController implements Initializable {
         System.out.println(myDate);
     }
 
+    //Po nacisnieciu guzika
     @FXML
     public void makeReservation(ActionEvent actionEvent) throws SQLException {
         int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
         int id_r = JavaPostgreSQL_adding.getRoomId((String) roomChoiceBox.getValue());
         int id_u = JavaPostgreSQL_adding.getUserId(myUserName);
-        JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,id_u);
+        if(JavaPostgreSQL_adding.checkDatabase(Date.valueOf(myDate),id_r,id_h)){
+            System.out.println("Niestety wybrany termin jest zajety");
+        } else {
+            JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,id_u);
+        }
         //sprawdz czy ta kombincja jest możliwa do rejestracji
         //if(tak){
         // } else {
