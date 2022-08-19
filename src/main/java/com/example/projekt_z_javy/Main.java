@@ -40,12 +40,4 @@ public class Main extends Application {
             stg.getScene().setRoot(pane);
         }
     }
-
-    public void offScene() throws IOException {
-        stg.hide();
-    }
-
-    public void onScene() throws IOException {
-        stg.show();
-    }
 }

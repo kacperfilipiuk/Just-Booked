@@ -4,9 +4,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.sql.Types.NULL;
-
-public class JavaPostgreSQL {
+public class JavaPostgreSQL_register {
 
     public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
     public static final String user = "dpbwovovhjsruv";
@@ -38,7 +36,7 @@ public class JavaPostgreSQL {
             System.out.println("Sucessfully created!");
 
         } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
     }
@@ -83,7 +81,7 @@ public class JavaPostgreSQL {
             resultSet.close();
 
         } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
 

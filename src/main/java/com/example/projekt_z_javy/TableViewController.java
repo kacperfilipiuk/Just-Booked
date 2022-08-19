@@ -100,7 +100,7 @@ public class TableViewController implements Initializable {
             }
 
         } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
 
@@ -172,7 +172,7 @@ public class TableViewController implements Initializable {
 
 
         } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL.class.getName());
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
     }
