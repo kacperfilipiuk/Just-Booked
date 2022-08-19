@@ -75,7 +75,10 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="labelName" layoutX="37.0" layoutY="24.0" text="Witaj" />
+                  <Label fx:id="labelName" layoutX="37.0" layoutY="24.0" text="Witaj">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font></Label>
                   <Label layoutX="37.0" layoutY="78.0" prefHeight="124.0" prefWidth="654.0" text="Aplikacja JustBooked służy do rezerwacji pokoi. &#10;&#10;Możesz tu zarezerować wybraną salę w dogodnym dla siebie dniu oraz przedziale godzinowym. &#10;Ponadto możesz usuwać oraz wyświetlać swoje rezerwacje. ">
                      <font>
                         <Font name="System Bold" size="14.0" />

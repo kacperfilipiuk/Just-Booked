@@ -71,7 +71,7 @@ public class LobbyController implements Initializable {
     }
 
     public void displayName(String userName){
-        labelName.setText("Witaj: " + userName);
+        labelName.setText("Witaj " + userName + " !");
     }
 
     public void getName(String userName){
