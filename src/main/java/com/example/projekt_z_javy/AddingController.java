@@ -174,7 +174,7 @@ public class AddingController implements Initializable {
     }
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
         root = loader.load();
         TableViewController tableViewController = loader.getController();
         tableViewController.getUserName3(myUserName);
