@@ -25,7 +25,8 @@ import java.util.logging.Logger;
 
 public class AddingController implements Initializable {
 
-    private ObservableList<Integer> hourList = FXCollections.observableArrayList(8,10,12,14,16,18);
+    //private ObservableList<Integer> hourList = FXCollections.observableArrayList(8,10,12,14,16,18);
+    private ObservableList<String> hourList = FXCollections.observableArrayList();
     private ObservableList<String> roomList = FXCollections.observableArrayList();
 
     LocalDate myDate = null;
@@ -90,11 +91,40 @@ public class AddingController implements Initializable {
 
     }
 
+    public void fillHourComboBox(){
+        String query = "SELECT godzina_od FROM godziny";
+
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                String h = rs.getString("godzina_od");
+                switch(h) {
+                    case "8": hourList.add("8-10"); break;
+                    case "10": hourList.add("10-12"); break;
+                    case "12": hourList.add("12-14"); break;
+                    case "14": hourList.add("14-16"); break;
+                    case "16": hourList.add("16-18"); break;
+                    case "18": hourList.add("18-20"); break;
+                }
+            }
+            pst.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
+            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        }
+
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         fillRoomComboBox();
-
+        fillHourComboBox();
         hourChoiceBox.setItems(hourList);
         roomChoiceBox.setItems(roomList);
 

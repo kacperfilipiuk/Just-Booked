@@ -88,7 +88,7 @@ public class JavaPostgreSQL_adding {
                 System.out.println(checkNumberOfHour);
             }
 
-            System.out.println("Numer id pokoju to: " + checkNumberOfHour);
+            System.out.println("Numer id godziny to: " + checkNumberOfHour);
             pst.close();
             resultSet.close();
 
