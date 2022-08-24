@@ -235,7 +235,30 @@ public class AddingController implements Initializable {
     //Po nacisnieciu guzika
     @FXML
     public void makeReservation(ActionEvent actionEvent) throws SQLException {
-        int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
+        //Deklaracja zmiennych
+        String wholeWord = (String) hourChoiceBox.getValue();
+        char firstChar = wholeWord.charAt(0), secoundChar = wholeWord.charAt(1);
+        int id_of_hour = 0;
+
+        //Metody i warunki
+
+        if(firstChar=='8'){
+            id_of_hour = 8;
+        } else if(firstChar=='1') {
+            if (secoundChar == '0'){
+                id_of_hour = 10;
+            } else if (secoundChar == '2') {
+                id_of_hour = 12;
+            } else if (secoundChar == '4') {
+                id_of_hour = 14;
+            } else if (secoundChar == '6') {
+                id_of_hour = 16;
+            } else if (secoundChar == '8') {
+                id_of_hour = 18;
+            }
+        }
+        //int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
+        int id_h = JavaPostgreSQL_adding.getHourId(id_of_hour);
         int id_r = JavaPostgreSQL_adding.getRoomId((String) roomChoiceBox.getValue());
         int id_u = JavaPostgreSQL_adding.getUserId(myUserName);
         if(JavaPostgreSQL_adding.checkDatabase(Date.valueOf(myDate),id_r,id_h)){
