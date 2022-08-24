@@ -10,6 +10,7 @@ module com.example.projekt_z_javy {
     requires org.hibernate.orm.core;
     requires com.jfoenix;
     requires javax.persistence;
+    requires java.naming;
     //requires hibernate.core;
     //requires jboss.logging;
 
