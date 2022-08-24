@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-
+/*
     private ServerSocket serverSocket;
     private Socket socket;
     private BufferedReader bufferedReader;
@@ -22,8 +22,7 @@ public class Server {
 
         }
     }
-
-    /*
+*/
     public static void main(String args[]) throws Exception {
         ServerSocket serverSocket = new ServerSocket(3333);
         Socket s = serverSocket.accept();
@@ -42,5 +41,5 @@ public class Server {
         din.close();
         s.close();
         serverSocket.close();
-    }*/
+    }
 }

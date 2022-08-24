@@ -12,7 +12,7 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            final File configFile = new File("src\\main\\resources\\hibernate.cfg.xml");
+            final File configFile = new File("src\\main\\resources\\persistence.xml");
             return new Configuration()
                     .configure(configFile)
                     .buildSessionFactory();
