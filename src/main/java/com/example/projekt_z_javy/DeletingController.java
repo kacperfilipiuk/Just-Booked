@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -28,11 +25,16 @@ import java.util.logging.Logger;
 
 public class DeletingController implements Initializable {
 
+    private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
+
     @FXML
     private Label Menu;
 
     @FXML
     private Label MenuClose;
+
+    @FXML
+    private ChoiceBox reservationChoiceBox;
 
     @FXML
     private AnchorPane slider;
@@ -66,45 +68,7 @@ public class DeletingController implements Initializable {
         System.exit(0);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-        //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
-
-        slider.setTranslateX(-200);
-
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(0);
-            slide.play();
-
-            slider.setTranslateX(-200);
-
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(false);
-                MenuClose.setVisible(true);
-            });
-        });
-
-        MenuClose.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-200);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(true);
-                MenuClose.setVisible(false);
-            });
-        });
-    }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
@@ -171,4 +135,76 @@ public class DeletingController implements Initializable {
         stage.show();
     }
 
+
+    public void fillReservationChoiceBox(){
+        String query = "SELECT id_rez FROM rezerwacje WHERE id_u = ?";
+
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            pst.setInt(1,id_uzyt);
+            //System.out.println(id_uzyt + " idik");
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                reservationList.add(rs.getInt("id_rez"));
+            }
+            pst.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
+            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        }
+
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        fillReservationChoiceBox();
+        reservationChoiceBox.setItems(reservationList);
+
+        //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
+
+        slider.setTranslateX(-200);
+
+        Menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-200);
+
+            slide.setOnFinished((ActionEvent e) -> {
+                Menu.setVisible(false);
+                MenuClose.setVisible(true);
+            });
+        });
+
+        MenuClose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-200);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished((ActionEvent e) -> {
+                Menu.setVisible(true);
+                MenuClose.setVisible(false);
+            });
+        });
+    }
 }
+
+
+
+

@@ -9,7 +9,7 @@ module com.example.projekt_z_javy {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires com.jfoenix;
-    requires javax.persistence;
+    requires java.persistence;
     requires java.naming;
     //requires hibernate.core;
     //requires jboss.logging;
