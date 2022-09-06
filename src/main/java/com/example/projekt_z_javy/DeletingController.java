@@ -1,5 +1,6 @@
 package com.example.projekt_z_javy;
 
+import com.jfoenix.controls.JFXTextArea;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,6 +46,16 @@ public class DeletingController implements Initializable {
 
     @FXML
     private Button iniButton;
+
+    @FXML
+    private TextField textFieldRoom;
+
+    @FXML
+    private TextField textFieldData;
+
+    @FXML
+    private TextField textFieldHour;
+
 
     String query = "";
     ResultSet resultSet = null;
@@ -142,7 +153,7 @@ public class DeletingController implements Initializable {
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
-            System.out.println(id_uzyt + " idik");
+            //System.out.println(id_uzyt + " idik");
             pst.setInt(1,id_uzyt);
 
 
@@ -158,7 +169,6 @@ public class DeletingController implements Initializable {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
-        //
     }
 
     @FXML
@@ -168,11 +178,40 @@ public class DeletingController implements Initializable {
         reservationChoiceBox.setItems(reservationList);
     }
 
+    @FXML
+    public void iniField(ActionEvent actionEvent)
+    {
+        fillReservationFields();
+    }
+
+    public void fillReservationFields(){
+        String query = "SELECT * FROM rezerwacje WHERE id_rez= ?";
+
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
+            System.out.println(id_r + " id_rezer");
+
+            pst.setInt(1, id_r);
+            ResultSet rs = pst.executeQuery();
+
+
+            textFieldRoom.appendText("id_p");
+            textFieldData.setText("data");
+            textFieldHour.setText("id_h");
+
+            pst.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
+            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //
-
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
