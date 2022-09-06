@@ -43,7 +43,8 @@ public class DeletingController implements Initializable {
     private Scene scene;
     private Parent root;
 
-
+    @FXML
+    private Button iniButton;
 
     String query = "";
     ResultSet resultSet = null;
@@ -137,13 +138,13 @@ public class DeletingController implements Initializable {
 
 
     public void fillReservationChoiceBox(){
-        String query = "SELECT id_rez FROM rezerwacje WHERE id_u = ?";
+        String query = "SELECT * FROM rezerwacje WHERE id_u = ?";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
-
+            System.out.println(id_uzyt + " idik");
             pst.setInt(1,id_uzyt);
-            //System.out.println(id_uzyt + " idik");
+
 
             ResultSet rs = pst.executeQuery();
 
@@ -157,15 +158,21 @@ public class DeletingController implements Initializable {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
-
+        //
     }
 
+    @FXML
+    public void iniCombo(ActionEvent actionEvent)
+    {
+        fillReservationChoiceBox();
+        reservationChoiceBox.setItems(reservationList);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        fillReservationChoiceBox();
-        reservationChoiceBox.setItems(reservationList);
+        //
+
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 

@@ -121,6 +121,7 @@
                         <TextField disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
                      </children>
                   </AnchorPane>
+                  <Button fx:id="iniButton" layoutX="281.0" layoutY="327.0" mnemonicParsing="false" onAction="#iniCombo" text="Button" />
                </children>
             </AnchorPane>
          </center>
