@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.example.projekt_z_javy.JavaPostgreSQL_deleting.deleteReservFromDatabase;
+
 public class DeletingController implements Initializable {
 
     private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
@@ -46,6 +48,9 @@ public class DeletingController implements Initializable {
 
     @FXML
     private Button iniButton;
+
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private TextField textFieldRoom;
@@ -196,22 +201,36 @@ public class DeletingController implements Initializable {
             System.out.println(id_r + " id_rez");
 
 
-            String id_h = null;
-            String id_p = null;
+            int id_h = 0;
+            int id_p = 0;
             Date data = null;
+            String id_p1 = null;
+            String id_h1 = null;
+
             while (rs.next()) {
-                System.out.println(rs.getString("id_p") + " id_pokoju");
-                System.out.println(rs.getString("id_h") + " id_godziny");
-                System.out.println(rs.getDate("data") + " dataa");
-                id_h = rs.getString("id_h");
-                id_p = rs.getString("id_p");
-                //data = rs.getDate("data");
+                //System.out.println(rs.getString("id_p") + " id_pokoju");
+                // System.out.println(rs.getString("id_h") + " id_godziny");
+                //System.out.println(rs.getDate("data") + " dataa");
+
+                id_p = rs.getInt("id_p");
+                id_p1 = JavaPostgreSQL_deleting.getRoomName(id_p);
+                data = rs.getDate("data");
+                id_h = rs.getInt("id_h");
+                id_h1 = JavaPostgreSQL_deleting.getHourName(id_h);
             }
 
-            textFieldHour.setText(id_h);
-            textFieldRoom.setText(id_p);
-            //textFieldData.setText(Date.valueOf(String.valueOf(data)));
-            System.out.println("Jest jeszcze problem z wyswietlaniem daty :/");
+            switch(id_h1) {
+                case "8": id_h1 = "8-10"; break;
+                case "10": id_h1 = "10-12"; break;
+                case "12": id_h1 = "12-14"; break;
+                case "14": id_h1 = "14-16"; break;
+                case "16": id_h1 = "16-18"; break;
+                case "18": id_h1 = "18-20"; break;
+            }
+
+            textFieldRoom.setText(id_p1);
+            textFieldHour.setText(id_h1);
+            textFieldData.setText(String.valueOf(data));
 
             pst.close();
             rs.close();
@@ -221,6 +240,13 @@ public class DeletingController implements Initializable {
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
     }
+
+    @FXML
+    public void deleteReserv(ActionEvent actionEvent) throws SQLException {
+        int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
+        deleteReservFromDatabase(id_r);
+}
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -263,6 +289,10 @@ public class DeletingController implements Initializable {
     }
 }
 
+/*
+USUWANIE składnia:
+DELETE FROM nazwa_tabeli WHERE warunek
 
-
-
+        DELETE FROM OSOBY
+        WHERE imie = ‘Malgorzata’;
+*/

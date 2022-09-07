@@ -87,7 +87,7 @@
                         <Button fx:id="iniButton" layoutX="108.0" layoutY="206.0" mnemonicParsing="false" onAction="#iniCombo" text="fillChoiceBox" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="deleteButton" layoutX="142.0" layoutY="353.0" mnemonicParsing="false" onAction="#deleteReservation" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź">
+                  <Button fx:id="deleteButton" layoutX="142.0" layoutY="353.0" mnemonicParsing="false" onAction="#deleteReserv" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź">
                      <font>
                         <Font size="14.0" />
                      </font>
