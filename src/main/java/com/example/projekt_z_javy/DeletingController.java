@@ -64,7 +64,6 @@ public class DeletingController implements Initializable {
 
     int id_uzyt;
 
-
     public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
@@ -185,21 +184,34 @@ public class DeletingController implements Initializable {
     }
 
     public void fillReservationFields(){
-        String query = "SELECT * FROM rezerwacje WHERE id_rez= ?";
+        String query = "SELECT * FROM rezerwacje WHERE id_rez = ?";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+            PreparedStatement pst = con.prepareStatement(query)) {
 
             int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
-            System.out.println(id_r + " id_rezer");
-
             pst.setInt(1, id_r);
             ResultSet rs = pst.executeQuery();
+            System.out.println();
+            System.out.println(id_r + " id_rez");
 
 
-            textFieldRoom.appendText("id_p");
-            textFieldData.setText("data");
-            textFieldHour.setText("id_h");
+            String id_h = null;
+            String id_p = null;
+            Date data = null;
+            while (rs.next()) {
+                System.out.println(rs.getString("id_p") + " id_pokoju");
+                System.out.println(rs.getString("id_h") + " id_godziny");
+                System.out.println(rs.getDate("data") + " dataa");
+                id_h = rs.getString("id_h");
+                id_p = rs.getString("id_p");
+                //data = rs.getDate("data");
+            }
+
+            textFieldHour.setText(id_h);
+            textFieldRoom.setText(id_p);
+            //textFieldData.setText(Date.valueOf(String.valueOf(data)));
+            System.out.println("Jest jeszcze problem z wyswietlaniem daty :/");
 
             pst.close();
             rs.close();
