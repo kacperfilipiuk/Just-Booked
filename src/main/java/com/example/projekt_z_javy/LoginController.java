@@ -41,7 +41,11 @@ public class LoginController {
             } else {
                 if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText())) {
                     String userName = name.getText();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("lobby.fxml"));
+                    FXMLLoader loader;
+                    if(userName.equals("admin"))
+                        loader = new FXMLLoader(getClass().getResource("lobbyAdmin.fxml"));
+                    else
+                        loader = new FXMLLoader(getClass().getResource("lobby.fxml"));
                     Parent home_page_parent = loader.load();
                     LobbyController lobbyController = loader.getController();
                     //String output = userName.substring(0,1).toUpperCase() + userName.substring(1);

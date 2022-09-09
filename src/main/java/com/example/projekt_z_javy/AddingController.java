@@ -178,7 +178,11 @@ public class AddingController implements Initializable {
 
     @FXML
     public void addReservation(ActionEvent actionEvent) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+        FXMLLoader loader;
+        if(myUserName.equals("admin"))
+            loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+        else
+            loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
         root = loader.load();
         AddingController addingController = loader.getController();
         addingController.getUserName(myUserName);
@@ -187,12 +191,15 @@ public class AddingController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
+
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+        FXMLLoader loader;
+        if(myUserName.equals("admin"))
+            loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+        else
+            loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
         root = loader.load();
         DeletingController deletingController = loader.getController();
         deletingController.getUserName1(myUserName);
@@ -202,9 +209,14 @@ public class AddingController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
+        FXMLLoader loader;
+        if(myUserName.equals("admin"))
+            loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
+        else
+            loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
         root = loader.load();
         TableViewController tableViewController = loader.getController();
         tableViewController.getUserName3(myUserName);
@@ -216,7 +228,11 @@ public class AddingController implements Initializable {
     }
     @FXML
     public void otherReservation(ActionEvent actionEvent) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+        FXMLLoader loader;
+        if(myUserName.equals("admin"))
+            loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+        else
+            loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
         root = loader.load();
         OtherController otherController = loader.getController();
         otherController.getUserName2(myUserName);
