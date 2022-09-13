@@ -68,7 +68,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="65.0" prefWidth="200.0" text="Informacje" textFill="WHITE">
+                        <JFXButton prefHeight="65.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

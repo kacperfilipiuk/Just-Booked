@@ -8,7 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,6 +27,12 @@ public class OtherController implements Initializable {
 
     @FXML
     private Label MenuClose;
+
+    @FXML
+    private Button MessageButton;
+
+    @FXML
+    private TextField MessageField;
 
     @FXML
     private AnchorPane slider;
@@ -109,6 +117,14 @@ public class OtherController implements Initializable {
         stage.show();
 
     }
+
+    @FXML
+    public void sendMessage(ActionEvent actionEvent)
+    {
+        System.out.println("wysylam wiadomosc do Admina");
+    }
+
+
 
 
     ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
