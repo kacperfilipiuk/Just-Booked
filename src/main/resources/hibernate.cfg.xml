@@ -15,6 +15,10 @@
             <property name="show_sql">true</property>
             <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
             <property name="current_session_context_class">thread</property>
+            <mapping class="entityWHib.Godziny"/>
+            <mapping class="entityWHib.Pokoje"/>
+            <mapping class="entityWHib.Rezerwacje"/>
+            <mapping class="entityWHib.Uzytkownicy"/>
 
     </session-factory>
 </hibernate-configuration>

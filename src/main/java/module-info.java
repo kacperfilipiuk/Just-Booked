@@ -9,13 +9,13 @@ module com.example.projekt_z_javy {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires com.jfoenix;
-    requires java.persistence;
+    //requires java.persistence;
     requires java.naming;
-    //requires hibernate.core;
+    //requires javax.persistence;
+    requires jakarta.persistence;
     //requires jboss.logging;
 
-    opens com.example to javafx.fxml;
-    exports com.example;
-    exports newImplementation;
-    opens newImplementation to javafx.fxml;
+    opens com.example.projekt_z_javy to javafx.fxml;
+    exports com.example.projekt_z_javy;
+    opens com.example.projekt_z_javy.entity to org.hibernate.orm.core;
 }
