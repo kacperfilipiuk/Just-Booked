@@ -15,7 +15,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="Projekt_Z_Javy" />
           <factory-entry name="User_detalis" />
+          <factory-entry name="default" />
           <factory-entry name="pbd-persistence-unit" />
         </datasource-mapping>
         <naming-strategy-map />
