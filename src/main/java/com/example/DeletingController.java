@@ -1,6 +1,5 @@
-package com.example.projekt_z_javy;
+package com.example;
 
-import com.jfoenix.controls.JFXTextArea;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,8 +21,6 @@ import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static com.example.projekt_z_javy.JavaPostgreSQL_deleting.deleteReservFromDatabase;
 
 public class DeletingController implements Initializable {
 
@@ -260,7 +256,7 @@ public class DeletingController implements Initializable {
     @FXML
     public void deleteReserv(ActionEvent actionEvent) throws SQLException {
         int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
-        deleteReservFromDatabase(id_r);
+        JavaPostgreSQL_deleting.deleteReservFromDatabase(id_r);
 }
 
 

@@ -14,8 +14,8 @@ module com.example.projekt_z_javy {
     //requires hibernate.core;
     //requires jboss.logging;
 
-    opens com.example.projekt_z_javy to javafx.fxml;
-    exports com.example.projekt_z_javy;
+    opens com.example to javafx.fxml;
+    exports com.example;
     exports newImplementation;
     opens newImplementation to javafx.fxml;
 }

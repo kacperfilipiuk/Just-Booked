@@ -1,6 +1,4 @@
-package com.example.projekt_z_javy;
-
-import javafx.scene.control.DatePicker;
+package com.example;
 
 import java.sql.*;
 import java.util.logging.Level;

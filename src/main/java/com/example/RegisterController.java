@@ -1,4 +1,4 @@
-package com.example.projekt_z_javy;
+package com.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
