@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainApp.OtherController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="MenuClose" layoutX="32.0" layoutY="20.0" text="MENU" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="LIST" />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="Menu" layoutX="32.0" layoutY="20.0" text="MENU" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="LIST" />
+                     </graphic>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="slider" prefHeight="470.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="50.0" layoutY="70.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton onAction="#addReservation" prefHeight="70.0" prefWidth="200.0" text="Dodaj rezerwację" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton onAction="#deleteReservation" prefHeight="70.0" prefWidth="200.0" text="Usuń rezerwację" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton onAction="#myReservation" prefHeight="70.0" prefWidth="200.0" text="Moje rezerwacje" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton onAction="#otherReservation" prefHeight="70.0" prefWidth="200.0" text="Informacje" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <AnchorPane prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="84.0" layoutY="126.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="40" wrappingWidth="55.54284858703613" />
+                                 </graphic></Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="42.0" layoutY="60.0" text="Autorzy:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="73.0" layoutY="105.0" text="Kacper Filipiuk &#10;Aneta Pietrzak">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIcon glyphName="USER" layoutX="42.0" layoutY="123.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </FontAwesomeIcon>
+                  <FontAwesomeIcon glyphName="USER" layoutX="42.0" layoutY="150.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </FontAwesomeIcon>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

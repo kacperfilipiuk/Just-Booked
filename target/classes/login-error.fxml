@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainApp.LoginController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="name" layoutX="76.0" layoutY="164.0" promptText="Nazwa użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="password" layoutX="77.0" layoutY="212.0" promptText="Hasło użytkownika" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="60.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonPressedLogin" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0598ff;" text="Zaloguj" textFill="WHITE" />
+            <Label contentDisplay="CENTER" layoutX="76.0" layoutY="88.0" prefHeight="42.0" prefWidth="150.0" text="LOGOWANIE" textAlignment="CENTER" textFill="#0598ff">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="176.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonPressedRegister" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0598ff;" text="Zarejestruj" textFill="WHITE" />
+            <FontAwesomeIcon fill="#0598ff" glyphName="USERS" layoutX="133.0" layoutY="73.0" size="35" />
+            <FontAwesomeIcon fill="#0598ff" glyphName="USER" layoutX="36.0" layoutY="183.0" size="20" />
+            <FontAwesomeIcon fill="#0598ff" glyphName="KEY" layoutX="35.0" layoutY="238.0" size="20" />
+            <Label layoutX="68.0" layoutY="130.0" prefHeight="18.0" prefWidth="189.0" text="Podano złe lub nie istniejące dane!" textFill="RED" />
+            <Button layoutX="250.0" layoutY="13.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontAwesomeIcon fill="#0589ff" glyphName="CLOSE" size="22" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
