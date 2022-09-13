@@ -17,6 +17,7 @@
         <datasource-mapping>
           <factory-entry name="Projekt_Z_Javy" value="a0978a56-e8a8-484a-babe-faeed2671b84" />
           <factory-entry name="User_detalis" />
+          <factory-entry name="default" />
           <factory-entry name="my-persistence-unit" value="a0978a56-e8a8-484a-babe-faeed2671b84" />
           <factory-entry name="pbd-persistence-unit" value="a0978a56-e8a8-484a-babe-faeed2671b84" />
           <factory-entry name="persistenceUnit" value="a0978a56-e8a8-484a-babe-faeed2671b84" />
@@ -26,7 +27,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_18">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_X">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">

@@ -54,7 +54,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#otherReservation" prefHeight="70.0" prefWidth="200.0" text="Informacje" textFill="WHITE">
+                        <JFXButton onAction="#otherReservation" prefHeight="70.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
