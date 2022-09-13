@@ -1,4 +1,4 @@
-package com.example;
+package com.example.mainApp;
 
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -168,7 +168,7 @@ public class AddingController implements Initializable {
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
-        root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -180,13 +180,13 @@ public class AddingController implements Initializable {
     public void addReservation(ActionEvent actionEvent) throws IOException{
         FXMLLoader loader;
         if(myUserName.equals("admin"))
-            loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         else
-            loader = new FXMLLoader(getClass().getResource("lobbyNew.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         root = loader.load();
         AddingController addingController = loader.getController();
         addingController.getUserName(myUserName);
-        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -197,13 +197,13 @@ public class AddingController implements Initializable {
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
         if(myUserName.equals("admin"))
-            loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
         else
-            loader = new FXMLLoader(getClass().getResource("lobbyDelete.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
         root = loader.load();
         DeletingController deletingController = loader.getController();
         deletingController.getUserName1(myUserName);
-        //root = FXMLLoader.load(getClass().getResource("lobbyDelete.fxml"));
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -214,13 +214,13 @@ public class AddingController implements Initializable {
     public void myReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
         if(myUserName.equals("admin"))
-            loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
         else
-            loader = new FXMLLoader(getClass().getResource("lobbyHistory_v2.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
         root = loader.load();
         TableViewController tableViewController = loader.getController();
         tableViewController.getUserName3(myUserName);
-        //root = FXMLLoader.load(getClass().getResource("lobbyNew.fxml"));
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -230,13 +230,13 @@ public class AddingController implements Initializable {
     public void otherReservation(ActionEvent actionEvent) throws IOException{
         FXMLLoader loader;
         if(myUserName.equals("admin"))
-            loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         else
-            loader = new FXMLLoader(getClass().getResource("lobbyOther.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         root = loader.load();
         OtherController otherController = loader.getController();
         otherController.getUserName2(myUserName);
-        //root = FXMLLoader.load(getClass().getResource("lobbyOther.fxml"));
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

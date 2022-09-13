@@ -1,9 +1,9 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" >
     <persistence-unit name="my-persistence-unit">
-        <class>com.example.projekt_z_javy.entity.Godziny</class>
-        <class>com.example.projekt_z_javy.entity.Pokoje</class>
-        <class>com.example.projekt_z_javy.entity.Rezerwacje</class>
-        <class>com.example.projekt_z_javy.entity.Uzytkownicy</class>
+        <class>com.example.mainApp.projekt_z_javy.entity.Godziny</class>
+        <class>com.example.mainApp.projekt_z_javy.entity.Pokoje</class>
+        <class>com.example.mainApp.projekt_z_javy.entity.Rezerwacje</class>
+        <class>com.example.mainApp.projekt_z_javy.entity.Uzytkownicy</class>
         <properties>
             <property name="toplink.jdbc.url"
                       value="jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit"/>

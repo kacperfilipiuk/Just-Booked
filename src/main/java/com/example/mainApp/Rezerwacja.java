@@ -1,4 +1,4 @@
-package com.example;
+package com.example.mainApp;
 
 import java.sql.Date;
 

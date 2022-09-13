@@ -1,6 +1,7 @@
-module com.example.projekt_z_javy {
+module com.example.mainApp {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -15,7 +16,7 @@ module com.example.projekt_z_javy {
     requires jakarta.persistence;
     //requires jboss.logging;
 
-    opens com.example.projekt_z_javy to javafx.fxml;
-    exports com.example.projekt_z_javy;
-    opens com.example.projekt_z_javy.entity to org.hibernate.orm.core;
+    opens com.example.mainApp to javafx.fxml;
+    exports com.example.mainApp;
+    opens com.example.mainApp.projekt_z_javy.entity to org.hibernate.orm.core;
 }
