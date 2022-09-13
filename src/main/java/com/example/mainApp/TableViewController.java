@@ -1,5 +1,6 @@
 package com.example.mainApp;
 
+import com.example.mainApp.sql.JavaPostgreSQL_register;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

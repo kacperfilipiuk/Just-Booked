@@ -1,4 +1,4 @@
-package com.example.mainApp;
+package com.example.mainApp.sql;
 
 import java.sql.*;
 import java.util.logging.Level;
