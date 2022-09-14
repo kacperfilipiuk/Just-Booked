@@ -14,10 +14,10 @@ public class Godziny {
     private int idH;
     @Basic
     @Column(name = "godzina_od")
-    private BigInteger godzinaOd;
+    private Integer godzinaOd;
     @Basic
     @Column(name = "godzina_do")
-    private BigInteger godzinaDo;
+    private Integer godzinaDo;
     @OneToMany(mappedBy = "godzinyByIdH")
     private Collection<Rezerwacje> rezerwacjesByIdH;
 
@@ -32,19 +32,19 @@ public class Godziny {
         this.idH = idH;
     }
 
-    public BigInteger getGodzinaOd() {
+    public Integer getGodzinaOd() {
         return godzinaOd;
     }
 
-    public void setGodzinaOd(BigInteger godzinaOd) {
+    public void setGodzinaOd(Integer godzinaOd) {
         this.godzinaOd = godzinaOd;
     }
 
-    public BigInteger getGodzinaDo() {
+    public Integer getGodzinaDo() {
         return godzinaDo;
     }
 
-    public void setGodzinaDo(BigInteger godzinaDo) {
+    public void setGodzinaDo(Integer godzinaDo) {
         this.godzinaDo = godzinaDo;
     }
 

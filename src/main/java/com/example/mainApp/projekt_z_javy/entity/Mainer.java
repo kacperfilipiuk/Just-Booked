@@ -18,8 +18,8 @@ public class Mainer {
 
             Uzytkownicy uzy = new Uzytkownicy();
             Godziny go = new Godziny();
-            go.setGodzinaOd(BigInteger.valueOf(22));
-            go.setGodzinaDo(BigInteger.valueOf(00));
+            go.setGodzinaOd(22);
+            go.setGodzinaDo(00);
             System.out.println(go);
             entityManager.merge(go);
 
