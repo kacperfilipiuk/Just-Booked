@@ -1,5 +1,7 @@
 package com.example.mainApp;
 
+import com.example.mainApp.sql.JavaPostgreSQL_adding;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

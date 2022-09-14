@@ -1,5 +1,9 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
+import com.example.mainApp.projekt_z_javy.entity.Uzytkownicy;
+import jakarta.persistence.*;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +18,8 @@ public class JavaPostgreHIB_adding {
     static Integer checkNumberOfRoom;
     static Integer checkNumberOfHour;
 
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+
     //Funkcja odpowiedzialna z azwrócenie id uzytkownika z bazy danych
     public static int getUserId(String uN) {
         String userName = uN;
@@ -27,7 +33,7 @@ public class JavaPostgreHIB_adding {
 
             ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 checkNumberOfUser = resultSet.getInt(1);
                 System.out.println(checkNumberOfUser);
             }
@@ -38,7 +44,7 @@ public class JavaPostgreHIB_adding {
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
         return checkNumberOfUser;
     }
@@ -54,7 +60,7 @@ public class JavaPostgreHIB_adding {
 
             ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 checkNumberOfRoom = resultSet.getInt(1);
                 System.out.println(checkNumberOfRoom);
             }
@@ -65,7 +71,7 @@ public class JavaPostgreHIB_adding {
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
         return checkNumberOfRoom;
     }
@@ -81,7 +87,7 @@ public class JavaPostgreHIB_adding {
 
             ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 checkNumberOfHour = resultSet.getInt(1);
                 System.out.println(checkNumberOfHour);
             }
@@ -92,48 +98,47 @@ public class JavaPostgreHIB_adding {
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
 
         return checkNumberOfHour;
     }
 
-    public static void writeReservToDatabase(Date pD, Integer room, Integer hour, Integer userNum) throws SQLException {
+
+    public static void writeReservToDatabase(Date pD, Integer room, Integer hour, Integer userNum) {
+        //public static void writeReservToDatabase(Date pD, Integer room, Integer hour, Integer userNum) throws SQLException {
 
         Date pickedDate = pD;
         Integer roomName = room;
         Integer pickedHour = hour;
-        Integer userNumber= userNum;
+        Integer userNumber = userNum;
 
-                        /* Tutaj trzeba zmienić w tym  wzorze */
-        String query = "INSERT INTO rezerwacje(id_p, id_u, id_h,data) VALUES(?, ?, ?,?)";
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = null;
 
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            Rezerwacje rezerwacje = new Rezerwacje();
+            rezerwacje.setIdU(userNumber); //Numer id uzytkownika
+            rezerwacje.setIdH(pickedHour); //Numer id wybranej godziny
+            rezerwacje.setIdP(roomName); //Numer id pokoju
+            rezerwacje.setData(pickedDate); //Wybrana data
 
-        //ID_p - pokoje -> po naziwe sprawdzam id i odysłam tutaj
-        //ID_u - pobieram nazwe tak jak wczesniej i sprawdzam w bazie danych
-        //ID_h - na ten moment wystarczy sprawdzić godzine od jakie ma id
-        //date - mozna wpisac odrau
-
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
-
-            pst.setInt(1, roomName);
-            pst.setInt(2, userNumber);
-            pst.setInt(3, pickedHour);
-            pst.setDate(4, pickedDate);
-
-            pst.executeUpdate(); //zwraca boolena (true/false)
-            System.out.println("Sucessfully created!");
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+            entityManager.persist(rezerwacje);
+            entityTransaction.commit();
+        } catch (Exception e) {
+            if (entityTransaction != null) {
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
         }
     }
 
     /**
-     *Metoda odpowiedzialna za sprawdzenie powtórzenia loginu lub maila, rejestrującego sie uzytkownika
-     *
+     * Metoda odpowiedzialna za sprawdzenie powtórzenia loginu lub maila, rejestrującego sie uzytkownika
      */
 
     public static boolean checkDatabase(Date pickDate, Integer idPok, Integer idGodz) throws SQLException {
@@ -143,37 +148,30 @@ public class JavaPostgreHIB_adding {
         Integer numerPokoju = idPok;
         Integer numerGodziny = idGodz;
 
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        String query = "SELECT id_rez FROM rezerwacje WHERE (id_p = ? AND id_h = ? AND data = ?)";
+        String query = "SELECT rez FROM Rezerwacje rez WHERE (rez.idP = :custIdP AND rez.idH = :custIdH AND rez.data = :custData)";
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        TypedQuery<Rezerwacje> typedQuery = entityManager.createQuery(query, Rezerwacje.class);
+        typedQuery.setParameter("custIdP", numerPokoju);
+        typedQuery.setParameter("custIdH", numerGodziny);
+        typedQuery.setParameter("custData", date);
+        Rezerwacje rezerwacje;
 
-            pst.setInt(1, numerPokoju);
-            pst.setInt(2, numerGodziny);
-            pst.setDate(3, date);
+        try {
+            rezerwacje = typedQuery.getSingleResult();
+            if (rezerwacje.getIdRez() > 0) {
+                loginisko = true;
+                System.out.println("Jest Rezerwacja!");
+            } else {
+                System.out.println("Nie ma rezerwacji. Zapraszamy!");
+            }
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
-
-            while (resultSet.next()){
-                Integer checkReserv = resultSet.getInt(1);
-                System.out.println(checkReserv);
-
-                if (checkReserv!=null) {
-                    loginisko = true;
-                    System.out.println("Jest taka rezerwacja");
-                    break;
-                }
-            //pst.executeUpdate();
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
-        }
-
         return loginisko;
     }
 }
