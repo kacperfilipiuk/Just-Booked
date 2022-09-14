@@ -275,13 +275,13 @@ public class AddingController implements Initializable {
             }
         }
         //int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
-        int id_h = JavaPostgreSQL_adding.getHourId(id_of_hour);
-        int id_r = JavaPostgreSQL_adding.getRoomId((String) roomChoiceBox.getValue());
-        int id_u = JavaPostgreSQL_adding.getUserId(myUserName);
-        if(JavaPostgreSQL_adding.checkDatabase(Date.valueOf(myDate),id_r,id_h)){
+        int id_h = JavaPostgreHIB_adding.getHourId(id_of_hour);
+        int id_r = JavaPostgreHIB_adding.getRoomId((String) roomChoiceBox.getValue());
+        int id_u = JavaPostgreHIB_adding.getUserId(myUserName);
+        if(JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate),id_r,id_h)){
             System.out.println("Niestety wybrany termin jest zajety");
         } else {
-            JavaPostgreSQL_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,id_u);
+            JavaPostgreHIB_adding.writeReservToDatabase(Date.valueOf(myDate),id_r,id_h,id_u);
         }
         //sprawdz czy ta kombincja jest możliwa do rejestracji
         //if(tak){
