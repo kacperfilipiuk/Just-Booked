@@ -1,112 +1,114 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Godziny;
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
 import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.projekt_z_javy.entity.Uzytkownicy;
 import jakarta.persistence.*;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 
 public class JavaPostgreHIB_adding {
-
-    public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
-    public static final String user = "dpbwovovhjsruv";
-    public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
-
-    static Integer checkNumberOfUser;
-    static Integer checkNumberOfRoom;
-    static Integer checkNumberOfHour;
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
     //Funkcja odpowiedzialna z azwrócenie id uzytkownika z bazy danych
     public static int getUserId(String uN) {
         String userName = uN;
+        int userNumber = 0;
 
-        String query = "SELECT id_u FROM uzytkownicy WHERE login = ?";
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        String query = "SELECT uzyt FROM Uzytkownicy uzyt WHERE uzyt.login = :custLogin";
 
-            pst.setString(1, userName);
+        TypedQuery<Uzytkownicy> typedQuery = entityManager.createQuery(query, Uzytkownicy.class);
+        typedQuery.setParameter("custLogin", userName);
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
+        Uzytkownicy uzytkownicy;
 
-            while (resultSet.next()) {
-                checkNumberOfUser = resultSet.getInt(1);
-                System.out.println(checkNumberOfUser);
+        try {
+            uzytkownicy = typedQuery.getSingleResult();
+            if (uzytkownicy.getIdU() > 0) {
+                userNumber = uzytkownicy.getIdU();
+                System.out.println("Oto id uzytkownia: " + userNumber);
+            } else {
+                System.out.println("Nie ma numery id uzytkowniaka.");
+
             }
 
-            System.out.println("Numer uzytkownika to: " + checkNumberOfUser);
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-        return checkNumberOfUser;
+        return userNumber;
     }
 
     public static int getRoomId(String rN) {
         String roomName = rN;
-        String query = "SELECT id_p FROM pokoje WHERE nazwa = ?";
+        int roomNumber = 0;
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-            pst.setString(1, roomName);
+        String query = "SELECT pok FROM Pokoje pok WHERE pok.nazwa = :custNazwa";
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
+        TypedQuery<Pokoje> typedQuery = entityManager.createQuery(query, Pokoje.class);
+        typedQuery.setParameter("custNazwa", roomName);
 
-            while (resultSet.next()) {
-                checkNumberOfRoom = resultSet.getInt(1);
-                System.out.println(checkNumberOfRoom);
+        Pokoje pokoje;
+
+        try {
+            pokoje = typedQuery.getSingleResult();
+            if (pokoje.getIdP() > 0) {
+                roomNumber = pokoje.getIdP();
+                System.out.println("Oto numer id pokoju: " + roomNumber);
+            } else {
+                System.out.println("Nie ma pokoju o takim id!");
+
             }
 
-            System.out.println("Numer id pokoju to: " + checkNumberOfRoom);
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-        return checkNumberOfRoom;
+        return roomNumber;
     }
 
     public static int getHourId(Integer pH) {
-        Integer pickedHour = pH;
-        String query = "SELECT id_h FROM godziny WHERE godzina_od = ?";
+        int pickedHour = pH;
+        int hourNumber = 0;
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-            pst.setInt(1, pickedHour);
+        String query = "SELECT godz FROM Godziny godz WHERE godz.godzinaOd = :custHour";
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
+        TypedQuery<Godziny> typedQuery = entityManager.createQuery(query, Godziny.class);
+        typedQuery.setParameter("custHour", pickedHour);
 
-            while (resultSet.next()) {
-                checkNumberOfHour = resultSet.getInt(1);
-                System.out.println(checkNumberOfHour);
+        Godziny godziny;
+
+        try {
+            godziny = typedQuery.getSingleResult();
+            if (godziny.getIdH() > 0) {
+                hourNumber = godziny.getIdH();
+                System.out.println("Oto numer id godziny: " + hourNumber);
+            } else {
+                System.out.println("Nie ma godziny o takim id!");
+
             }
 
-            System.out.println("Numer id godziny to: " + checkNumberOfHour);
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreHIB_adding.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-
-        return checkNumberOfHour;
+        return hourNumber;
     }
 
 
     public static void writeReservToDatabase(Date pD, Integer room, Integer hour, Integer userNum) {
-        //public static void writeReservToDatabase(Date pD, Integer room, Integer hour, Integer userNum) throws SQLException {
 
         Date pickedDate = pD;
         Integer roomName = room;
@@ -141,7 +143,7 @@ public class JavaPostgreHIB_adding {
      * Metoda odpowiedzialna za sprawdzenie powtórzenia loginu lub maila, rejestrującego sie uzytkownika
      */
 
-    public static boolean checkDatabase(Date pickDate, Integer idPok, Integer idGodz) throws SQLException {
+    public static boolean checkDatabase(Date pickDate, Integer idPok, Integer idGodz) {
 
         boolean loginisko = false;
         Date date = pickDate;
@@ -157,16 +159,22 @@ public class JavaPostgreHIB_adding {
         typedQuery.setParameter("custIdH", numerGodziny);
         typedQuery.setParameter("custData", date);
         Rezerwacje rezerwacje;
+        List result;
 
         try {
-            rezerwacje = typedQuery.getSingleResult();
-            if (rezerwacje.getIdRez() > 0) {
-                loginisko = true;
-                System.out.println("Jest Rezerwacja!");
-            } else {
-                System.out.println("Nie ma rezerwacji. Zapraszamy!");
+            result = typedQuery.getResultList();
+            if (result.isEmpty()) {
+                loginisko = false;
+            } else if (result.size() == 1) {
+                rezerwacje = (Rezerwacje) result.get(0);
+                System.out.println(rezerwacje);
+                if (rezerwacje.getIdRez() > 0) {
+                    loginisko = true;
+                    System.out.println("Jest Rezerwacja!");
+                } else {
+                    System.out.println("Nie ma rezerwacji. Zapraszamy!");
+                }
             }
-
         } catch (NoResultException ex) {
             ex.printStackTrace();
         } finally {
