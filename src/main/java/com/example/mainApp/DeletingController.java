@@ -227,10 +227,20 @@ public class DeletingController implements Initializable {
                 //System.out.println(rs.getDate("data") + " dataa");
 
                 id_p = rs.getInt("id_p");
-                id_p1 = JavaPostgreSQL_deleting.getRoomName(id_p);
+                id_p1 = JavaPostgreHIB_deleting.getRoomName(id_p);
+                if(id_p1 == null){
+                    System.out.println("JESTEM NULLEM");
+                    break;
+                }
+                //Jezeli jest nullem to nie mozemy przejsc dalej
                 data = rs.getDate("data");
                 id_h = rs.getInt("id_h");
-                id_h1 = JavaPostgreSQL_deleting.getHourName(id_h);
+                id_h1 = JavaPostgreHIB_deleting.getHourName(id_h);
+                if(id_h1 == null){
+                    System.out.println("JESTEM NULLEM");
+                    break;
+                }
+                //Jezeli jest nullem to nie mozemy przejść dalej
             }
 
             switch(id_h1) {
@@ -258,7 +268,8 @@ public class DeletingController implements Initializable {
     @FXML
     public void deleteReserv(ActionEvent actionEvent) throws SQLException {
         int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
-        JavaPostgreSQL_deleting.deleteReservFromDatabase(id_r);
+        System.out.println(id_r);
+        JavaPostgreHIB_deleting.deleteReservFromDatabase(id_r);
 }
 
 

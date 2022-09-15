@@ -1,6 +1,10 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Godziny;
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
+import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import jakarta.persistence.*;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -12,85 +16,95 @@ public class JavaPostgreHIB_deleting {
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
     static String checkNameOfRoom;
     static String checkBeginOfHour;
 
     public static String getRoomName(int rId) {
         int roomId = rId;
-        String query = "SELECT nazwa FROM pokoje WHERE id_p = ?";
+        String gotName = null;
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-            pst.setInt(1, roomId);
+        String query = "SELECT pok FROM Pokoje pok WHERE pok.idP = :custIdP";
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
+        TypedQuery<Pokoje> typedQuery = entityManager.createQuery(query, Pokoje.class);
+        typedQuery.setParameter("custIdP", roomId);
 
-            while (resultSet.next()){
-                checkNameOfRoom = resultSet.getString(1);
-                System.out.println(checkNameOfRoom);
+        Pokoje pokoje;
+
+        try {
+            pokoje = typedQuery.getSingleResult();
+            if (!pokoje.getNazwa().isEmpty()) {
+                gotName = pokoje.getNazwa();
+                System.out.println("Oto numer id pokoju: " + gotName);
+                return gotName;
+            } else {
+                System.out.println("Nie ma pokoju o takim id!");
             }
 
-            System.out.println("Nazwa pokoju to: " + checkNameOfRoom);
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-        return checkNameOfRoom;
+        return gotName;
     }
 
     public static String getHourName(int hId) {
         int hourId = hId;
-        String query = "SELECT godzina_od FROM godziny WHERE id_h = ?";
+        String gotHourName = null;
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
+        //String query = "SELECT godzina_od FROM godziny WHERE id_h = ?";
 
-            pst.setInt(1, hourId);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-            ResultSet resultSet = pst.executeQuery(); //executeQuery zwaraca nam wartosc podana przez selecta
+        String query = "SELECT god FROM Godziny god WHERE god.idH = :custHour";
 
-            while (resultSet.next()){
-                checkBeginOfHour = resultSet.getString(1);
-                System.out.println(checkBeginOfHour);
+        TypedQuery<Godziny> typedQuery = entityManager.createQuery(query, Godziny.class);
+        typedQuery.setParameter("custHour", hourId);
+
+        Godziny godziny;
+
+        try {
+            godziny = typedQuery.getSingleResult();
+            if (!String.valueOf(godziny.getGodzinaOd()).isEmpty()) {
+                gotHourName = String.valueOf(godziny);
+                System.out.println("Oto numer id pokoju: " + gotHourName);
+                return gotHourName;
+            } else {
+                System.out.println("Nie ma pokoju o takim id!");
             }
 
-            System.out.println("Poczatek przedzialu to: " + checkBeginOfHour);
-            pst.close();
-            resultSet.close();
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-        return checkBeginOfHour;
+        return gotHourName;
     }
 
 
+    public static void deleteReservFromDatabase(int reservation) throws SQLException {
 
-    public static void deleteReservFromDatabase(Integer reservation) throws SQLException {
+        int idReservation = reservation;
 
-        Integer idReservation = reservation;
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        /* Tutaj trzeba zmienić w tym  wzorze */
-        String query = "DELETE FROM rezerwacje WHERE id_rez = ?";
+        try {
+            entityManager.getTransaction().begin();
 
+            Rezerwacje rezerwacje = entityManager.find(Rezerwacje.class, idReservation);
+            System.out.println(rezerwacje);
+            entityManager.remove(rezerwacje);
+            entityManager.getTransaction().commit();
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
-
-            pst.setInt(1, idReservation);
-
-            pst.executeUpdate(); //zwraca boolena (true/false)
-            System.out.println("Sucessfully deleted!");
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL_adding.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManagerFactory.close();
+            entityManager.close();
         }
     }
 
