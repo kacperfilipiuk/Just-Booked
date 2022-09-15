@@ -285,9 +285,5 @@ public class AddingController implements Initializable {
                 JavaPostgreHIB_adding.writeReservToDatabase(Date.valueOf(myDate), id_r, id_h, id_u);
             }
         }
-        //sprawdz czy ta kombincja jest możliwa do rejestracji
-        //if(tak){
-        // } else {
-        // }
     }
 }

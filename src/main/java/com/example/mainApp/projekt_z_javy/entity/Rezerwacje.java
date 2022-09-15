@@ -112,4 +112,15 @@ public class Rezerwacje {
     public void setGodzinyByIdH(Godziny godzinyByIdH) {
         this.godzinyByIdH = godzinyByIdH;
     }
+
+    @Override
+    public String toString() {
+        return "Rezerwacje{" +
+                "idRez=" + idRez +
+                ", idP=" + idP +
+                ", idU=" + idU +
+                ", idH=" + idH +
+                ", data=" + data +
+                '}';
+    }
 }
