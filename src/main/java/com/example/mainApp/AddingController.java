@@ -286,4 +286,5 @@ public class AddingController implements Initializable {
             }
         }
     }
+
 }

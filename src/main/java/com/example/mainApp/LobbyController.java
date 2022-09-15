@@ -97,9 +97,8 @@ public class LobbyController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
+
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -148,8 +147,6 @@ public class LobbyController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-
 
     @FXML
     private void exit(ActionEvent e) {
