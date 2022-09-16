@@ -4,6 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -91,16 +92,17 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="labelName" layoutX="37.0" layoutY="24.0" text="Witaj">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font></Label>
-                  <Label layoutX="37.0" layoutY="78.0" prefHeight="124.0" prefWidth="665.0" text="Aplikacja JustBooked służy do rezerwacji pokoi. &#10;&#10;Możesz tu zarządzać pokojami (dodawać i edytować) oraz rezerwacjami (wyświetlać i usuwać). &#10;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="511.0" layoutY="70.0" text="ADD ROOMS" />
+                  <AnchorPane layoutX="75.0" layoutY="64.0" prefHeight="246.0" prefWidth="302.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                     <children>
+                        <Label layoutX="40.0" layoutY="44.0" text="Podaj nazwę pokoju:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="ButtonAddRoom" layoutX="170.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Dodaj pokój" />
+                        <TextField layoutX="40.0" layoutY="96.0" prefHeight="26.0" prefWidth="222.0" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
