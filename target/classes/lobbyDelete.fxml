@@ -79,7 +79,7 @@
                <children>
                   <AnchorPane layoutX="66.0" layoutY="58.0" prefHeight="246.0" prefWidth="234.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <ChoiceBox fx:id="reservationChoiceBox" layoutX="43.0" layoutY="70.0" prefHeight="26.0" prefWidth="146.0" />
+                        <ChoiceBox fx:id="reservationChoiceBox" layoutX="43.0" layoutY="70.0" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF;" />
                         <Label layoutX="39.0" layoutY="27.0" text="Wybierz rezerwację: ">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -87,12 +87,12 @@
                         <Button fx:id="iniButton" layoutX="108.0" layoutY="206.0" mnemonicParsing="false" onAction="#iniCombo" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="fillChoiceBox" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="deleteButton" layoutX="142.0" layoutY="353.0" mnemonicParsing="false" onAction="#deleteReserv" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź">
+                  <Button fx:id="deleteButton" layoutX="217.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteReserv" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <AnchorPane layoutX="438.0" layoutY="25.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="523.0" layoutY="38.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
                         <Label layoutX="64.0" layoutY="23.0" text="Pokój:">
                            <font>
@@ -102,7 +102,7 @@
                         <TextField fx:id="textFieldRoom" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="438.0" layoutY="339.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="523.0" layoutY="322.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
                         <Label layoutX="56.0" layoutY="25.0" text="Godziny:">
                            <font>
@@ -112,7 +112,7 @@
                         <TextField fx:id="textFieldHour" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="438.0" layoutY="181.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="409.0" layoutY="181.0" prefHeight="106.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
                         <Label layoutX="67.0" layoutY="24.0" text="Data:">
                            <font>
