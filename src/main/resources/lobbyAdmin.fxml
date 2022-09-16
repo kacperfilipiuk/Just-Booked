@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainApp.LobbyController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainApp.AdminLobbyController">
    <children>
       <BorderPane layoutX="218.0" layoutY="98.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -44,12 +44,12 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton  prefHeight="28.0" prefWidth="200.0" text="Dodaj " textFill="WHITE">
+                        <JFXButton onAction="#addRoom" prefHeight="28.0" prefWidth="200.0" text="Dodaj " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="30.0" prefWidth="200.0" text="Edytuj" textFill="WHITE">
+                        <JFXButton onAction="#editRoom" prefHeight="30.0" prefWidth="200.0" text="Edytuj" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -59,17 +59,17 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="10.0" prefWidth="200.0" text="Wyświetl" textFill="WHITE">
+                        <JFXButton onAction="#showReservations" prefHeight="10.0" prefWidth="200.0" text="Wyświetl" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="30.0" prefWidth="200.0" text="Anuluj" textFill="WHITE">
+                        <JFXButton onAction="#cancelReservation" prefHeight="30.0" prefWidth="200.0" text="Anuluj" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="65.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
+                        <JFXButton onAction="#contactAdmin" prefHeight="65.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

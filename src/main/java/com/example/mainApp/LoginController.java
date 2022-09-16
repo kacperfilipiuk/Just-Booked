@@ -36,25 +36,36 @@ public class LoginController {
             password.setPromptText("Brak hasła");
         } else {
             //if (JavaPostgreSQL_login.checkUserCor(name.getText(), password.getText()))
-            if (JavaPostgreHIB_login.checkUserCord(name.getText(), password.getText())){
+            if (JavaPostgreHIB_login.checkUserCord(name.getText(), password.getText())) {
                 String userName = name.getText();
                 FXMLLoader loader;
-                if(userName.equals("admin"))
+                if (userName.equals("admin")) {
                     loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyAdmin.fxml"));
-                else
+                    Parent home_page_parent = loader.load();
+                    AdminLobbyController adminLobbyController = loader.getController();
+                    adminLobbyController.getName(userName);
+                    adminLobbyController.displayName(userName);
+                    //Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("lobby.fxml")));
+                    Scene home_page_scene = new Scene(home_page_parent);
+                    Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    app_stage.setScene(home_page_scene);
+                    app_stage.centerOnScreen();
+                    app_stage.show();
+                    System.out.println("Udalo sie");
+                }else {
                     loader = new FXMLLoader(getClass().getClassLoader().getResource("lobby.fxml"));
-                Parent home_page_parent = loader.load();
-                LobbyController lobbyController = loader.getController();
-                //String output = userName.substring(0,1).toUpperCase() + userName.substring(1);
-                lobbyController.getName(userName);
-                lobbyController.displayName(userName);
-                //Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("lobby.fxml")));
-                Scene home_page_scene = new Scene(home_page_parent);
-                Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                app_stage.setScene(home_page_scene);
-                app_stage.centerOnScreen();
-                app_stage.show();
-                System.out.println("Udalo sie");
+                    Parent home_page_parent = loader.load();
+                    LobbyController lobbyController = loader.getController();
+                    lobbyController.getName(userName);
+                    lobbyController.displayName(userName);
+                    //Parent home_page_parent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("lobby.fxml")));
+                    Scene home_page_scene = new Scene(home_page_parent);
+                    Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    app_stage.setScene(home_page_scene);
+                    app_stage.centerOnScreen();
+                    app_stage.show();
+                    System.out.println("Udalo sie");
+                }
             } else {
                 m.changeScene("login-error.fxml");
                 System.out.println("Nie ma przejscia");

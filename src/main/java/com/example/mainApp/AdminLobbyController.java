@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LobbyController implements Initializable {
+public class AdminLobbyController implements Initializable {
 
     String nameOfUser;
 
@@ -83,74 +83,6 @@ public class LobbyController implements Initializable {
     private Parent root;
 
     @FXML
-    public void addReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader;
-        if (nameOfUser.equals("admin"))
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        else
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        root = loader.load();
-        AddingController addingController = loader.getController();
-        addingController.getUserName(nameOfUser);
-        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void deleteReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader;
-        if (nameOfUser.equals("admin"))
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
-        else
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
-        root = loader.load();
-        DeletingController deletingController = loader.getController();
-        deletingController.getUserName1(nameOfUser);
-        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void myReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader;
-        if (nameOfUser.equals("admin"))
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
-        else
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
-        root = loader.load();
-        TableViewController tableViewController = loader.getController();
-        tableViewController.getUserName3(nameOfUser);
-        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void otherReservation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader;
-        if (nameOfUser.equals("admin"))
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
-        else
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
-        root = loader.load();
-        OtherController otherController = loader.getController();
-        otherController.getUserName2(nameOfUser);
-        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
         //if (nameOfUser.equals("admin")) {
@@ -159,6 +91,70 @@ public class LobbyController implements Initializable {
         root = loader.load();
         AdminAddController adminAddController = loader.getController();
         adminAddController.getUserName2(nameOfUser);
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void editRoom(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader;
+        //if (nameOfUser.equals("admin")) {
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyEditRoomAdmin.fxml"));
+        //}
+        root = loader.load();
+        AdminEditController adminEditController = loader.getController();
+        adminEditController.getUserName2(nameOfUser);
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void showReservations(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader;
+        //if (nameOfUser.equals("admin")) {
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyShowReserv.fxml"));
+        //}
+        root = loader.load();
+        AdminShowReservController adminShowReservController = loader.getController();
+        adminShowReservController.getUserName2(nameOfUser);
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void cancelReservation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader;
+        //if (nameOfUser.equals("admin")) {
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyCancelResrv.fxml"));
+        //}
+        root = loader.load();
+        AdminCancelReservController adminCancelReservController = loader.getController();
+        adminCancelReservController.getUserName2(nameOfUser);
+        //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void contactAdmin(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader;
+        //if (nameOfUser.equals("admin")) {
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyContactAdmin.fxml"));
+        //}
+        root = loader.load();
+        AdminContactController adminContactController = loader.getController();
+        adminContactController.getUserName2(nameOfUser);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
