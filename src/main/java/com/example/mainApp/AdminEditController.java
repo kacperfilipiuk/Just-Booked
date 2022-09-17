@@ -27,10 +27,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class AdminEditController implements Initializable {
 
-    private ObservableList<Pokoje> pokojeList = FXCollections.observableArrayList();
+    private ObservableList<String> pokojeList = FXCollections.observableArrayList();
 
     @FXML
     private Label Menu;
@@ -234,7 +235,13 @@ public class AdminEditController implements Initializable {
             //Trzeba pozmieniac na stringi
             TypedQuery<Pokoje> listOfRooms = entityManager.createQuery("SELECT pok FROM Pokoje pok", Pokoje.class);
             listaPokoi = listOfRooms.getResultList();
-            pokojeList.addAll(listaPokoi);
+
+            List<String> names = listaPokoi
+                    .stream()
+                    .map(Pokoje::getNazwa)
+                    .collect(Collectors.toList());
+
+            pokojeList.addAll(names);
 
 
             entityTransaction.commit();
@@ -243,5 +250,9 @@ public class AdminEditController implements Initializable {
         } finally {
             entityManager.close();
         }
+    }
+
+    public void getStringFromObser(){
+
     }
 }
