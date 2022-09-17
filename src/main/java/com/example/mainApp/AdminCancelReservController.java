@@ -96,17 +96,6 @@ public class AdminCancelReservController implements Initializable {
             });
         });
     }
-
-    public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
     @FXML
     public void sendMessage(ActionEvent actionEvent)
     {
