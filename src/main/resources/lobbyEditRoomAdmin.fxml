@@ -95,7 +95,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="32.0" layoutY="78.0" prefHeight="26.0" prefWidth="219.0" />
+                        <TextField fx:id="userRoomName" layoutX="32.0" layoutY="78.0" prefHeight="26.0" prefWidth="219.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="59.0" layoutY="42.0" prefHeight="182.0" prefWidth="284.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">

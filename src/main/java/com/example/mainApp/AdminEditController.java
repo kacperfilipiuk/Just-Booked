@@ -43,7 +43,7 @@ public class AdminEditController implements Initializable {
     private Button ButtonEditRoom;
 
     @FXML
-    private TextField MessageField;
+    private TextField userRoomName;
     @FXML
     private ChoiceBox choiceBox_list;
 
@@ -217,8 +217,8 @@ public class AdminEditController implements Initializable {
     }
 
     @FXML
-    public void pressedButton(ActionEvent actionEvent){
-        fillTheList();
+    public void pressedButton(ActionEvent actionEvent) {
+        replaceNameOfRoom();
         System.out.println("Zrobione");
     }
 
@@ -252,7 +252,50 @@ public class AdminEditController implements Initializable {
         }
     }
 
-    public void getStringFromObser(){
+    public void replaceNameOfRoom() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
+        int idPokoju;
+        String nazwaPokojuPrzedZmina = (String) choiceBox_list.getSelectionModel().getSelectedItem();
+        String nazwaPokojuPoZmianie = userRoomName.getText();
+        System.out.println("Nazwa pokoju przed zmiana: " + nazwaPokojuPrzedZmina);
+
+        Pokoje pokoje;
+        Pokoje pokoje1 = new Pokoje();
+
+        try {
+            entityTransaction.begin();
+
+            //Trzeba pozmieniac na stringi
+            TypedQuery<Pokoje> typedQuery = entityManager.createQuery("SELECT pok FROM Pokoje pok WHERE pok.nazwa = :custNazwa", Pokoje.class);
+            typedQuery.setParameter("custNazwa", nazwaPokojuPrzedZmina); //Wybieram wybrrana sale
+            pokoje = typedQuery.getSingleResult();
+            idPokoju = pokoje.getIdP();
+            System.out.println(idPokoju);
+
+            entityTransaction.commit();
+
+            entityTransaction.begin();
+
+            pokoje1 = entityManager.find(Pokoje.class, idPokoju);
+            System.out.println(pokoje1);
+            System.out.println(nazwaPokojuPoZmianie);
+            pokoje1.setNazwa(nazwaPokojuPoZmianie);
+
+            entityManager.persist(pokoje1);
+            entityTransaction.commit();
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            if (entityTransaction != null) {
+                entityTransaction.rollback();
+            }
+        } finally {
+            entityManager.close();
+        }
     }
+    //1) znjadz id wybranego pokoju
+    //2) pobierz nazwe nowego pokoju
+    //3) w miejsce id starego pokoju wstaw nowa nazwe
 }
