@@ -1,7 +1,9 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
 import com.example.mainApp.sql.JavaPostgreSQL_register;
+import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,11 +43,14 @@ public class TableViewController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    ObservableList<Rezerwacje> RezerwacjeList = FXCollections.observableArrayList();
+
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
 
     String query = "";
     ResultSet resultSet = null;
-    Rezerwacja rezerwacja = null;
+    Rezerwacje rezerwacja = null;
     String myUserName;
 
     int id_uzyt;
@@ -54,27 +60,66 @@ public class TableViewController implements Initializable {
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
-    ObservableList<Rezerwacja> RezerwacjaList = FXCollections.observableArrayList();
+    //ObservableList<Rezerwacja> RezerwacjaList = FXCollections.observableArrayList();
 
     @FXML
     private Button refresh;
     @FXML
-    private TableView<Rezerwacja> rezTable;
+    private TableView<Rezerwacje> rezTable;
     @FXML
-    private TableColumn<Rezerwacja, String> idCol;
+    private TableColumn<Rezerwacje, String> idCol;
     @FXML
-    private TableColumn<Rezerwacja, String> idPok;
+    private TableColumn<Rezerwacje, String> idPok;
     @FXML
-    private TableColumn<Rezerwacja, String> idUs;
+    private TableColumn<Rezerwacje, String> idUs;
     @FXML
-    private TableColumn<Rezerwacja, String> idGodz;
+    private TableColumn<Rezerwacje, String> idGodz;
     @FXML
-    private TableColumn<Rezerwacja, String> dateCol;
+    private TableColumn<Rezerwacje, String> dateCol;
 
     @FXML
     private void refreshTable() {
-        RezerwacjaList.clear();
+        RezerwacjeList.clear();
 
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        List<Rezerwacje> rezerwacje;
+
+        try {
+            //entityTransaction.begin();
+            TypedQuery<Rezerwacje> typedQuery = entityManager.createQuery("SELECT rez FROM Rezerwacje rez WHERE rez.idU = :custIdU", Rezerwacje.class);
+            typedQuery.setParameter("custIdU", id_uzyt);
+            rezerwacje = typedQuery.getResultList();
+            rezerwacje.forEach(rezerwacje1 -> System.out.println(
+                    "Id Rezerwacji: " + rezerwacje1.getIdRez() +
+                            " Id uzytkownika: " + rezerwacje1.getIdU() +
+                            " Id godziny: " + rezerwacje1.getIdH()));
+
+            rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
+                    rezerwacje1.getIdP(),
+                    rezerwacje1.getIdU(),
+                    rezerwacje1.getIdH(),
+                    rezerwacje1.getData())));
+
+            System.out.println(RezerwacjeList.size());
+            rezTable.setItems(RezerwacjeList);
+            System.out.println(rezTable);
+
+
+        } catch (NoResultException e) {
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+
+        idCol.setCellValueFactory(new PropertyValueFactory<>("idRez"));
+        idPok.setCellValueFactory(new PropertyValueFactory<>("idP"));
+        idUs.setCellValueFactory(new PropertyValueFactory<>("idU"));
+        idGodz.setCellValueFactory(new PropertyValueFactory<>("idH"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+        /*
 
         query = "SELECT * FROM rezerwacje WHERE id_u = ? ";
 
@@ -106,6 +151,8 @@ public class TableViewController implements Initializable {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
+
+         */
 
     }
     public void getUserName3(String username){
@@ -262,6 +309,7 @@ public class TableViewController implements Initializable {
     }
 
     public void setArray(ActionEvent actionEvent) {
-        loadDate();
+        //loadDate();
+        refreshTable();
     }
 }

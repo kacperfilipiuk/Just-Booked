@@ -33,9 +33,6 @@ public class AdminAddController implements Initializable {
     private Label MenuClose;
 
     @FXML
-    private Button MessageButton;
-
-    @FXML
     private TextField roomName_textFiled;
 
     @FXML
@@ -49,8 +46,6 @@ public class AdminAddController implements Initializable {
     String roomName;
 
     int id_uzyt;
-
-    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
     public void getUserName2(String username){
         myUserName = username;
@@ -113,13 +108,6 @@ public class AdminAddController implements Initializable {
 
     }
 
-    @FXML
-    public void sendMessage(ActionEvent actionEvent)
-    {
-        System.out.println("wysylam wiadomosc do Admina");
-    }
-
-
     //Dodać do tego osobna klase odpowiedzialna z hibernata
     //Dodać wyskakujace okno!
     @FXML
@@ -128,9 +116,6 @@ public class AdminAddController implements Initializable {
         System.out.println(roomName);
         JavaPostgreAdminHIB_addRoom.writeRoomToDatabase(roomName);
     }
-
-
-
 
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {

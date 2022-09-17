@@ -30,12 +30,6 @@ public class AdminCancelReservController implements Initializable {
     private Label MenuClose;
 
     @FXML
-    private Button MessageButton;
-
-    @FXML
-    private TextField MessageField;
-
-    @FXML
     private AnchorPane slider;
 
     private Stage stage;
@@ -96,17 +90,6 @@ public class AdminCancelReservController implements Initializable {
             });
         });
     }
-    @FXML
-    public void sendMessage(ActionEvent actionEvent)
-    {
-        System.out.println("wysylam wiadomosc do Admina");
-    }
-
-
-
-
-    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
-
 
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
