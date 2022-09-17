@@ -1,4 +1,4 @@
-package com.example.mainApp;
+package com.example.mainApp.sql;
 
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
 

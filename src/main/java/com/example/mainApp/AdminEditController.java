@@ -1,7 +1,12 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
+import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -19,9 +25,12 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminEditController implements Initializable {
+
+    private ObservableList<Pokoje> pokojeList = FXCollections.observableArrayList();
 
     @FXML
     private Label Menu;
@@ -30,10 +39,12 @@ public class AdminEditController implements Initializable {
     private Label MenuClose;
 
     @FXML
-    private Button MessageButton;
+    private Button ButtonEditRoom;
 
     @FXML
     private TextField MessageField;
+    @FXML
+    private ChoiceBox choiceBox_list;
 
     @FXML
     private AnchorPane slider;
@@ -46,7 +57,10 @@ public class AdminEditController implements Initializable {
 
     int id_uzyt;
 
-    public void getUserName2(String username){
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+
+
+    public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         System.out.println(id_uzyt);
@@ -59,6 +73,11 @@ public class AdminEditController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        fillTheList();
+        //Prawie działa tak jak ma
+        //pokojeList.get(1);
+        choiceBox_list.setItems(pokojeList);
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
@@ -100,7 +119,7 @@ public class AdminEditController implements Initializable {
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -108,12 +127,9 @@ public class AdminEditController implements Initializable {
     }
 
     @FXML
-    public void sendMessage(ActionEvent actionEvent)
-    {
+    public void sendMessage(ActionEvent actionEvent) {
         System.out.println("wysylam wiadomosc do Admina");
     }
-
-
 
 
     ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
@@ -197,5 +213,35 @@ public class AdminEditController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void pressedButton(ActionEvent actionEvent){
+        fillTheList();
+        System.out.println("Zrobione");
+    }
+
+
+    //Funkcja odpowiadajaa za wypełnienie obserbeList, ktora bedzie potrzebna do uzupełniaina choiceboxa
+    public void fillTheList() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            List<Pokoje> listaPokoi;
+            entityTransaction.begin();
+
+            //Trzeba pozmieniac na stringi
+            TypedQuery<Pokoje> listOfRooms = entityManager.createQuery("SELECT pok FROM Pokoje pok", Pokoje.class);
+            listaPokoi = listOfRooms.getResultList();
+            pokojeList.addAll(listaPokoi);
+
+
+            entityTransaction.commit();
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="de710thmop4rit@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.32">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.39">
     <root id="1">
       <DateStyle>mdy</DateStyle>
       <Grants>1||10|c|G
@@ -28398,15 +28398,15 @@ sequence|table|7482544|7482545|1
       <TypeId>1700</TypeId>
     </column>
     <index id="4251" parent="4244" name="godziny_pkey">
-      <ClassIds>1978</ClassIds>
       <ColNames>id_h</ColNames>
-      <CollationIds>0</CollationIds>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>7482551</ObjectId>
       <Primary>1</Primary>
       <StateNumber>27346130</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
+      <ClassIds>1978</ClassIds>
+      <CollationIds>0</CollationIds>
     </index>
     <key id="4252" parent="4244" name="godziny_pkey">
       <ColNames>id_h</ColNames>
@@ -28432,15 +28432,15 @@ sequence|table|7482544|7482545|1
       <TypeId>1043</TypeId>
     </column>
     <index id="4255" parent="4245" name="pokoje_pkey">
-      <ClassIds>1978</ClassIds>
       <ColNames>id_p</ColNames>
-      <CollationIds>0</CollationIds>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>7482377</ObjectId>
       <Primary>1</Primary>
       <StateNumber>27345468</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
+      <ClassIds>1978</ClassIds>
+      <CollationIds>0</CollationIds>
     </index>
     <key id="4256" parent="4245" name="pokoje_pkey">
       <ColNames>id_p</ColNames>
@@ -28520,15 +28520,15 @@ sequence|table|7482544|7482545|1
       <RefTableKind>table</RefTableKind>
     </foreign-key>
     <index id="4265" parent="4246" name="rezerwacje_pkey">
-      <ClassIds>1978</ClassIds>
       <ColNames>id_rez</ColNames>
-      <CollationIds>0</CollationIds>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>7482120</ObjectId>
       <Primary>1</Primary>
       <StateNumber>27360978</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
+      <ClassIds>1978</ClassIds>
+      <CollationIds>0</CollationIds>
     </index>
     <key id="4266" parent="4246" name="rezerwacje_pkey">
       <ColNames>id_rez</ColNames>
@@ -28568,15 +28568,15 @@ sequence|table|7482544|7482545|1
       <TypeId>1043</TypeId>
     </column>
     <index id="4271" parent="4247" name="uzytkownicy_pkey">
-      <ClassIds>1978</ClassIds>
       <ColNames>id_u</ColNames>
-      <CollationIds>0</CollationIds>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>7465420</ObjectId>
       <Primary>1</Primary>
       <StateNumber>27232226</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
+      <ClassIds>1978</ClassIds>
+      <CollationIds>0</CollationIds>
     </index>
     <key id="4272" parent="4247" name="uzytkownicy_pkey">
       <ColNames>id_u</ColNames>

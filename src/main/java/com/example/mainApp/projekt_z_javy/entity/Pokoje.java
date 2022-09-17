@@ -56,4 +56,12 @@ public class Pokoje {
     public void setRezerwacjesByIdP(Collection<Rezerwacje> rezerwacjesByIdP) {
         this.rezerwacjesByIdP = rezerwacjesByIdP;
     }
+
+    @Override
+    public String toString() {
+        return "Pokoje{" +
+                "idP=" + idP +
+                ", nazwa='" + nazwa + '\'' +
+                '}';
+    }
 }

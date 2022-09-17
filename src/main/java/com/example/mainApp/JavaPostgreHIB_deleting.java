@@ -4,7 +4,10 @@ import com.example.mainApp.projekt_z_javy.entity.Godziny;
 import com.example.mainApp.projekt_z_javy.entity.Pokoje;
 import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import com.example.mainApp.sql.JavaPostgreSQL_register;
 import jakarta.persistence.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -15,6 +18,8 @@ public class JavaPostgreHIB_deleting {
     public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
+
+    private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
@@ -107,6 +112,4 @@ public class JavaPostgreHIB_deleting {
             entityManager.close();
         }
     }
-
-
 }

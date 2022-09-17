@@ -1,6 +1,8 @@
 package com.example.mainApp;
 
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +36,7 @@ public class AdminAddController implements Initializable {
     private Button MessageButton;
 
     @FXML
-    private TextField MessageField;
+    private TextField roomName_textFiled;
 
     @FXML
     private AnchorPane slider;
@@ -44,8 +46,11 @@ public class AdminAddController implements Initializable {
     private Parent root;
 
     String myUserName;
+    String roomName;
 
     int id_uzyt;
+
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
     public void getUserName2(String username){
         myUserName = username;
@@ -112,6 +117,16 @@ public class AdminAddController implements Initializable {
     public void sendMessage(ActionEvent actionEvent)
     {
         System.out.println("wysylam wiadomosc do Admina");
+    }
+
+
+    //Dodać do tego osobna klase odpowiedzialna z hibernata
+    //Dodać wyskakujace okno!
+    @FXML
+    public void addRoomToDB(ActionEvent actionEvent){
+        roomName = roomName_textFiled.getText();
+        System.out.println(roomName);
+        JavaPostgreAdminHIB_addRoom.writeRoomToDatabase(roomName);
     }
 
 

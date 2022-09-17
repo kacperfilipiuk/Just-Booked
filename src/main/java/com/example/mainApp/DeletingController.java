@@ -167,7 +167,7 @@ public class DeletingController implements Initializable {
 
 
     public void fillReservationChoiceBox(){
-        String query = "SELECT * FROM rezerwacje WHERE id_u = ?";
+        String query = "SELECT id_rez FROM rezerwacje WHERE id_u = ? ";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
