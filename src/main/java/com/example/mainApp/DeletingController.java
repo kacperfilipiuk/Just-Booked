@@ -101,7 +101,7 @@ public class DeletingController implements Initializable {
     }
 
 
-    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
+    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZENIA
 
 
     @FXML

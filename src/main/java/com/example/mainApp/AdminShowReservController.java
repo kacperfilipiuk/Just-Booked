@@ -72,7 +72,7 @@ public class AdminShowReservController implements Initializable {
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
-
+    
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);

@@ -133,7 +133,7 @@ public class AdminEditController implements Initializable {
     }
 
 
-    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZNIEA
+    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZENIA
 
 
     @FXML
