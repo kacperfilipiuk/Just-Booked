@@ -64,7 +64,7 @@ public class AdminEditController implements Initializable {
     public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -118,7 +118,7 @@ public class AdminEditController implements Initializable {
     }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -129,7 +129,7 @@ public class AdminEditController implements Initializable {
 
     @FXML
     public void sendMessage(ActionEvent actionEvent) {
-        System.out.println("wysylam wiadomosc do Admina");
+        //System.out.println("wysylam wiadomosc do Admina");
     }
 
 
@@ -219,7 +219,9 @@ public class AdminEditController implements Initializable {
     @FXML
     public void pressedButton(ActionEvent actionEvent) {
         replaceNameOfRoom();
-        System.out.println("Zrobione");
+        //System.out.println("Zrobione");
+        AlertBox.display("Uwaga!", "Nazwa pokoju została zmieniona!");
+
     }
 
 
@@ -259,7 +261,7 @@ public class AdminEditController implements Initializable {
         int idPokoju;
         String nazwaPokojuPrzedZmina = (String) choiceBox_list.getSelectionModel().getSelectedItem();
         String nazwaPokojuPoZmianie = userRoomName.getText();
-        System.out.println("Nazwa pokoju przed zmiana: " + nazwaPokojuPrzedZmina);
+        //System.out.println("Nazwa pokoju przed zmiana: " + nazwaPokojuPrzedZmina);
 
         Pokoje pokoje;
         Pokoje pokoje1 = new Pokoje();
@@ -272,15 +274,15 @@ public class AdminEditController implements Initializable {
             typedQuery.setParameter("custNazwa", nazwaPokojuPrzedZmina); //Wybieram wybrrana sale
             pokoje = typedQuery.getSingleResult();
             idPokoju = pokoje.getIdP();
-            System.out.println(idPokoju);
+            //System.out.println(idPokoju);
 
             entityTransaction.commit();
 
             entityTransaction.begin();
 
             pokoje1 = entityManager.find(Pokoje.class, idPokoju);
-            System.out.println(pokoje1);
-            System.out.println(nazwaPokojuPoZmianie);
+            //System.out.println(pokoje1);
+            //System.out.println(nazwaPokojuPoZmianie);
             pokoje1.setNazwa(nazwaPokojuPoZmianie);
 
             entityManager.persist(pokoje1);

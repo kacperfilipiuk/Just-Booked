@@ -27,7 +27,7 @@ public class RegisterController {
         else {
             if(mail.getText().contains("@o2.pl") || mail.getText().contains("@gmail.com") || mail.getText().contains("@wp.pl")){
                 if (JavaPostgreHIB_register.checkDatabase(name.getText(), mail.getText())) {
-                    System.out.println("Login lub maile jest już używany!");
+                    //System.out.println("Login lub maile jest już używany!");
                     m.changeScene("register-error.fxml"); //Powiadomienie o uzywanym loginie badz mailu
                 } else {
                     JavaPostgreHIB_register.writeToDatabase(name.getText(), password.getText(), mail.getText());

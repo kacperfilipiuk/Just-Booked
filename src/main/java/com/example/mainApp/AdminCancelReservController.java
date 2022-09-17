@@ -43,7 +43,7 @@ public class AdminCancelReservController implements Initializable {
     public void getUserName2(String username){
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -94,9 +94,7 @@ public class AdminCancelReservController implements Initializable {
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        //if (myUserName.equals("admin")) {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyAddRoomAdmin.fxml"));
-        //}
         root = loader.load();
         AdminAddController adminAddController = loader.getController();
         adminAddController.getUserName2(myUserName);
@@ -110,9 +108,7 @@ public class AdminCancelReservController implements Initializable {
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        //if (myUserName.equals("admin")) {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyEditRoomAdmin.fxml"));
-        //}
         root = loader.load();
         AdminEditController adminEditController = loader.getController();
         adminEditController.getUserName2(myUserName);
@@ -126,9 +122,7 @@ public class AdminCancelReservController implements Initializable {
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        //if (myUserName.equals("admin")) {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyShowReserv.fxml"));
-        //}
         root = loader.load();
         AdminShowReservController adminShowReservController = loader.getController();
         adminShowReservController.getUserName2(myUserName);
@@ -142,9 +136,7 @@ public class AdminCancelReservController implements Initializable {
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        //if (myUserName.equals("admin")) {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyCancelResrv.fxml"));
-        //}
         root = loader.load();
         AdminCancelReservController adminCancelReservController = loader.getController();
         adminCancelReservController.getUserName2(myUserName);
@@ -158,9 +150,7 @@ public class AdminCancelReservController implements Initializable {
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        //if (myUserName.equals("admin")) {
         loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyContactAdmin.fxml"));
-        //}
         root = loader.load();
         AdminContactController adminContactController = loader.getController();
         adminContactController.getUserName2(myUserName);

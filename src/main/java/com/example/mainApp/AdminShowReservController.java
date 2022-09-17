@@ -70,7 +70,7 @@ public class AdminShowReservController implements Initializable {
     public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -119,7 +119,7 @@ public class AdminShowReservController implements Initializable {
     }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -130,7 +130,7 @@ public class AdminShowReservController implements Initializable {
 
     @FXML
     public void sendMessage(ActionEvent actionEvent) {
-        System.out.println("wysylam wiadomosc do Admina");
+        //System.out.println("wysylam wiadomosc do Admina");
     }
 
     @FXML
@@ -226,20 +226,20 @@ public class AdminShowReservController implements Initializable {
             //entityTransaction.begin();
             TypedQuery<Rezerwacje> typedQuery = entityManager.createQuery("SELECT rez FROM Rezerwacje rez", Rezerwacje.class);
             rezerwacje = typedQuery.getResultList();
-            rezerwacje.forEach(rezerwacje1 -> System.out.println(
+        /*    rezerwacje.forEach(rezerwacje1 -> System.out.println(
                     "Id Rezerwacji: " + rezerwacje1.getIdRez() +
                     " Id uzytkownika: " + rezerwacje1.getIdU() +
                     " Id godziny: " + rezerwacje1.getIdH()));
-
+        */
             rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
                                                                                 rezerwacje1.getIdP(),
                                                                                 rezerwacje1.getIdU(),
                                                                                 rezerwacje1.getIdH(),
                                                                                 rezerwacje1.getData())));
 
-            System.out.println(RezerwacjeList.size());
+            //System.out.println(RezerwacjeList.size());
             rezTable.setItems(RezerwacjeList);
-            System.out.println(rezTable);
+            //System.out.println(rezTable);
 
 
         } catch (NoResultException e) {

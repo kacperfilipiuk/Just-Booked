@@ -81,7 +81,7 @@ public class DeletingController implements Initializable {
     public void getUserName1(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -91,7 +91,7 @@ public class DeletingController implements Initializable {
 
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -185,14 +185,14 @@ public class DeletingController implements Initializable {
             List<Rezerwacje> listaRezerwacjiUzytkownika;
             entityTransaction.begin();
 
-            System.out.println(id_uzyt);
+            //System.out.println(id_uzyt);
 
             //Trzeba pozmieniac na stringi
             TypedQuery<Rezerwacje> listOfUserReserv = entityManager.createQuery("SELECT rez FROM Rezerwacje rez WHERE rez.idU = :custIdU", Rezerwacje.class);
             listOfUserReserv.setParameter("custIdU", id_uzyt);
             listaRezerwacjiUzytkownika = listOfUserReserv.getResultList();
 
-            System.out.println(listaRezerwacjiUzytkownika.size());
+            //System.out.println(listaRezerwacjiUzytkownika.size());
 
             List<Integer> reserv = listaRezerwacjiUzytkownika
                     .stream()
@@ -268,7 +268,7 @@ public class DeletingController implements Initializable {
 
             String id_godziny = String.valueOf(rezerwacje.getIdH());
 
-            System.out.println(id_godziny);
+            //System.out.println(id_godziny);
 
             switch (id_godziny) {
                 case "1":
@@ -372,7 +372,7 @@ public class DeletingController implements Initializable {
     @FXML
     public void deleteReserv(ActionEvent actionEvent) throws SQLException {
         int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
-        System.out.println(id_r);
+        //System.out.println(id_r);
         JavaPostgreHIB_deleting.deleteReservFromDatabase(id_r);
     }
 

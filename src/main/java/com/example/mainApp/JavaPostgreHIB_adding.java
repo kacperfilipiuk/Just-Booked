@@ -31,9 +31,9 @@ public class JavaPostgreHIB_adding {
             uzytkownicy = typedQuery.getSingleResult();
             if (uzytkownicy.getIdU() > 0) {
                 userNumber = uzytkownicy.getIdU();
-                System.out.println("Oto id uzytkownia: " + userNumber);
+                //System.out.println("Oto id uzytkownia: " + userNumber);
             } else {
-                System.out.println("Nie ma numery id uzytkowniaka.");
+                //System.out.println("Nie ma numery id uzytkowniaka.");
 
             }
 
@@ -62,9 +62,9 @@ public class JavaPostgreHIB_adding {
             pokoje = typedQuery.getSingleResult();
             if (pokoje.getIdP() > 0) {
                 roomNumber = pokoje.getIdP();
-                System.out.println("Oto numer id pokoju: " + roomNumber);
+                //System.out.println("Oto numer id pokoju: " + roomNumber);
             } else {
-                System.out.println("Nie ma pokoju o takim id!");
+                //System.out.println("Nie ma pokoju o takim id!");
 
             }
 
@@ -93,9 +93,9 @@ public class JavaPostgreHIB_adding {
             godziny = typedQuery.getSingleResult();
             if (godziny.getIdH() > 0) {
                 hourNumber = godziny.getIdH();
-                System.out.println("Oto numer id godziny: " + hourNumber);
+                //System.out.println("Oto numer id godziny: " + hourNumber);
             } else {
-                System.out.println("Nie ma godziny o takim id!");
+                //System.out.println("Nie ma godziny o takim id!");
 
             }
 
@@ -167,12 +167,12 @@ public class JavaPostgreHIB_adding {
                 loginisko = false;
             } else if (result.size() == 1) {
                 rezerwacje = (Rezerwacje) result.get(0);
-                System.out.println(rezerwacje);
+                //System.out.println(rezerwacje);
                 if (rezerwacje.getIdRez() > 0) {
                     loginisko = true;
-                    System.out.println("Jest juz Rezerwacja!");
+                    //System.out.println("Jest juz Rezerwacja!");
                 } else {
-                    System.out.println("Nie ma rezerwacji. Zapraszamy!");
+                    //System.out.println("Nie ma rezerwacji. Zapraszamy!");
                 }
             }
         } catch (NoResultException ex) {

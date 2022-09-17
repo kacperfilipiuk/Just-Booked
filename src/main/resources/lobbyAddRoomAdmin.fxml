@@ -99,7 +99,10 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ButtonAddRoom" layoutX="170.0" layoutY="190.0" mnemonicParsing="false" onAction="#addRoomToDB" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Dodaj pokój" />
+                        <Button fx:id="ButtonAddRoom" layoutX="167.0" layoutY="188.0" mnemonicParsing="false" onAction="#addRoomToDB" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Dodaj pokój">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
                         <TextField fx:id="roomName_textFiled" layoutX="40.0" layoutY="96.0" prefHeight="26.0" prefWidth="222.0" />
                      </children>
                   </AnchorPane>

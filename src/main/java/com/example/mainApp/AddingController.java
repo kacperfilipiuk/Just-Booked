@@ -65,7 +65,7 @@ public class AddingController implements Initializable {
 
     public void getUserName(String username){
         myUserName = username;
-        System.out.println(myUserName);
+        //System.out.println(myUserName);
     }
 
     @FXML
@@ -115,7 +115,7 @@ public class AddingController implements Initializable {
             //Trzeba pozmieniac na stringi
             TypedQuery<Godziny> listOfHours = entityManager.createQuery("SELECT god FROM Godziny god", Godziny.class);
             listaGodzin = listOfHours.getResultList();
-            System.out.println(listaGodzin.size());
+            //System.out.println(listaGodzin.size());
 
             for (Godziny godziny : listaGodzin) {
                 switch (godziny.getIdH()) {
@@ -234,7 +234,7 @@ public class AddingController implements Initializable {
     
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -312,7 +312,7 @@ public class AddingController implements Initializable {
 
     public void getDate(ActionEvent actionEvent) {
         myDate = dataPicker.getValue();
-        System.out.println(myDate);
+        //System.out.println(myDate);
     }
 
     //Po nacisnieciu guzika
@@ -350,10 +350,10 @@ public class AddingController implements Initializable {
         if(id_h > 0 && id_r > 0 && id_u >0) {
             if(localDate.isAfter(myDate))
             {
-                System.out.println("wybrana data jest przed aktualna data");
+                //System.out.println("wybrana data jest przed aktualna data");
                 AlertBox.display("Uwaga!", "Wybrana data jest przed aktualną datą!");
             } else if (JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate), id_r, id_h)) {
-                System.out.println("Niestety wybrany termin jest zajety");
+                //System.out.println("Niestety wybrany termin jest zajety");
                 AlertBox.display("Uwaga!", "Wybrany termin jest już zajęty!");
             } else {
                 JavaPostgreHIB_adding.writeReservToDatabase(Date.valueOf(myDate), id_r, id_h, id_u);

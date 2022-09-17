@@ -43,10 +43,10 @@ public class JavaPostgreHIB_deleting {
             pokoje = typedQuery.getSingleResult();
             if (!pokoje.getNazwa().isEmpty()) {
                 gotName = pokoje.getNazwa();
-                System.out.println("Oto numer id pokoju: " + gotName);
+                //System.out.println("Oto numer id pokoju: " + gotName);
                 return gotName;
             } else {
-                System.out.println("Nie ma pokoju o takim id!");
+                //System.out.println("Nie ma pokoju o takim id!");
             }
 
         } catch (NoResultException ex) {
@@ -76,10 +76,10 @@ public class JavaPostgreHIB_deleting {
             godziny = typedQuery.getSingleResult();
             if (!String.valueOf(godziny.getGodzinaOd()).isEmpty()) {
                 gotHourName = String.valueOf(godziny);
-                System.out.println("Oto numer id pokoju: " + gotHourName);
+                //System.out.println("Oto numer id pokoju: " + gotHourName);
                 return gotHourName;
             } else {
-                System.out.println("Nie ma pokoju o takim id!");
+                //System.out.println("Nie ma pokoju o takim id!");
             }
 
         } catch (NoResultException ex) {
@@ -101,7 +101,7 @@ public class JavaPostgreHIB_deleting {
             entityManager.getTransaction().begin();
 
             Rezerwacje rezerwacje = entityManager.find(Rezerwacje.class, idReservation);
-            System.out.println(rezerwacje);
+            //System.out.println(rezerwacje);
             entityManager.remove(rezerwacje);
             entityManager.getTransaction().commit();
             AlertBox.display("Uwaga!", "Twoja rezerwacja została usunięta!");

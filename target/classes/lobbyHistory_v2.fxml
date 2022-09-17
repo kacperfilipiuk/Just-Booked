@@ -77,18 +77,18 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="110.0" layoutY="35.0" prefHeight="350.0" prefWidth="540.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="110.0" layoutY="35.0" prefHeight="350.0" prefWidth="550.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <TableView fx:id="rezTable" layoutX="21.0" layoutY="20.0" prefHeight="251.0" prefWidth="498.0">
+                        <TableView fx:id="rezTable" layoutX="50.0" layoutY="25.0" prefHeight="250.0" prefWidth="455.0">
                            <columns>
-                              <TableColumn fx:id="idCol" prefWidth="99.0" text="ID" />
-                              <TableColumn fx:id="idPok" prefWidth="99.0" text="POKOJ" />
+                              <TableColumn fx:id="idCol" prefWidth="109.0" text="ID" />
+                              <TableColumn fx:id="idPok" prefWidth="109.0" text="POKOJ" />
                               <TableColumn fx:id="idUs" prefWidth="99.0" text="UZYTKOWNIK" visible="false" />
-                              <TableColumn fx:id="idGodz" prefWidth="99.0" text="GODZINY" />
-                              <TableColumn fx:id="dateCol" prefWidth="99.0" text="DATA" />
+                              <TableColumn fx:id="idGodz" prefWidth="109.0" text="GODZINY" />
+                              <TableColumn fx:id="dateCol" prefWidth="109.0" text="DATA" />
                            </columns>
                         </TableView>
-                        <Button layoutX="210.0" layoutY="286.0" mnemonicParsing="false" onAction="#setArray" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Odśwież tabelę">
+                        <Button layoutX="210.0" layoutY="295.0" mnemonicParsing="false" onAction="#setArray" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Odśwież tabelę">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Button>

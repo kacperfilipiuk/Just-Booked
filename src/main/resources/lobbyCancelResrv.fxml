@@ -93,20 +93,21 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="35.0" layoutY="62.0" prefHeight="274.0" prefWidth="263.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="35.0" layoutY="55.0" prefHeight="280.0" prefWidth="274.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <ChoiceBox fx:id="reservationChoiceBox" layoutX="36.0" layoutY="79.0" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF;" />
-                        <Label layoutX="54.0" layoutY="27.0" text="Wybierz rezerwację: ">
+                        <ChoiceBox fx:id="reservationChoiceBox" layoutX="36.0" layoutY="79.0" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #FFFFFF;" />
+                        <Label layoutX="59.0" layoutY="27.0" text="Wybierz rezerwację: ">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Button layoutX="140.0" layoutY="203.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="fillChoiceBox" />
+                        <Button layoutX="15.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Pobierz rezerwacje" />
+                        <Button layoutX="160.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Akceptuj wybór" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="174.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź">
+                  <Button fx:id="deleteButton" layoutX="128.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Usuń rezerwację">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
                   <AnchorPane layoutX="543.0" layoutY="35.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -116,7 +117,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldRoom" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
+                        <TextField fx:id="textFieldRoom" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="333.0" layoutY="320.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -126,7 +127,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldHour" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
+                        <TextField fx:id="textFieldHour" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="543.0" layoutY="225.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -136,10 +137,9 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldData" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
+                        <TextField fx:id="textFieldData" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="379.0" layoutY="62.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="fillFields" />
                   <AnchorPane layoutX="333.0" layoutY="130.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
                         <Label layoutX="44.0" layoutY="23.0" text="Użytkownik:">
@@ -147,7 +147,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldRoom1" disable="true" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" />
+                        <TextField fx:id="textFieldRoom1" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                </children>

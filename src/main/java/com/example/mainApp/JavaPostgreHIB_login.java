@@ -22,9 +22,9 @@ public class JavaPostgreHIB_login {
             uzytkownicy = typedQuery.getSingleResult();
             if (uzytkownicy.getHaslo().equals(userPassword)) {
                 wynik = true;
-                System.out.println("Działa!");
+                //System.out.println("Działa!");
             } else {
-                System.out.println("Nie dziala!");
+                //System.out.println("Nie dziala!");
             }
         } catch (NoResultException ex) {
             ex.printStackTrace();

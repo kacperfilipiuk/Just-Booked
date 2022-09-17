@@ -61,9 +61,9 @@ public class JavaPostgreHIB_register {
             uzytkownicy = typedQuery.getSingleResult();
             if (uzytkownicy.getIdU() > 0) {
                 loginisko = true;
-                System.out.println("Mamy takie delikwanta");
+                //System.out.println("Mamy takiego delikwenta");
             } else {
-                System.out.println("Nie ma goscia. Zapraszamy!");
+                //System.out.println("Nie ma goscia. Zapraszamy!");
             }
 
         } catch (NoResultException ex) {

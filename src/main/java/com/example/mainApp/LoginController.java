@@ -51,7 +51,7 @@ public class LoginController {
                     app_stage.setScene(home_page_scene);
                     app_stage.centerOnScreen();
                     app_stage.show();
-                    System.out.println("Udalo sie");
+                    //System.out.println("Udalo sie");
                 }else {
                     loader = new FXMLLoader(getClass().getClassLoader().getResource("lobby.fxml"));
                     Parent home_page_parent = loader.load();
@@ -64,11 +64,11 @@ public class LoginController {
                     app_stage.setScene(home_page_scene);
                     app_stage.centerOnScreen();
                     app_stage.show();
-                    System.out.println("Udalo sie");
+                    //System.out.println("Udalo sie");
                 }
             } else {
                 m.changeScene("login-error.fxml");
-                System.out.println("Nie ma przejscia");
+                //System.out.println("Nie ma przejscia");
             }
         }
     }
@@ -83,7 +83,7 @@ public class LoginController {
      */
     public void handleButtonPressedRegister(ActionEvent event) throws IOException {
         try {
-            System.out.println("Rejestruje...");
+            //System.out.println("Rejestruje...");
             goToRegistration();
         } catch (IOException e) {
             e.printStackTrace();

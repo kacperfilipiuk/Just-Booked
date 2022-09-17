@@ -49,7 +49,7 @@ public class AdminContactController implements Initializable {
     public void getUserName2(String username){
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -98,7 +98,7 @@ public class AdminContactController implements Initializable {
     }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -110,7 +110,7 @@ public class AdminContactController implements Initializable {
     @FXML
     public void sendMessage(ActionEvent actionEvent)
     {
-        System.out.println("wysylam wiadomosc do Admina");
+        //em.out.println("wysylam wiadomosc do Admina");
     }
 
     @FXML

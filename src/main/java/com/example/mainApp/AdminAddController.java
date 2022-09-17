@@ -50,7 +50,7 @@ public class AdminAddController implements Initializable {
     public void getUserName2(String username){
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
-        System.out.println(id_uzyt);
+        //System.out.println(id_uzyt);
     }
 
     @FXML
@@ -99,7 +99,7 @@ public class AdminAddController implements Initializable {
     }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("Wylogowuje...");
+        //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -113,8 +113,9 @@ public class AdminAddController implements Initializable {
     @FXML
     public void addRoomToDB(ActionEvent actionEvent){
         roomName = roomName_textFiled.getText();
-        System.out.println(roomName);
+        //System.out.println(roomName);
         JavaPostgreAdminHIB_addRoom.writeRoomToDatabase(roomName);
+        AlertBox.display("Uwaga!", "Dodano pokój!");
     }
 
     @FXML
