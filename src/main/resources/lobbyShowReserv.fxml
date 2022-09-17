@@ -93,16 +93,24 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="308.0" layoutY="336.0" mnemonicParsing="false" onAction="#refreshTable" text="Odswiez tabelke" />
-                  <TableView fx:id="rezTable" layoutX="109.0" layoutY="108.0" prefHeight="200.0" prefWidth="500.0">
-                     <columns>
-                        <TableColumn fx:id="idCol" prefWidth="100.0" text="ID" />
-                        <TableColumn fx:id="idPok" prefWidth="100.0" text="POKOJ" />
-                        <TableColumn fx:id="idUs" prefWidth="100.0" text="UZYTKOWNIK" />
-                        <TableColumn fx:id="idGodz" prefWidth="100.0" text="GODZINY" />
-                        <TableColumn fx:id="dateCol" prefWidth="100.0" text="DATA" />
-                     </columns>
-                  </TableView>
+                  <AnchorPane layoutX="55.0" layoutY="45.0" prefHeight="360.0" prefWidth="650.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                     <children>
+                        <TableView fx:id="rezTable" layoutX="67.0" layoutY="40.0" prefHeight="230.0" prefWidth="515.0">
+                           <columns>
+                              <TableColumn fx:id="idCol" prefWidth="99.0" style="-fx-border-color: #FFFFFF;" text="ID" />
+                              <TableColumn fx:id="idPok" prefWidth="99.0" text="POKOJ" />
+                              <TableColumn fx:id="idUs" prefWidth="99.0" text="UZYTKOWNIK" />
+                              <TableColumn fx:id="idGodz" prefWidth="99.0" text="GODZINY" />
+                              <TableColumn fx:id="dateCol" prefWidth="99.0" text="DATA" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="264.0" layoutY="304.0" mnemonicParsing="false" onAction="#refreshTable" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Odśwież tabelę">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>

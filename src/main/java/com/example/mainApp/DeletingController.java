@@ -383,7 +383,7 @@ public class DeletingController implements Initializable {
         fillReservationChoiceBox();
         reservationChoiceBox.setItems(reservationList);
 
-        //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
+        //Problem jest w tym ze initialazje dzieje sie szybciej niż zczytanie nazyw uzytkownika
 
         slider.setTranslateX(-200);
 

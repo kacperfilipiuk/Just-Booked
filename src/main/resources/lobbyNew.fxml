@@ -77,26 +77,35 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="reservButton" layoutX="139.0" layoutY="369.0" mnemonicParsing="false" onAction="#makeReservation" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Zarezerwuj">
+                  <Button fx:id="reservButton" layoutX="185.0" layoutY="371.0" mnemonicParsing="false" onAction="#makeReservation" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Dodaj rezerwację">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Button>
-                  <AnchorPane layoutX="50.0" layoutY="21.0" prefHeight="310.0" prefWidth="270.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="38.0" layoutY="20.0" prefHeight="310.0" prefWidth="282.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="61.0" layoutY="29.0" text="Wybierz datę rezerwacji:" />
-                        <DatePicker fx:id="dataPicker" layoutX="10.0" layoutY="59.0" onAction="#getDate" prefHeight="25.0" prefWidth="250.0" />
+                        <Label layoutX="61.0" layoutY="29.0" prefHeight="20.0" prefWidth="164.0" text="Wybierz datę rezerwacji:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
+                        <DatePicker fx:id="dataPicker" layoutX="18.0" layoutY="72.0" onAction="#getDate" prefHeight="25.0" prefWidth="250.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="425.0" layoutY="21.0" prefHeight="205.0" prefWidth="250.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="425.0" layoutY="20.0" prefHeight="180.0" prefWidth="250.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="37.0" layoutY="14.0" text="Wybierz pokój do zarezerowania:" />
-                        <ChoiceBox fx:id="roomChoiceBox" layoutX="35.0" layoutY="41.0" prefHeight="25.0" prefWidth="180.0" />
+                        <Label layoutX="18.0" layoutY="14.0" text="Wybierz pokój do zarezerowania:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
+                        <ChoiceBox fx:id="roomChoiceBox" layoutX="35.0" layoutY="49.0" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="425.0" layoutY="235.0" prefHeight="215.0" prefWidth="250.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="425.0" layoutY="235.0" prefHeight="180.0" prefWidth="250.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="46.0" layoutY="14.0" text="Wybierz przedział godzinowy:" />
-                        <ChoiceBox fx:id="hourChoiceBox" layoutX="35.0" layoutY="41.0" prefHeight="25.0" prefWidth="180.0" />
+                        <Label layoutX="26.0" layoutY="14.0" text="Wybierz przedział godzinowy:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
+                        <ChoiceBox fx:id="hourChoiceBox" layoutX="35.0" layoutY="54.0" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                </children>

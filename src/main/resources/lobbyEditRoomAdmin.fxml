@@ -108,7 +108,7 @@
                         <ChoiceBox fx:id="choiceBox_list" layoutX="35.0" layoutY="77.0" prefHeight="26.0" prefWidth="220.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="buttonEditRoom" layoutX="264.0" layoutY="375.0" mnemonicParsing="false" onAction="#pressedButton" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Akceptujjje" />
+                  <Button fx:id="buttonEditRoom" layoutX="264.0" layoutY="375.0" mnemonicParsing="false" onAction="#pressedButton" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Potwierdź" />
                </children>
             </AnchorPane>
          </center>
