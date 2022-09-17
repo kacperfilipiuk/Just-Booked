@@ -1,6 +1,10 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Godziny;
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
+import com.example.mainApp.projekt_z_javy.entity.Uzytkownicy;
 import com.example.mainApp.sql.JavaPostgreSQL_register;
+import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,9 +25,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class AddingController implements Initializable {
 
@@ -55,6 +61,8 @@ public class AddingController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+
     public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
     public static final String user = "dpbwovovhjsruv";
     public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
@@ -70,27 +78,90 @@ public class AddingController implements Initializable {
     }
 
     public void fillRoomComboBox(){
-        String query = "SELECT nazwa FROM pokoje";
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
-             PreparedStatement pst = con.prepareStatement(query)) {
-            ResultSet rs = pst.executeQuery();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
-            while (rs.next()){
-                roomList.add(rs.getString("nazwa"));
-            }
-            pst.close();
-            rs.close();
+        try {
+            List<Pokoje> listaPokoi;
+            entityTransaction.begin();
 
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
-            lgr.log(Level.SEVERE,ex.getMessage(),ex);
+            //Trzeba pozmieniac na stringi
+            TypedQuery<Pokoje> listOfRooms = entityManager.createQuery("SELECT pok FROM Pokoje pok", Pokoje.class);
+            listaPokoi = listOfRooms.getResultList();
+
+            List<String> names = listaPokoi
+                    .stream()
+                    .map(Pokoje::getNazwa)
+                    .collect(Collectors.toList());
+
+            roomList.addAll(names);
+
+
+            entityTransaction.commit();
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
         }
-
     }
 
     public void fillHourComboBox(){
-        String query = "SELECT godzina_od FROM godziny";
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            List<Godziny> listaGodzin;
+            entityTransaction.begin();
+
+
+            //Trzeba pozmieniac na stringi
+            TypedQuery<Godziny> listOfHours = entityManager.createQuery("SELECT god FROM Godziny god", Godziny.class);
+            listaGodzin = listOfHours.getResultList();
+            System.out.println(listaGodzin.size());
+
+            for (Godziny godziny : listaGodzin) {
+                switch (godziny.getIdH()) {
+                    case 1:
+                        hourList.add("8-10");
+                        break;
+                    case 2:
+                        hourList.add("10-12");
+                        break;
+                    case 3:
+                        hourList.add("12-14");
+                        break;
+                    case 4:
+                        hourList.add("14-16");
+                        break;
+                    case 5:
+                        hourList.add("16-18");
+                        break;
+                    case 6:
+                        hourList.add("18-20");
+                        break;
+                }
+            }
+
+
+            /*List<Integer> hours = listaGodzin
+                    .stream()
+                    .map(Godziny::getGodzinaOd)
+                    .collect(Collectors.toList());
+
+            hourList.addAll(hours);
+
+             */
+
+
+            entityTransaction.commit();
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+        /*String query = "SELECT godzina_od FROM godziny";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
@@ -114,6 +185,8 @@ public class AddingController implements Initializable {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
             lgr.log(Level.SEVERE,ex.getMessage(),ex);
         }
+
+         */
 
     }
 

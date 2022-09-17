@@ -47,18 +47,9 @@ public class TableViewController implements Initializable {
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
-
-    String query = "";
-    ResultSet resultSet = null;
-    Rezerwacje rezerwacja = null;
     String myUserName;
 
     int id_uzyt;
-
-
-    public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
-    public static final String user = "dpbwovovhjsruv";
-    public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
 
     //ObservableList<Rezerwacja> RezerwacjaList = FXCollections.observableArrayList();
 
@@ -204,27 +195,6 @@ public class TableViewController implements Initializable {
                 MenuClose.setVisible(false);
             });
         });
-    }
-
-
-    private void loadDate() {
-
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-
-            refreshTable();
-
-
-            idCol.setCellValueFactory(new PropertyValueFactory<>("id_rezerwacji"));
-            idPok.setCellValueFactory(new PropertyValueFactory<>("id_pokoju"));
-            idUs.setCellValueFactory(new PropertyValueFactory<>("id_uzyt"));
-            idGodz.setCellValueFactory(new PropertyValueFactory<>("id_godz"));
-            dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
-
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
-        }
     }
 
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
