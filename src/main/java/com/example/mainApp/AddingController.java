@@ -275,12 +275,19 @@ public class AddingController implements Initializable {
                 id_of_hour = 18;
             }
         }
+
         //int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
         int id_h = JavaPostgreHIB_adding.getHourId(id_of_hour);
         int id_r = JavaPostgreHIB_adding.getRoomId((String) roomChoiceBox.getValue());
         int id_u = JavaPostgreHIB_adding.getUserId(myUserName);
+        LocalDate localDate = LocalDate.now();
+
         if(id_h > 0 && id_r > 0 && id_u >0) {
-            if (JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate), id_r, id_h)) {
+            if(localDate.isAfter(myDate))
+            {
+                System.out.println("wybrana data jest przed aktualna data");
+                AlertBox.display("Uwaga!", "Wybrana data jest przed aktualną datą!");
+            } else if (JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate), id_r, id_h)) {
                 System.out.println("Niestety wybrany termin jest zajety");
                 AlertBox.display("Uwaga!", "Wybrany termin jest już zajęty!");
             } else {
