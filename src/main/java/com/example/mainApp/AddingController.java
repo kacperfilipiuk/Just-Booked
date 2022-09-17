@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -281,8 +282,10 @@ public class AddingController implements Initializable {
         if(id_h > 0 && id_r > 0 && id_u >0) {
             if (JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate), id_r, id_h)) {
                 System.out.println("Niestety wybrany termin jest zajety");
+                AlertBox.display("Uwaga!", "Wybrany termin jest już zajęty!");
             } else {
                 JavaPostgreHIB_adding.writeReservToDatabase(Date.valueOf(myDate), id_r, id_h, id_u);
+                AlertBox.display("Uwaga!", "Twoja rezerwacja została zapisana!");
             }
         }
     }

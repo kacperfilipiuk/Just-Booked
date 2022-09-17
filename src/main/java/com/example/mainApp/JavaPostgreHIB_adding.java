@@ -170,7 +170,7 @@ public class JavaPostgreHIB_adding {
                 System.out.println(rezerwacje);
                 if (rezerwacje.getIdRez() > 0) {
                     loginisko = true;
-                    System.out.println("Jest Rezerwacja!");
+                    System.out.println("Jest juz Rezerwacja!");
                 } else {
                     System.out.println("Nie ma rezerwacji. Zapraszamy!");
                 }
