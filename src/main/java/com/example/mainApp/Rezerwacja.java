@@ -56,4 +56,15 @@ public class Rezerwacja {
     public void setData(Date data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Rezerwacja{" +
+                "id_rezerwacji=" + id_rezerwacji +
+                ", id_pokoju=" + id_pokoju +
+                ", id_uzyt=" + id_uzyt +
+                ", id_godz=" + id_godz +
+                ", data=" + data +
+                '}';
+    }
 }

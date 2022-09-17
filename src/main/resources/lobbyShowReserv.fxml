@@ -93,8 +93,8 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="308.0" layoutY="336.0" mnemonicParsing="false" text="Odswiez tabelke" />
-                  <TableView layoutX="109.0" layoutY="108.0" prefHeight="200.0" prefWidth="500.0">
+                  <Button layoutX="308.0" layoutY="336.0" mnemonicParsing="false" onAction="#refreshTable" text="Odswiez tabelke" />
+                  <TableView fx:id="rezTable" layoutX="109.0" layoutY="108.0" prefHeight="200.0" prefWidth="500.0">
                      <columns>
                         <TableColumn fx:id="idCol" prefWidth="100.0" text="ID" />
                         <TableColumn fx:id="idPok" prefWidth="100.0" text="POKOJ" />

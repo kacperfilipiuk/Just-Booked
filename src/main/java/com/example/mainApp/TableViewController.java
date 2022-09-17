@@ -97,8 +97,9 @@ public class TableViewController implements Initializable {
                             resultSet.getInt("id_u"),
                             resultSet.getInt("id_h"),
                             resultSet.getDate("data")));
-                    rezTable.setItems(RezerwacjaList);
                 } while (resultSet.next());
+                rezTable.setItems(RezerwacjaList);
+                System.out.println(RezerwacjaList);
             }
 
         } catch (SQLException ex) {

@@ -16,9 +16,10 @@ module com.example.mainApp {
     requires jakarta.persistence;
     //requires jboss.logging;
 
-    opens com.example.mainApp to javafx.fxml;
+    opens com.example.mainApp to javafx.fxml, java.base;
     exports com.example.mainApp;
-    opens com.example.mainApp.projekt_z_javy.entity to org.hibernate.orm.core;
+    opens com.example.mainApp.projekt_z_javy.entity to org.hibernate.orm.core, javafx.fxml, java.base;
+    exports com.example.mainApp.projekt_z_javy.entity;
     exports com.example.mainApp.sql;
     opens com.example.mainApp.sql to javafx.fxml;
 }

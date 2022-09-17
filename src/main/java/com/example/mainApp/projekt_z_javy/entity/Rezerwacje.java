@@ -76,6 +76,14 @@ public class Rezerwacje {
     public Rezerwacje() {
     }
 
+    public Rezerwacje(int idRez, int idP, int idU, int idH, Date data) {
+        this.idRez = idRez;
+        this.idP = idP;
+        this.idU = idU;
+        this.idH = idH;
+        this.data = data;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,7 +1,11 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,6 +22,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminShowReservController implements Initializable {
@@ -37,6 +41,23 @@ public class AdminShowReservController implements Initializable {
 
     @FXML
     private AnchorPane slider;
+
+    @FXML
+    private TableView<Rezerwacje> rezTable;
+    @FXML
+    private TableColumn<Rezerwacje, String> idCol;
+    @FXML
+    private TableColumn<Rezerwacje, String> idPok;
+    @FXML
+    private TableColumn<Rezerwacje, String> idUs;
+    @FXML
+    private TableColumn<Rezerwacje, String> idGodz;
+    @FXML
+    private TableColumn<Rezerwacje, String> dateCol;
+
+    ObservableList<Rezerwacje> RezerwacjeList = FXCollections.observableArrayList();
+
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
     private Stage stage;
     private Scene scene;
@@ -190,5 +211,49 @@ public class AdminShowReservController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void refreshTable(ActionEvent actionEvent){
+        RezerwacjeList.clear();
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        List<Rezerwacje> rezerwacje;
+
+        try {
+            //entityTransaction.begin();
+            TypedQuery<Rezerwacje> typedQuery = entityManager.createQuery("SELECT rez FROM Rezerwacje rez", Rezerwacje.class);
+            rezerwacje = typedQuery.getResultList();
+            rezerwacje.forEach(rezerwacje1 -> System.out.println(
+                    "Id Rezerwacji: " + rezerwacje1.getIdRez() +
+                    " Id uzytkownika: " + rezerwacje1.getIdU() +
+                    " Id godziny: " + rezerwacje1.getIdH()));
+
+            rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
+                                                                                rezerwacje1.getIdP(),
+                                                                                rezerwacje1.getIdU(),
+                                                                                rezerwacje1.getIdH(),
+                                                                                rezerwacje1.getData())));
+
+            System.out.println(RezerwacjeList.size());
+            rezTable.setItems(RezerwacjeList);
+            System.out.println(rezTable);
+
+
+        } catch (NoResultException e) {
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+
+        idCol.setCellValueFactory(new PropertyValueFactory<>("idRez"));
+        idPok.setCellValueFactory(new PropertyValueFactory<>("idP"));
+        idUs.setCellValueFactory(new PropertyValueFactory<>("idU"));
+        idGodz.setCellValueFactory(new PropertyValueFactory<>("idH"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+
     }
 }
