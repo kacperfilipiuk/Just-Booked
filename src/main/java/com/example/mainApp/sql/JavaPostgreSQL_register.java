@@ -33,7 +33,7 @@ public class JavaPostgreSQL_register {
             pst.setString(3, email2);
 
             pst.executeUpdate(); //zwraca boolena (true/false)
-            System.out.println("Sucessfully created!");
+            //System.out.println("Sucessfully created!");
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
@@ -67,17 +67,17 @@ public class JavaPostgreSQL_register {
 
             while (resultSet.next()){
                 String checkUser = resultSet.getString(1);
-                System.out.println(checkUser);
+                //System.out.println(checkUser);
 
                 if (!checkUser.isEmpty()) {
                     loginisko = true;
-                    System.out.println("Jest");
+                    //System.out.println("Jest");
                     break;
                 }
             //pst.executeUpdate();
         }
 
-            System.out.println("okkk");
+            //System.out.println("okkk");
             resultSet.close();
 
         } catch (SQLException ex) {
