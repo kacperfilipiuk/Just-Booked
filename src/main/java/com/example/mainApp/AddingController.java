@@ -63,6 +63,8 @@ public class AddingController implements Initializable {
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
+    private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
+
     public void getUserName(String username){
         myUserName = username;
         //System.out.println(myUserName);
