@@ -29,10 +29,10 @@ public class JavaPostgreSQL_adding {
 
             while (resultSet.next()){
                 checkNumberOfUser = resultSet.getInt(1);
-                System.out.println(checkNumberOfUser);
+                //System.out.println(checkNumberOfUser);
             }
 
-            System.out.println("Numer uzytkownika to: " + checkNumberOfUser);
+            //System.out.println("Numer uzytkownika to: " + checkNumberOfUser);
             pst.close();
             resultSet.close();
 
@@ -56,10 +56,10 @@ public class JavaPostgreSQL_adding {
 
             while (resultSet.next()){
                 checkNumberOfRoom = resultSet.getInt(1);
-                System.out.println(checkNumberOfRoom);
+                //System.out.println(checkNumberOfRoom);
             }
 
-            System.out.println("Numer id pokoju to: " + checkNumberOfRoom);
+            //System.out.println("Numer id pokoju to: " + checkNumberOfRoom);
             pst.close();
             resultSet.close();
 
@@ -83,10 +83,10 @@ public class JavaPostgreSQL_adding {
 
             while (resultSet.next()){
                 checkNumberOfHour = resultSet.getInt(1);
-                System.out.println(checkNumberOfHour);
+                //System.out.println(checkNumberOfHour);
             }
 
-            System.out.println("Numer id godziny to: " + checkNumberOfHour);
+            //System.out.println("Numer id godziny to: " + checkNumberOfHour);
             pst.close();
             resultSet.close();
 
@@ -123,7 +123,7 @@ public class JavaPostgreSQL_adding {
             pst.setDate(4, pickedDate);
 
             pst.executeUpdate(); //zwraca boolena (true/false)
-            System.out.println("Sucessfully created!");
+            //System.out.println("Sucessfully created!");
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_adding.class.getName());
@@ -157,11 +157,11 @@ public class JavaPostgreSQL_adding {
 
             while (resultSet.next()){
                 Integer checkReserv = resultSet.getInt(1);
-                System.out.println(checkReserv);
+                //System.out.println(checkReserv);
 
                 if (checkReserv!=null) {
                     loginisko = true;
-                    System.out.println("Jest taka rezerwacja");
+                    //System.out.println("Jest taka rezerwacja");
                     break;
                 }
             //pst.executeUpdate();

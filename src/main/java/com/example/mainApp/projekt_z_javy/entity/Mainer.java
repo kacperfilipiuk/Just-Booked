@@ -20,7 +20,7 @@ public class Mainer {
             Godziny go = new Godziny();
             go.setGodzinaOd(22);
             go.setGodzinaDo(00);
-            System.out.println(go);
+            //System.out.println(go);
             entityManager.merge(go);
 
             entityTransaction.commit();

@@ -32,7 +32,7 @@ public class JavaPostgreSQL_deleting {
                 System.out.println(checkNameOfRoom);
             }
 
-            System.out.println("Nazwa pokoju to: " + checkNameOfRoom);
+            //System.out.println("Nazwa pokoju to: " + checkNameOfRoom);
             pst.close();
             resultSet.close();
 
@@ -56,10 +56,10 @@ public class JavaPostgreSQL_deleting {
 
             while (resultSet.next()){
                 checkBeginOfHour = resultSet.getString(1);
-                System.out.println(checkBeginOfHour);
+                //System.out.println(checkBeginOfHour);
             }
 
-            System.out.println("Poczatek przedzialu to: " + checkBeginOfHour);
+            //System.out.println("Poczatek przedzialu to: " + checkBeginOfHour);
             pst.close();
             resultSet.close();
 
@@ -86,7 +86,7 @@ public class JavaPostgreSQL_deleting {
             pst.setInt(1, idReservation);
 
             pst.executeUpdate(); //zwraca boolena (true/false)
-            System.out.println("Sucessfully deleted!");
+            //System.out.println("Sucessfully deleted!");
 
         } catch (SQLException ex) {
             Logger lgr = Logger.getLogger(JavaPostgreSQL_adding.class.getName());

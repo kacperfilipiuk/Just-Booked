@@ -281,7 +281,7 @@ public class AdminEditController implements Initializable {
 
             pokoje1 = entityManager.find(Pokoje.class, idPokoju);
             if(Objects.equals(pokoje1.getNazwa(), nazwaPokojuPoZmianie)){
-                System.out.println("Taka nazwa juz istnieje");
+                //System.out.println("Taka nazwa juz istnieje");
             }else{
                 pokoje1.setNazwa(nazwaPokojuPoZmianie);
                 entityManager.persist(pokoje1);
