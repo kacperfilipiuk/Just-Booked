@@ -356,7 +356,8 @@ public class AddingController implements Initializable {
         /**@param wholeWord - pobranie całego ciagu znaków (w celu pozniejszego podzielnia)
          * @param firstChar - pobranie pierwszego znaku ze słowa
          * @param secoundChar - pobranie drugiego znaku ze słowa
-         * @param id_of_hour - pobranie pierwszej czesci przedziału goidznowego w celu znalezienia id całego przedziału*/
+         * @param id_of_hour - pobranie pierwszej czesci przedziału goidznowego w celu znalezienia id całego przedziału
+         */
         //Deklaracja zmiennych
         String wholeWord = (String) hourChoiceBox.getValue();
         char firstChar = wholeWord.charAt(0), secoundChar = wholeWord.charAt(1);
