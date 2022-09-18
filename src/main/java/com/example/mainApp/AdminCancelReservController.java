@@ -63,17 +63,26 @@ public class AdminCancelReservController implements Initializable {
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
     private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
 
+    /**
+     * Metoda getUserName2 - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
     public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
 
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);
     }
 
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -117,6 +126,9 @@ public class AdminCancelReservController implements Initializable {
         });
     }
 
+    /**
+     * Metoda addRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -131,6 +143,9 @@ public class AdminCancelReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda editRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -145,6 +160,9 @@ public class AdminCancelReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda showReservations - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -159,6 +177,9 @@ public class AdminCancelReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda cancelReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -173,6 +194,9 @@ public class AdminCancelReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda contactAdmin - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -307,10 +331,16 @@ public class AdminCancelReservController implements Initializable {
 
     }
 
-    public void acceptChoice(ActionEvent actionEvent){
+    /**
+     * Metoda acceptChoice - odpowiada za wywołanie funkcji odpowiedzialne za wypelnienie pozostałych pol
+     */
+    public void acceptChoice(ActionEvent actionEvent) {
         fillReservationFields();
     }
 
+    /**
+     * Metoda deleteReservationAdmin - odpowiada za usuniecie rezerwacji o konkretnym numerze id
+     */
     public void deleteReservationAdmin(ActionEvent actionEvent) throws SQLException {
         int id_r = (int) reservationChoiceBox.getSelectionModel().getSelectedItem();
         //System.out.println(id_r);

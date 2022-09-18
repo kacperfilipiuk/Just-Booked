@@ -61,18 +61,26 @@ public class AdminEditController implements Initializable {
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
-
+    /**
+     * Metoda getUserName2 - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
     public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
 
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);
     }
 
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -118,6 +126,10 @@ public class AdminEditController implements Initializable {
         });
     }
 
+    /**
+     * Metoda userLogout - odpowiada za wylogowanie uzytkownika i przejscie do ekranu ponownego logowania
+     * !PRACE TRWAJĄ!
+     */
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
@@ -128,15 +140,9 @@ public class AdminEditController implements Initializable {
 
     }
 
-    @FXML
-    public void sendMessage(ActionEvent actionEvent) {
-        //System.out.println("wysylam wiadomosc do Admina");
-    }
-
-
-    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZENIA
-
-
+    /**
+     * Metoda addRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -153,6 +159,9 @@ public class AdminEditController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda editRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -169,6 +178,9 @@ public class AdminEditController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda showReservations - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -185,6 +197,9 @@ public class AdminEditController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda cancelReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -201,6 +216,9 @@ public class AdminEditController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda contactAdmin - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -217,6 +235,9 @@ public class AdminEditController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda pressedButton - obsluga przycisku
+     */
     @FXML
     public void pressedButton(ActionEvent actionEvent) {
         replaceNameOfRoom();
@@ -226,7 +247,9 @@ public class AdminEditController implements Initializable {
     }
 
 
-    //Funkcja odpowiadajaa za wypełnienie obserbeList, ktora bedzie potrzebna do uzupełniaina choiceboxa
+    /**
+     * Metoda fillTheList - odpowiadajaa za wypełnienie obserbeList, ktora bedzie potrzebna do uzupełniaina choiceboxa
+     */
     public void fillTheList() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -255,6 +278,9 @@ public class AdminEditController implements Initializable {
         }
     }
 
+    /**
+     * Metoda replaceNameOfRoom - odpowiada za zamiane nazwy wybranego pokoju
+     */
     public void replaceNameOfRoom() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -280,9 +306,9 @@ public class AdminEditController implements Initializable {
             entityTransaction.begin();
 
             pokoje1 = entityManager.find(Pokoje.class, idPokoju);
-            if(Objects.equals(pokoje1.getNazwa(), nazwaPokojuPoZmianie)){
+            if (Objects.equals(pokoje1.getNazwa(), nazwaPokojuPoZmianie)) {
                 //System.out.println("Taka nazwa juz istnieje");
-            }else{
+            } else {
                 pokoje1.setNazwa(nazwaPokojuPoZmianie);
                 entityManager.persist(pokoje1);
             }

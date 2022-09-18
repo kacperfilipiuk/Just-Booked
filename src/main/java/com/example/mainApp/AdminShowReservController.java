@@ -84,17 +84,26 @@ public class AdminShowReservController implements Initializable {
 
     int id_uzyt;
 
+    /**
+     * Metoda getUserName - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
     public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
-    
+
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);
     }
 
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -137,6 +146,10 @@ public class AdminShowReservController implements Initializable {
         });
     }
 
+    /**
+     * Metoda userLogout - odpowiada za wylogowanie uzytkownika i przejscie do ekranu ponownego logowania
+     * !PRACE TRWAJĄ!
+     */
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
@@ -147,11 +160,9 @@ public class AdminShowReservController implements Initializable {
 
     }
 
-    @FXML
-    public void sendMessage(ActionEvent actionEvent) {
-        //System.out.println("wysylam wiadomosc do Admina");
-    }
-
+    /**
+     * Metoda addRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -168,6 +179,9 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda editRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -184,6 +198,9 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda showReservations - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -200,6 +217,9 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda cancelReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -216,6 +236,9 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda contactAdmin - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -232,6 +255,9 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda refreshTable - odpowiada za wyswietlanie zawartosci tabeli
+     */
     private void refreshTable() {
         RezerwacjeList.clear();
 

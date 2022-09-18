@@ -32,6 +32,9 @@ public class AdminLobbyController implements Initializable {
     @FXML
     private AnchorPane slider;
 
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -70,10 +73,16 @@ public class AdminLobbyController implements Initializable {
         });
     }
 
+    /**
+     * Metoda displayName - odpowiada za wyswietlenie nazwy uzytkownika w lobby
+     */
     public void displayName(String userName) {
         labelName.setText("Witaj " + userName + " !");
     }
 
+    /**
+     * Metoda getName - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
     public void getName(String userName) {
         nameOfUser = userName;
     }
@@ -82,6 +91,9 @@ public class AdminLobbyController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    /**
+     * Metoda addRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -98,6 +110,9 @@ public class AdminLobbyController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda editRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -114,6 +129,9 @@ public class AdminLobbyController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda showReservations - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -130,6 +148,9 @@ public class AdminLobbyController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda cancelReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -146,6 +167,9 @@ public class AdminLobbyController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda contactAdmin - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -162,6 +186,9 @@ public class AdminLobbyController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);

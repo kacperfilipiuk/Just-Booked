@@ -47,18 +47,26 @@ public class AdminAddController implements Initializable {
 
     int id_uzyt;
 
-    /**Metoda getUserName2 - odpowiada za przypisanie */
-    public void getUserName2(String username){
+    /**
+     * Metoda getUserName2 - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
+    public void getUserName2(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
 
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);
     }
 
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -99,26 +107,34 @@ public class AdminAddController implements Initializable {
         });
     }
 
+    /**
+     * Metoda userLogout - odpowiada za wylogowanie uzytkownika i przejscie do ekranu ponownego logowania
+     * !PRACE TRWAJĄ!
+     */
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
     }
 
-    //Dodać do tego osobna klase odpowiedzialna z hibernata
-    //Dodać wyskakujace okno!
+    /**
+     * Metoda addRoomToDB - odpowiada z wywolanie metody z klasy 'JavaPostgreAdminHIB_addRoom' powodująca wpisanie pokoju do bazy danych
+     */
     @FXML
-    public void addRoomToDB(ActionEvent actionEvent){
+    public void addRoomToDB(ActionEvent actionEvent) {
         roomName = roomName_textFiled.getText();
         //System.out.println(roomName);
         JavaPostgreAdminHIB_addRoom.writeRoomToDatabase(roomName);
         AlertBox.display("Uwaga!", "Dodano pokój!");
     }
 
+    /**
+     * Metoda addRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -135,6 +151,9 @@ public class AdminAddController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda editRoom - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void editRoom(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -151,6 +170,9 @@ public class AdminAddController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda showReservations - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void showReservations(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -167,6 +189,9 @@ public class AdminAddController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda cancelReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void cancelReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -183,6 +208,9 @@ public class AdminAddController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Metoda contactAdmin - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void contactAdmin(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;

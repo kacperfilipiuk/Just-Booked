@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class AlertBox {
 
+    /**Metoda display - odpowiada za wyswietlanie okna (okna ma na celu informownaie uzytkownika)*/
     public static void display(String title, String message){
         Stage window = new Stage();
 
