@@ -31,9 +31,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ * @Class AddingController - klasa odpowiedzialna za obsługiwanie działań uzytkownika w przypadku dodawania rezerwacji
+ */
+
 public class AddingController implements Initializable {
 
-    //private ObservableList<Integer> hourList = FXCollections.observableArrayList(8,10,12,14,16,18);
     private ObservableList<String> hourList = FXCollections.observableArrayList();
     private ObservableList<String> roomList = FXCollections.observableArrayList();
 
@@ -63,9 +66,9 @@ public class AddingController implements Initializable {
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
-    private ObservableList<Integer> reservationList = FXCollections.observableArrayList();
+    /**Metoda getUserName - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika*/
 
-    public void getUserName(String username){
+    public void getUserName(String username) {
         myUserName = username;
         //System.out.println(myUserName);
     }
@@ -75,7 +78,11 @@ public class AddingController implements Initializable {
         System.exit(0);
     }
 
-    public void fillRoomComboBox(){
+    /**
+     * Metoda fillRoomComboBox - odpowiada za uzupełnie rozwijanej listy dostepnymi pokojami w bazie danych
+     */
+    public void fillRoomComboBox() {
+
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -104,7 +111,10 @@ public class AddingController implements Initializable {
         }
     }
 
-    public void fillHourComboBox(){
+    /**
+     * Metoda fillHourComboBox - odpowiada za uzupełnie rozwijanej listy dostepnymi godzinami w bazie danych
+     */
+    public void fillHourComboBox() {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -188,7 +198,9 @@ public class AddingController implements Initializable {
 
     }
 
-
+    /**
+     * Metoda initialize - odpowiada za "przygotowanie" i wykonuje sie przed kazdym wywowałniem @FXML
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -196,7 +208,6 @@ public class AddingController implements Initializable {
         fillHourComboBox();
         hourChoiceBox.setItems(hourList);
         roomChoiceBox.setItems(roomList);
-
 
 
         slider.setTranslateX(-200);
@@ -233,12 +244,15 @@ public class AddingController implements Initializable {
             });
         });
     }
-    
 
+    /**
+     * Metoda userLogout - odpowiada za wylogowanie uzytkownika i przejscie do ekranu ponownego logowania
+     * !PRACE TRWAJĄ!
+     */
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -246,10 +260,14 @@ public class AddingController implements Initializable {
 
     }
 
+    /**
+     * Metoda addReservation - odpowiada za przejscie do kolejnego stage'a
+     */
+
     @FXML
-    public void addReservation(ActionEvent actionEvent) throws IOException{
+    public void addReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
@@ -257,16 +275,19 @@ public class AddingController implements Initializable {
         AddingController addingController = loader.getController();
         addingController.getUserName(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * Metoda deleteReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
@@ -274,16 +295,19 @@ public class AddingController implements Initializable {
         DeletingController deletingController = loader.getController();
         deletingController.getUserName1(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * Metoda myReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
@@ -291,15 +315,19 @@ public class AddingController implements Initializable {
         TableViewController tableViewController = loader.getController();
         tableViewController.getUserName3(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Metoda otherReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
-    public void otherReservation(ActionEvent actionEvent) throws IOException{
+    public void otherReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
@@ -307,20 +335,28 @@ public class AddingController implements Initializable {
         OtherController otherController = loader.getController();
         otherController.getUserName2(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    /**Metoda getDate - odpowiada za pobranie wartosci z kalendarza i przypisanie jej*/
     public void getDate(ActionEvent actionEvent) {
+        /** @param myDate - przechowuje date pobrna z kalendarza */
+
         myDate = dataPicker.getValue();
         //System.out.println(myDate);
     }
 
-    //Po nacisnieciu guzika
+    /**Metoda makeReservation - odpowiada za utworzenie rezerwacji*/
+
     @FXML
     public void makeReservation(ActionEvent actionEvent) throws SQLException {
+        /**@param wholeWord - pobranie całego ciagu znaków (w celu pozniejszego podzielnia)
+         * @param firstChar - pobranie pierwszego znaku ze słowa
+         * @param secoundChar - pobranie drugiego znaku ze słowa
+         * @param id_of_hour - pobranie pierwszej czesci przedziału goidznowego w celu znalezienia id całego przedziału*/
         //Deklaracja zmiennych
         String wholeWord = (String) hourChoiceBox.getValue();
         char firstChar = wholeWord.charAt(0), secoundChar = wholeWord.charAt(1);
@@ -328,10 +364,10 @@ public class AddingController implements Initializable {
 
         //Metody i warunki
 
-        if(firstChar=='8'){
+        if (firstChar == '8') {
             id_of_hour = 8;
-        } else if(firstChar=='1') {
-            if (secoundChar == '0'){
+        } else if (firstChar == '1') {
+            if (secoundChar == '0') {
                 id_of_hour = 10;
             } else if (secoundChar == '2') {
                 id_of_hour = 12;
@@ -344,15 +380,22 @@ public class AddingController implements Initializable {
             }
         }
 
+        /**
+         * @param id_h - przypisuje do zmiennej id godziny
+         * @param id_r - przypisuje do zmiennej id pokoju
+         * @param id_u - przypisuje do zmiennej id uzytkownika
+         * @param localDate - przypisuje "obecna date"*/
+
         //int id_h = JavaPostgreSQL_adding.getHourId((Integer) hourChoiceBox.getValue());
         int id_h = JavaPostgreHIB_adding.getHourId(id_of_hour);
         int id_r = JavaPostgreHIB_adding.getRoomId((String) roomChoiceBox.getValue());
         int id_u = JavaPostgreHIB_adding.getUserId(myUserName);
         LocalDate localDate = LocalDate.now();
 
-        if(id_h > 0 && id_r > 0 && id_u >0) {
-            if(localDate.isAfter(myDate))
-            {
+        /**Rozpatrywanie przypadkow oraz warunkow do wyswietlenia konkretnego okna*/
+
+        if (id_h > 0 && id_r > 0 && id_u > 0) {
+            if (localDate.isAfter(myDate)) {
                 //System.out.println("wybrana data jest przed aktualna data");
                 AlertBox.display("Uwaga!", "Wybrana data jest przed aktualną datą!");
             } else if (JavaPostgreHIB_adding.checkDatabase(Date.valueOf(myDate), id_r, id_h)) {

@@ -6,6 +6,8 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Objects;
 
+ /**@Class Godziny - zrzutowana encja (tabela) na klase */
+
 @Entity
 public class Godziny {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

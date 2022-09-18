@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**@Class Pokoje - zrzutowana encja (tabela) na klase */
 @Entity
 public class Pokoje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

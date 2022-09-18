@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
+/**@Class Rezerwacje - zrzutowana encja (tabela) na klase */
 @Entity
 public class Rezerwacje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -47,6 +47,7 @@ public class AdminAddController implements Initializable {
 
     int id_uzyt;
 
+    /**Metoda getUserName2 - odpowiada za przypisanie */
     public void getUserName2(String username){
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
