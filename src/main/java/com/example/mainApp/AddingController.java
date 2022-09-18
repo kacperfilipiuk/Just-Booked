@@ -242,6 +242,7 @@ public class AddingController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.show();
 
     }
 

@@ -100,7 +100,7 @@ public class JavaPostgreHIB_deleting {
             //System.out.println(rezerwacje);
             entityManager.remove(rezerwacje);
             entityManager.getTransaction().commit();
-            AlertBox.display("Uwaga!", "Twoja rezerwacja została usunięta!");
+            AlertBox.display("Uwaga!", "Rezerwacja została usunięta!");
         } catch (NoResultException ex) {
             ex.printStackTrace();
         } finally {

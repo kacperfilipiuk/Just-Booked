@@ -101,7 +101,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Button layoutX="85.0" layoutY="157.0" mnemonicParsing="false" onAction="#acceptChoice" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Akceptuj wybór" />
+                        <Button layoutX="85.0" layoutY="189.0" mnemonicParsing="false" onAction="#acceptChoice" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Akceptuj wybór" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="deleteButton" layoutX="108.0" layoutY="343.0" mnemonicParsing="false" onAction="#deleteReservationAdmin" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Usuń rezerwację">
@@ -116,7 +116,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldRoom" disable="true" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
+                        <TextField fx:id="textFieldRoom" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="333.0" layoutY="320.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -126,7 +126,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldHour" disable="true" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
+                        <TextField fx:id="textFieldHour" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="543.0" layoutY="225.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -136,7 +136,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldData" disable="true" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
+                        <TextField fx:id="textFieldData" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="333.0" layoutY="130.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #84D9F7; -fx-background-radius: 10 10 10 10;">
@@ -146,7 +146,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldUser" disable="true" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
+                        <TextField fx:id="textFieldUser" editable="false" layoutX="20.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" />
                      </children>
                   </AnchorPane>
                </children>
