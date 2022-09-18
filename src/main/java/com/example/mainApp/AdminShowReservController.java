@@ -1,6 +1,9 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Godziny;
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
 import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
+import com.example.mainApp.projekt_z_javy.entity.Uzytkownicy;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
 import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
@@ -41,7 +44,7 @@ public class AdminShowReservController implements Initializable {
 
     @FXML
     private AnchorPane slider;
-
+    /*
     @FXML
     private TableView<Rezerwacje> rezTable;
     @FXML
@@ -54,8 +57,22 @@ public class AdminShowReservController implements Initializable {
     private TableColumn<Rezerwacje, String> idGodz;
     @FXML
     private TableColumn<Rezerwacje, String> dateCol;
+     */
+    @FXML
+    private TableView<Rezerwacja> rezTable;
+    @FXML
+    private TableColumn<Rezerwacja, String> idCol;
+    @FXML
+    private TableColumn<Rezerwacja, String> idPok;
+    @FXML
+    private TableColumn<Rezerwacja, String> idUs;
+    @FXML
+    private TableColumn<Rezerwacja, String> idGodz;
+    @FXML
+    private TableColumn<Rezerwacja, String> dateCol;
 
     ObservableList<Rezerwacje> RezerwacjeList = FXCollections.observableArrayList();
+    ObservableList<Rezerwacja> RezerwacjeList1 = FXCollections.observableArrayList();
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
@@ -80,6 +97,8 @@ public class AdminShowReservController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        refreshTable();
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
@@ -213,8 +232,7 @@ public class AdminShowReservController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    public void refreshTable(ActionEvent actionEvent){
+    private void refreshTable() {
         RezerwacjeList.clear();
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -228,32 +246,105 @@ public class AdminShowReservController implements Initializable {
             rezerwacje = typedQuery.getResultList();
         /*    rezerwacje.forEach(rezerwacje1 -> System.out.println(
                     "Id Rezerwacji: " + rezerwacje1.getIdRez() +
-                    " Id uzytkownika: " + rezerwacje1.getIdU() +
-                    " Id godziny: " + rezerwacje1.getIdH()));
+                            " Id uzytkownika: " + rezerwacje1.getIdU() +
+                            " Id godziny: " + rezerwacje1.getIdH()));
         */
-            rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
-                                                                                rezerwacje1.getIdP(),
-                                                                                rezerwacje1.getIdU(),
-                                                                                rezerwacje1.getIdH(),
-                                                                                rezerwacje1.getData())));
 
-            //System.out.println(RezerwacjeList.size());
-            rezTable.setItems(RezerwacjeList);
-            //System.out.println(rezTable);
+            /*NOWY KOD*/
+            for (Rezerwacje rezerwacje1 : rezerwacje) {
+                /* Pokoje - nazwa */
+                Pokoje pokoje;
 
+                TypedQuery<Pokoje> typedQueryP = entityManager.createQuery("SELECT pok FROM Pokoje pok WHERE pok.idP = :custIdP", Pokoje.class);
+                typedQueryP.setParameter("custIdP", rezerwacje1.getIdP());
+                pokoje = typedQueryP.getSingleResult();
+
+                /* Uzytkownik - nazwa */
+                Uzytkownicy uzytkownicy;
+
+                TypedQuery<Uzytkownicy> typedQueryU = entityManager.createQuery("SELECT uzy FROM Uzytkownicy uzy WHERE uzy.idU = :custIdU", Uzytkownicy.class);
+                typedQueryU.setParameter("custIdU", rezerwacje1.getIdU());
+                uzytkownicy = typedQueryU.getSingleResult();
+
+                /* Godziny - nazwa */
+                Godziny godziny;
+
+                TypedQuery<Godziny> typedQueryG = entityManager.createQuery("SELECT god FROM Godziny god WHERE god.idH = :custIdH", Godziny.class);
+                typedQueryG.setParameter("custIdH", rezerwacje1.getIdH());
+                godziny = typedQueryG.getSingleResult();
+
+                /*-----------------------*/
+
+                RezerwacjeList1.add(new Rezerwacja(String.valueOf(rezerwacje1.getIdRez()), pokoje.getNazwa(), uzytkownicy.getLogin(), godziny.getGodzinaOd() + "-" + godziny.getGodzinaDo(), rezerwacje1.getData()));
+
+                /*-------------------------------------------------------*/
+                /*
+                rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
+                        rezerwacje1.getIdP(),
+                        rezerwacje1.getIdU(),
+                        rezerwacje1.getIdH(),
+                        rezerwacje1.getData())));
+
+                //System.out.println(RezerwacjeList.size());
+                rezTable.setItems(RezerwacjeList);
+                //System.out.println(rezTable);
+                 */
+            }
+
+            rezTable.setItems(RezerwacjeList1);
 
         } catch (NoResultException e) {
             e.printStackTrace();
         } finally {
             entityManager.close();
         }
-
+        /*
         idCol.setCellValueFactory(new PropertyValueFactory<>("idRez"));
         idPok.setCellValueFactory(new PropertyValueFactory<>("idP"));
         idUs.setCellValueFactory(new PropertyValueFactory<>("idU"));
         idGodz.setCellValueFactory(new PropertyValueFactory<>("idH"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
+        */
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id_rezerwacji"));
+        idPok.setCellValueFactory(new PropertyValueFactory<>("id_pokoju"));
+        idUs.setCellValueFactory(new PropertyValueFactory<>("id_uzyt"));
+        idGodz.setCellValueFactory(new PropertyValueFactory<>("id_godz"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
+        /*
 
+        query = "SELECT * FROM rezerwacje WHERE id_u = ? ";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = connection.prepareStatement(query)) {
+
+            pst.setInt(1,id_uzyt);
+
+            //resultSet = pst.getResultSet();
+            resultSet = pst.executeQuery();
+
+            if (!resultSet.next()) {
+                System.out.println("no data");
+            } else {
+
+                do {
+                    RezerwacjaList.add(new Rezerwacja(
+                            resultSet.getInt("id_rez"),
+                            resultSet.getInt("id_p"),
+                            resultSet.getInt("id_u"),
+                            resultSet.getInt("id_h"),
+                            resultSet.getDate("data")));
+                } while (resultSet.next());
+                rezTable.setItems(RezerwacjaList);
+                System.out.println(RezerwacjaList);
+            }
+
+        } catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(JavaPostgreSQL_register.class.getName());
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        }
+
+         */
 
     }
+
 }

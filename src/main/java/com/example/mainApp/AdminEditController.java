@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -276,16 +277,15 @@ public class AdminEditController implements Initializable {
             idPokoju = pokoje.getIdP();
             //System.out.println(idPokoju);
 
-            entityTransaction.commit();
-
             entityTransaction.begin();
 
             pokoje1 = entityManager.find(Pokoje.class, idPokoju);
-            //System.out.println(pokoje1);
-            //System.out.println(nazwaPokojuPoZmianie);
-            pokoje1.setNazwa(nazwaPokojuPoZmianie);
-
-            entityManager.persist(pokoje1);
+            if(Objects.equals(pokoje1.getNazwa(), nazwaPokojuPoZmianie)){
+                System.out.println("Taka nazwa juz istnieje");
+            }else{
+                pokoje1.setNazwa(nazwaPokojuPoZmianie);
+                entityManager.persist(pokoje1);
+            }
             entityTransaction.commit();
         } catch (NoResultException ex) {
             ex.printStackTrace();

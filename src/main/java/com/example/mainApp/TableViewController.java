@@ -1,6 +1,9 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.Godziny;
+import com.example.mainApp.projekt_z_javy.entity.Pokoje;
 import com.example.mainApp.projekt_z_javy.entity.Rezerwacje;
+import com.example.mainApp.projekt_z_javy.entity.Uzytkownicy;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
 import com.example.mainApp.sql.JavaPostgreSQL_register;
 import jakarta.persistence.*;
@@ -44,6 +47,7 @@ public class TableViewController implements Initializable {
     private Parent root;
 
     ObservableList<Rezerwacje> RezerwacjeList = FXCollections.observableArrayList();
+    ObservableList<Rezerwacja> RezerwacjeList1 = FXCollections.observableArrayList();
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
@@ -56,6 +60,19 @@ public class TableViewController implements Initializable {
     @FXML
     private Button refresh;
     @FXML
+    private TableView<Rezerwacja> rezTable;
+    @FXML
+    private TableColumn<Rezerwacja, String> idCol;
+    @FXML
+    private TableColumn<Rezerwacja, String> idPok;
+    @FXML
+    private TableColumn<Rezerwacja, String> idUs;
+    @FXML
+    private TableColumn<Rezerwacja, String> idGodz;
+    @FXML
+    private TableColumn<Rezerwacja, String> dateCol;
+    /*
+    @FXML
     private TableView<Rezerwacje> rezTable;
     @FXML
     private TableColumn<Rezerwacje, String> idCol;
@@ -67,6 +84,7 @@ public class TableViewController implements Initializable {
     private TableColumn<Rezerwacje, String> idGodz;
     @FXML
     private TableColumn<Rezerwacje, String> dateCol;
+     */
 
     @FXML
     private void refreshTable() {
@@ -87,29 +105,67 @@ public class TableViewController implements Initializable {
                             " Id uzytkownika: " + rezerwacje1.getIdU() +
                             " Id godziny: " + rezerwacje1.getIdH()));
         */
-            rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
-                    rezerwacje1.getIdP(),
-                    rezerwacje1.getIdU(),
-                    rezerwacje1.getIdH(),
-                    rezerwacje1.getData())));
 
-            //System.out.println(RezerwacjeList.size());
-            rezTable.setItems(RezerwacjeList);
-            //System.out.println(rezTable);
+            /*NOWY KOD*/
+            for (Rezerwacje rezerwacje1 : rezerwacje) {
+                /* Pokoje - nazwa */
+                Pokoje pokoje;
 
+                TypedQuery<Pokoje> typedQueryP = entityManager.createQuery("SELECT pok FROM Pokoje pok WHERE pok.idP = :custIdP", Pokoje.class);
+                typedQueryP.setParameter("custIdP", rezerwacje1.getIdP());
+                pokoje = typedQueryP.getSingleResult();
+
+                /* Uzytkownik - nazwa */
+                Uzytkownicy uzytkownicy;
+
+                TypedQuery<Uzytkownicy> typedQueryU = entityManager.createQuery("SELECT uzy FROM Uzytkownicy uzy WHERE uzy.idU = :custIdU", Uzytkownicy.class);
+                typedQueryU.setParameter("custIdU", rezerwacje1.getIdU());
+                uzytkownicy = typedQueryU.getSingleResult();
+
+                /* Godziny - nazwa */
+                Godziny godziny;
+
+                TypedQuery<Godziny> typedQueryG = entityManager.createQuery("SELECT god FROM Godziny god WHERE god.idH = :custIdH", Godziny.class);
+                typedQueryG.setParameter("custIdH", rezerwacje1.getIdH());
+                godziny = typedQueryG.getSingleResult();
+
+                /*-----------------------*/
+
+                RezerwacjeList1.add(new Rezerwacja(String.valueOf(rezerwacje1.getIdRez()), pokoje.getNazwa(), uzytkownicy.getLogin(), godziny.getGodzinaOd() + "-" + godziny.getGodzinaDo(), rezerwacje1.getData()));
+
+                /*-------------------------------------------------------*/
+                /*
+                rezerwacje.forEach(rezerwacje1 -> RezerwacjeList.add(new Rezerwacje(rezerwacje1.getIdRez(),
+                        rezerwacje1.getIdP(),
+                        rezerwacje1.getIdU(),
+                        rezerwacje1.getIdH(),
+                        rezerwacje1.getData())));
+
+                //System.out.println(RezerwacjeList.size());
+                rezTable.setItems(RezerwacjeList);
+                //System.out.println(rezTable);
+                 */
+            }
+
+            rezTable.setItems(RezerwacjeList1);
 
         } catch (NoResultException e) {
             e.printStackTrace();
         } finally {
             entityManager.close();
         }
-
+        /*
         idCol.setCellValueFactory(new PropertyValueFactory<>("idRez"));
         idPok.setCellValueFactory(new PropertyValueFactory<>("idP"));
         idUs.setCellValueFactory(new PropertyValueFactory<>("idU"));
         idGodz.setCellValueFactory(new PropertyValueFactory<>("idH"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
-
+        */
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id_rezerwacji"));
+        idPok.setCellValueFactory(new PropertyValueFactory<>("id_pokoju"));
+        idUs.setCellValueFactory(new PropertyValueFactory<>("id_uzyt"));
+        idGodz.setCellValueFactory(new PropertyValueFactory<>("id_godz"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("data"));
         /*
 
         query = "SELECT * FROM rezerwacje WHERE id_u = ? ";
@@ -146,7 +202,8 @@ public class TableViewController implements Initializable {
          */
 
     }
-    public void getUserName3(String username){
+
+    public void getUserName3(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
@@ -200,7 +257,7 @@ public class TableViewController implements Initializable {
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -212,9 +269,9 @@ public class TableViewController implements Initializable {
 
 
     @FXML
-    public void addReservation(ActionEvent actionEvent) throws IOException{
+    public void addReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyNew.fxml"));
@@ -222,17 +279,18 @@ public class TableViewController implements Initializable {
         AddingController addingController = loader.getController();
         addingController.getUserName(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
 
     }
+
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
@@ -240,15 +298,16 @@ public class TableViewController implements Initializable {
         DeletingController deletingController = loader.getController();
         deletingController.getUserName1(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyDelete.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     public void myReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyHistory_v2.fxml"));
@@ -256,15 +315,16 @@ public class TableViewController implements Initializable {
         TableViewController tableViewController = loader.getController();
         tableViewController.getUserName3(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyNew.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void otherReservation(ActionEvent actionEvent) throws IOException{
+    public void otherReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
-        if(myUserName.equals("admin"))
+        if (myUserName.equals("admin"))
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
         else
             loader = new FXMLLoader(getClass().getClassLoader().getResource("lobbyOther.fxml"));
@@ -272,7 +332,7 @@ public class TableViewController implements Initializable {
         OtherController otherController = loader.getController();
         otherController.getUserName2(myUserName);
         //root = FXMLLoader.load(getClass().getClassLoader().getResource("lobbyOther.fxml"));
-        stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
