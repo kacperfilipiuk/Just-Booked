@@ -289,7 +289,7 @@ public class AdminContactController implements Initializable {
             //System.out.println(rezerwacje);
             entityManager.remove(wiadomosci);
             entityManager.getTransaction().commit();
-            AlertBox.display("Uwaga!", "Rezerwacja została usunięta!");
+            AlertBox.display("Uwaga!", "Wiadomość została usunięta!");
         } catch (NoResultException ex) {
             ex.printStackTrace();
         } finally {
@@ -297,6 +297,13 @@ public class AdminContactController implements Initializable {
             entityManager.close();
         }
 
+
+    }
+
+    @FXML
+    public void infoRow(ActionEvent actionEvent) {
+        Wiadomosc wiadomosc = tabelaWiadomosci.getSelectionModel().getSelectedItems().get(0);
+        AlertBox.display2("Notka", "Nadawca:    " + wiadomosc.id_uzytwkonika, wiadomosc.pelna_wiadomosc);
 
     }
 }

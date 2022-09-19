@@ -93,22 +93,22 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="530.0" layoutY="301.0" text="Autorzy:">
+                  <Label layoutX="561.0" layoutY="301.0" text="Autorzy:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="561.0" layoutY="337.0" text="Kacper Filipiuk &#10;Aneta Pietrzak">
+                  <Label layoutX="592.0" layoutY="337.0" text="Kacper Filipiuk &#10;Aneta Pietrzak">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIcon glyphName="USER" layoutX="530.0" layoutY="355.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
+                  <FontAwesomeIcon glyphName="USER" layoutX="561.0" layoutY="355.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </FontAwesomeIcon>
-                  <FontAwesomeIcon glyphName="USER" layoutX="530.0" layoutY="382.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
+                  <FontAwesomeIcon glyphName="USER" layoutX="561.0" layoutY="382.0" selectionFill="BLACK" text="" textAlignment="CENTER" wrappingWidth="17.428525924682617">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -124,12 +124,13 @@
                           <columns>
                             <TableColumn fx:id="idWiadomosci" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="idUzytkownika" prefWidth="75.0" text="Uzytkownik" />
-                              <TableColumn fx:id="trescWiado" prefWidth="301.0" text="Tresc" />
+                              <TableColumn fx:id="trescWiado" maxWidth="301.0" prefWidth="301.0" text="Tresc" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="587.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteRow" text="Usuń wpis" />
+                  <Button layoutX="587.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteRow" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Usuń wpis" />
+                  <Button layoutX="569.0" layoutY="132.0" mnemonicParsing="false" onAction="#infoRow" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Więcej informacji" />
                </children>
             </AnchorPane>
          </center>
