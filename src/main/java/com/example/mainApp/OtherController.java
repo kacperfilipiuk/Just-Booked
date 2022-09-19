@@ -137,6 +137,7 @@ public class OtherController implements Initializable {
 
     }
 
+    /**Jakis komentarz*/
     @FXML
     public void sendMessage(ActionEvent actionEvent) throws IOException {
             /*while (!str.equals("stop")) {
