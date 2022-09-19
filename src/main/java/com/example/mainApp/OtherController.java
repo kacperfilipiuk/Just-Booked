@@ -172,6 +172,7 @@ public class OtherController implements Initializable {
             //close resources
             ois.close();
             oos.close();
+            AlertBox.display4();
             Thread.sleep(100);
         } catch (ConnectException cn){
             AlertBox.display3();

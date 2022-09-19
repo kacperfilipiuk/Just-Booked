@@ -92,4 +92,26 @@ public class AlertBox {
         window.showAndWait();
     }
 
+    public static void display4(){
+        Stage window = new Stage();
+
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Polaczono!");
+        window.setWidth(250);
+        window.setHeight(200);
+
+        Label label = new Label();
+        label.setText("Wiadomosc została wysłana!");
+        Button closeButton = new Button("OK");
+        closeButton.setOnAction(e -> window.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
 }
