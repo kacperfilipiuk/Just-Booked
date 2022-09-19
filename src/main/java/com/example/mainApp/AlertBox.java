@@ -97,6 +97,7 @@ public class AlertBox {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setResizable(false);
         window.setTitle("Polaczono!");
         window.setWidth(250);
         window.setHeight(200);
