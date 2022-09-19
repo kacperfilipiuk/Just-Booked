@@ -1,10 +1,14 @@
 package com.example.mainApp;
 
+import javafx.css.converter.FontConverter;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -31,7 +35,37 @@ public class AlertBox {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
+    }
 
+    /**Metoda display - odpowiada za wyswietlanie podgladu wiadomosci */
+    public static void display2(String title, String login, String message){
+        Stage window = new Stage();
+
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle(title);
+        window.setWidth(400);
+        window.setHeight(300);
+
+        Label nadawca = new Label();
+        nadawca.setText(login);
+        TextArea wiadomosc = new TextArea();
+        wiadomosc.setText(message);
+        wiadomosc.setEditable(false);
+        
+        Label napis = new Label();
+        napis.setText("Treść wiadomości: ");
+        
+        Button closeButton = new Button("OK");
+        closeButton.setOnAction(e -> window.close());
+
+        VBox layout = new VBox(6);
+        layout.getChildren().addAll(nadawca, napis, wiadomosc, closeButton);
+        layout.setAlignment(Pos.CENTER_LEFT);
+
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
     }
 
 }
