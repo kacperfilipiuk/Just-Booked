@@ -301,17 +301,13 @@ public class AdminEditController implements Initializable {
             typedQuery.setParameter("custNazwa", nazwaPokojuPrzedZmina); //Wybieram wybrrana sale
             pokoje = typedQuery.getSingleResult();
             idPokoju = pokoje.getIdP();
-            //System.out.println(idPokoju);
+            System.out.println(idPokoju);
 
-            entityTransaction.begin();
+            //entityTransaction.begin();
 
             pokoje1 = entityManager.find(Pokoje.class, idPokoju);
-            if (Objects.equals(pokoje1.getNazwa(), nazwaPokojuPoZmianie)) {
-                //System.out.println("Taka nazwa juz istnieje");
-            } else {
-                pokoje1.setNazwa(nazwaPokojuPoZmianie);
-                entityManager.persist(pokoje1);
-            }
+            pokoje1.setNazwa(nazwaPokojuPoZmianie);
+            entityManager.persist(pokoje1);
             entityTransaction.commit();
         } catch (NoResultException ex) {
             ex.printStackTrace();
