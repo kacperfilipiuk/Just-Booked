@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
@@ -172,9 +173,12 @@ public class OtherController implements Initializable {
             ois.close();
             oos.close();
             Thread.sleep(100);
-        }catch (Exception e){
+        } catch (ConnectException cn){
+            AlertBox.display3();
+        } catch (Exception e){
             e.printStackTrace();
         }
+
     }
 
 

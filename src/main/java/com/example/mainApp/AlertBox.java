@@ -68,4 +68,28 @@ public class AlertBox {
         window.showAndWait();
     }
 
+    public static void display3(){
+        Stage window = new Stage();
+
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Brak polaczenia!");
+        window.setWidth(300);
+        window.setHeight(250);
+
+        Label label = new Label();
+        Label label1 = new Label();
+        label.setText("Nie mozna nawiazac polaczenia z serwerem");
+        label1.setText("Prosze sprobowac pozniej");
+        Button closeButton = new Button("OK");
+        closeButton.setOnAction(e -> window.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label, label1, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
 }
