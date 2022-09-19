@@ -72,6 +72,7 @@ public class AlertBox {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setResizable(false);
         window.setTitle("Brak polaczenia!");
         window.setWidth(300);
         window.setHeight(250);
