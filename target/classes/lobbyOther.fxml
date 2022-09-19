@@ -2,10 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -99,16 +98,13 @@
                   </FontAwesomeIcon>
                   <AnchorPane layoutX="37.0" layoutY="49.0" prefHeight="173.0" prefWidth="460.0" style="-fx-background-color: #D0D0D0; -fx-background-radius: 10 10 10 10;">
                      <children>
-                        <TextField fx:id="MessageField" alignment="TOP_LEFT" layoutX="34.0" layoutY="47.0" prefHeight="84.0" prefWidth="392.0">
-                           <rotationAxis>
-                              <Point3D z="7.0" />
-                           </rotationAxis></TextField>
                         <Label layoutX="34.0" layoutY="14.0" text="Wyślij wiadomość do administratora:">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Button fx:id="MessageButton" layoutX="377.0" layoutY="136.0" mnemonicParsing="false" onAction="#sendMessage" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5 5 5 5;" text="Wyślij" />
+                        <TextArea fx:id="MessageField" layoutX="34.0" layoutY="43.0" prefHeight="86.0" prefWidth="330.0" />
                      </children>
                   </AnchorPane>
                </children>

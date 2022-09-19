@@ -293,7 +293,6 @@ public class AdminContactController implements Initializable {
         } catch (NoResultException ex) {
             ex.printStackTrace();
         } finally {
-            entityManagerFactory.close();
             entityManager.close();
         }
 
@@ -303,7 +302,7 @@ public class AdminContactController implements Initializable {
     @FXML
     public void infoRow(ActionEvent actionEvent) {
         Wiadomosc wiadomosc = tabelaWiadomosci.getSelectionModel().getSelectedItems().get(0);
-        AlertBox.display2("Notka", "Nadawca:    " + wiadomosc.id_uzytwkonika, wiadomosc.pelna_wiadomosc);
+        AlertBox.display2("Notka", " Nadawca:    " + wiadomosc.id_uzytwkonika, wiadomosc.pelna_wiadomosc);
 
     }
 }

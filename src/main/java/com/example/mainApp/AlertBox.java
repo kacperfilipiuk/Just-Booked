@@ -53,7 +53,7 @@ public class AlertBox {
         wiadomosc.setEditable(false);
         
         Label napis = new Label();
-        napis.setText("Treść wiadomości: ");
+        napis.setText(" Treść wiadomości: ");
         
         Button closeButton = new Button("OK");
         closeButton.setOnAction(e -> window.close());

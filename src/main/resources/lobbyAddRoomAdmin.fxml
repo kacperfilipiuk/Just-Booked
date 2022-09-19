@@ -45,7 +45,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#addRoom" prefHeight="28.0" prefWidth="200.0" text="Dodaj " textFill="WHITE">
+                        <JFXButton onAction="#addRoom" prefHeight="30.0" prefWidth="200.0" text="Dodaj " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -60,7 +60,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#showReservations" prefHeight="10.0" prefWidth="200.0" text="Wyświetl" textFill="WHITE">
+                        <JFXButton onAction="#showReservations" prefHeight="30.0" prefWidth="200.0" text="Wyświetl" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -70,18 +70,17 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton onAction="#contactAdmin" prefHeight="65.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
+                        <JFXButton onAction="#contactAdmin" prefHeight="30.0" prefWidth="200.0" text="Kontakt" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <AnchorPane prefHeight="110.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="115.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="73.0" layoutY="58.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
+                              <Button layoutX="75.0" layoutY="80.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="40" wrappingWidth="55.54284858703613" />
-                                 </graphic>
-                              </Button>
+                                 </graphic></Button>
                            </children>
                         </AnchorPane>
                      </children>
