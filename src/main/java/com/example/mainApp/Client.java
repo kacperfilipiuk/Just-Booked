@@ -1,28 +1,41 @@
 package com.example.mainApp;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Client {
-    public static void main(String args[]) throws Exception {
-        Socket s = new Socket("localhost", 3333);
-        DataInputStream din = new DataInputStream(s.getInputStream());
-        DataOutputStream dout = new DataOutputStream(s.getOutputStream());
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String str = "", str2 = "";
-        while (!str.equals("stop")) {
-            str = br.readLine();
-            dout.writeUTF(str);
-            dout.flush();
-            str2 = din.readUTF();
-            System.out.println("Server says: " + str2);
+    /**
+     * This class implements java socket client
+     *
+     * @author pankaj
+     */
+
+    public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException, InterruptedException {
+        //get the localhost IP address, if server is running on some other IP, you need to use that
+        InetAddress host = InetAddress.getLocalHost();
+        Socket socket = null;
+        ObjectOutputStream oos = null;
+        ObjectInputStream ois = null;
+        for (int i = 0; i < 5; i++) {
+            //establish socket connection to server
+            socket = new Socket(host.getHostName(), 9876);
+            //write to socket using ObjectOutputStream
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            System.out.println("Sending request to Socket Server");
+
+            if (i == 4){ oos.writeObject("exit");}
+            else {oos.writeObject("" + i);}
+            //read the server response message
+            ois = new ObjectInputStream(socket.getInputStream());
+            String message = (String) ois.readObject();
+            System.out.println("Message: " + message);
+            //close resources
+            ois.close();
+            oos.close();
+            Thread.sleep(100);
         }
-
-        dout.close();
-        s.close();
     }
 }

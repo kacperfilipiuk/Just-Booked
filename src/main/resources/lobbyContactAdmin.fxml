@@ -4,6 +4,8 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -111,15 +113,23 @@
                         <Font size="24.0" />
                      </font>
                   </FontAwesomeIcon>
-                  <AnchorPane layoutX="37.0" layoutY="49.0" prefHeight="173.0" prefWidth="460.0" style="-fx-background-color: #D0D0D0; -fx-background-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="426.0" prefWidth="498.0" style="-fx-background-color: #D0D0D0; -fx-background-radius: 10 10 10 10;">
                      <children>
                         <Label layoutX="34.0" layoutY="14.0" text="Wiadomości od użytkowników:">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
+                        <TableView fx:id="tabelaWiadomosci" layoutX="14.0" layoutY="45.0" prefHeight="357.0" prefWidth="462.0">
+                          <columns>
+                            <TableColumn fx:id="idWiadomosci" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="idUzytkownika" prefWidth="75.0" text="Uzytkownik" />
+                              <TableColumn fx:id="trescWiado" prefWidth="301.0" text="Tresc" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
+                  <Button layoutX="587.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteRow" text="Usuń wpis" />
                </children>
             </AnchorPane>
          </center>

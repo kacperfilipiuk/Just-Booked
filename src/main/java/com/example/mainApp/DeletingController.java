@@ -64,32 +64,33 @@ public class DeletingController implements Initializable {
     @FXML
     private TextField textFieldHour;
 
-
-    String query = "";
-    ResultSet resultSet = null;
-    Rezerwacja rezerwacja = null;
     String myUserName;
 
     int id_uzyt;
 
     static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
 
-    public static final String url = "jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit";
-    public static final String user = "dpbwovovhjsruv";
-    public static final String password = "20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf";
-
+    /**
+     * Metoda getUserName1 - odpowiada za przekazanie z poprzednich stagow/scen nazwy uzytkownika
+     */
     public void getUserName1(String username) {
         myUserName = username;
         id_uzyt = JavaPostgreSQL_adding.getUserId(myUserName);
         //System.out.println(id_uzyt);
     }
 
+    /**
+     * Metoda exit - wyjscie z programu
+     */
     @FXML
     private void exit(ActionEvent e) {
         System.exit(0);
     }
 
-
+    /**
+     * Metoda userLogout - odpowiada za wylogowanie uzytkownika i przejscie do ekranu ponownego logowania
+     * !PRACE TRWAJĄ!
+     */
     public void userLogout(ActionEvent actionEvent) throws SQLException, IOException {
         //System.out.println("Wylogowuje...");
         root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
@@ -100,10 +101,9 @@ public class DeletingController implements Initializable {
 
     }
 
-
-    ///!!!! PORPRAWIĆ PRZYCISKI DO PRZENOSZENIA
-
-
+    /**
+     * Metoda addReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void addReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;
@@ -119,10 +119,11 @@ public class DeletingController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
+    /**
+     * Metoda addReservation - odpowiada za przejscie do kolejnego stage'a
+     */
     @FXML
     public void deleteReservation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader;

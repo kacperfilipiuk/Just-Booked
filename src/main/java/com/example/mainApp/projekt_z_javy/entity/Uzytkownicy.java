@@ -24,6 +24,8 @@ public class Uzytkownicy {
     private String email;
     @OneToMany(mappedBy = "uzytkownicyByIdU")
     private Collection<Rezerwacje> rezerwacjesByIdU;
+    @OneToMany(mappedBy = "uzytkownicyByIdU")
+    private Collection<Wiadomosci> wiadomoscisByIdU;
 
     public Uzytkownicy() {
     }
@@ -97,5 +99,13 @@ public class Uzytkownicy {
 
     public void setRezerwacjesByIdU(Collection<Rezerwacje> rezerwacjesByIdU) {
         this.rezerwacjesByIdU = rezerwacjesByIdU;
+    }
+
+    public Collection<Wiadomosci> getWiadomoscisByIdU() {
+        return wiadomoscisByIdU;
+    }
+
+    public void setWiadomoscisByIdU(Collection<Wiadomosci> wiadomoscisByIdU) {
+        this.wiadomoscisByIdU = wiadomoscisByIdU;
     }
 }

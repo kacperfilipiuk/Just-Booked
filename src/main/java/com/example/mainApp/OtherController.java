@@ -16,7 +16,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -42,12 +44,21 @@ public class OtherController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    /*
+    Socket s = null;
+    DataInputStream din = null;
+    DataOutputStream dout = null;
+    BufferedReader br = null;
+    */
+
+    InetAddress host = null;
+    Socket socket = null;
+    ObjectOutputStream oos = null;
+    ObjectInputStream ois = null;
 
 
-    String query = "";
-    ResultSet resultSet = null;
-    Rezerwacja rezerwacja = null;
     String myUserName;
+    String str = "", str2 = "";
 
     int id_uzyt;
 
@@ -64,6 +75,20 @@ public class OtherController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            /*
+            s = new Socket("localhost", 3333);
+            din = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
+            br = new BufferedReader(new InputStreamReader(System.in));
+             */
+            host = InetAddress.getLocalHost();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
@@ -113,9 +138,41 @@ public class OtherController implements Initializable {
     }
 
     @FXML
-    public void sendMessage(ActionEvent actionEvent)
-    {
-        //System.out.println("wysylam wiadomosc do Admina");
+    public void sendMessage(ActionEvent actionEvent) throws IOException {
+            /*while (!str.equals("stop")) {
+                str = MessageField.getText();
+                dout.writeUTF(str);
+                dout.flush();
+                str2 = din.readUTF();
+                System.out.println("Server says: " + str2);
+            }
+
+            dout.close();
+            s.close();
+             */
+        try {
+            //establish socket connection to server
+            socket = new Socket(host.getHostName(), 9876);
+            //write to socket using ObjectOutputStream
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            System.out.println("Sending request to Socket Server");
+
+            str = MessageField.getText()+id_uzyt;
+            System.out.println(str);
+
+            oos.writeObject(str);
+
+            //read the server response message
+            ois = new ObjectInputStream(socket.getInputStream());
+            String message = (String) ois.readObject();
+            System.out.println("Message: " + message);
+            //close resources
+            ois.close();
+            oos.close();
+            Thread.sleep(100);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

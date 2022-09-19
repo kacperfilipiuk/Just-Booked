@@ -1,7 +1,11 @@
 package com.example.mainApp;
 
+import com.example.mainApp.projekt_z_javy.entity.*;
 import com.example.mainApp.sql.JavaPostgreSQL_adding;
+import jakarta.persistence.*;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,10 +22,22 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminContactController implements Initializable {
 
+
+    ObservableList<Wiadomosc> WiadomosciList = FXCollections.observableArrayList();
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+    @FXML
+    public TableView<Wiadomosc> tabelaWiadomosci;
+    @FXML
+    public TableColumn<Wiadomosc, String> idWiadomosci;
+    @FXML
+    public TableColumn<Wiadomosc, String> idUzytkownika;
+    @FXML
+    public TableColumn<Wiadomosc, String> trescWiado;
     @FXML
     private Label Menu;
 
@@ -65,6 +80,8 @@ public class AdminContactController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        refreshTable();
 
         //Problem jest w tym ze initialazje dzieje sie szybciej niż szczytanie nazyw uzytkownika
 
@@ -210,5 +227,76 @@ public class AdminContactController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void refreshTable() {
+        WiadomosciList.clear();
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        List<Wiadomosci> wiadomosci;
+
+        try {
+            //entityTransaction.begin();
+            TypedQuery<Wiadomosci> typedQuery = entityManager.createQuery("SELECT wiad FROM Wiadomosci wiad", Wiadomosci.class);
+            wiadomosci = typedQuery.getResultList();
+
+            /*NOWY KOD*/
+            for (Wiadomosci wiadomosci1 : wiadomosci) {
+                /* Uzytkownik - nazwa */
+                Uzytkownicy uzytkownicy;
+
+                TypedQuery<Uzytkownicy> typedQueryU = entityManager.createQuery("SELECT uzy FROM Uzytkownicy uzy WHERE uzy.idU = :custIdU", Uzytkownicy.class);
+                typedQueryU.setParameter("custIdU", wiadomosci1.getIdU());
+                uzytkownicy = typedQueryU.getSingleResult();
+
+
+                /*-----------------------*/
+
+                WiadomosciList.add(new Wiadomosc(String.valueOf(wiadomosci1.getIdW()), uzytkownicy.getLogin(), wiadomosci1.getWiadomosc()));
+
+                /*-------------------------------------------------------*/
+            }
+
+            tabelaWiadomosci.setItems(WiadomosciList);
+
+        } catch (NoResultException e) {
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+
+        idWiadomosci.setCellValueFactory(new PropertyValueFactory<>("id_wiadomosci"));
+        idUzytkownika.setCellValueFactory(new PropertyValueFactory<>("id_uzytwkonika"));
+        trescWiado.setCellValueFactory(new PropertyValueFactory<>("pelna_wiadomosc"));
+
+    }
+    @FXML
+    public void deleteRow(ActionEvent actionEvent) {
+        ObservableList<Wiadomosc> id_of_mess  = FXCollections.observableArrayList();
+        Wiadomosc wiadomosc = tabelaWiadomosci.getSelectionModel().getSelectedItems().get(0);
+        int idWiad = Integer.parseInt(wiadomosc.getId_wiadomosci());
+        System.out.println(idWiad);
+        tabelaWiadomosci.getItems().removeAll(tabelaWiadomosci.getSelectionModel().getSelectedItem());
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            entityManager.getTransaction().begin();
+
+            Wiadomosci wiadomosci = entityManager.find(Wiadomosci.class, idWiad);
+            //System.out.println(rezerwacje);
+            entityManager.remove(wiadomosci);
+            entityManager.getTransaction().commit();
+            AlertBox.display("Uwaga!", "Rezerwacja została usunięta!");
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        } finally {
+            entityManagerFactory.close();
+            entityManager.close();
+        }
+
+
     }
 }
