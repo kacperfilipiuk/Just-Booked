@@ -17,38 +17,6 @@ public class Rezerwacja {
         this.data = data;
     }
 
-    public String getId_rezerwacji() {
-        return id_rezerwacji;
-    }
-
-    public void setId_rezerwacji(String id_rezerwacji) {
-        this.id_rezerwacji = id_rezerwacji;
-    }
-
-    public String getId_pokoju() {
-        return id_pokoju;
-    }
-
-    public void setId_pokoju(String id_pokoju) {
-        this.id_pokoju = id_pokoju;
-    }
-
-    public String getId_uzyt() {
-        return id_uzyt;
-    }
-
-    public void setId_uzyt(String id_uzyt) {
-        this.id_uzyt = id_uzyt;
-    }
-
-    public String getId_godz() {
-        return id_godz;
-    }
-
-    public void setId_godz(String id_godz) {
-        this.id_godz = id_godz;
-    }
-
     public Date getData() {
         return data;
     }

@@ -1,13 +1,11 @@
 package com.example.mainApp;
 
-import com.example.mainApp.projekt_z_javy.entity.Pokoje;
-import com.example.mainApp.projekt_z_javy.entity.Wiadomosci;
+import com.example.mainApp.Entity.Wiadomosci;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,8 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.ClassNotFoundException;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 
 public class Server {
@@ -24,8 +20,6 @@ public class Server {
     private static ServerSocket server;
     private static int port = 9876;
 
-
-    //Naraize bez id uzytkownika
     public static void setMessage(String mess) {
 
         String wiadomoscOtrzymana = mess;
@@ -56,8 +50,6 @@ public class Server {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Wiadomosci wiadomosci = new Wiadomosci();
-            //Id powinno ustaiwać się samo
-            //wiadomosci.setIdW(1);
             wiadomosci.setWiadomosc(wiadomoscOtrzymana);
             wiadomosci.setIdU(id_uzyt);
             entityManager.persist(wiadomosci);
@@ -78,31 +70,22 @@ public class Server {
 
 
     public static void main(String args[]) throws IOException, ClassNotFoundException {
-        //create the socket server object
         server = new ServerSocket(port);
-        //keep listens indefinitely until receives 'exit' call or program terminates
         while (true) {
-            System.out.println("Waiting for the client request");
-            //creating socket and waiting for client connection
+            System.out.println("Czekam na odpowiedz od klienta: ");
             Socket socket = server.accept();
-            //read from socket to ObjectInputStream object
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            //convert ObjectInputStream object to String
             String message = (String) ois.readObject();
-            System.out.println("Message Received: " + message);
+            System.out.println("Wiadomosc: " + message);
             setMessage(message);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            //write object to Socket
-            oos.writeObject("Hi Client, twoja wiadomosc zostala wyslana");
-            //close resources
+            oos.writeObject("Twoja wiadomosc zostala wyslana");
             ois.close();
             oos.close();
             socket.close();
-            //terminate the server if client sends exit request
             if (message.equalsIgnoreCase("exit")) break;
         }
-        System.out.println("Shutting down Socket server!!");
-        //close the ServerSocket object
+        System.out.println("Zamykam serwer");
         server.close();
     }
 

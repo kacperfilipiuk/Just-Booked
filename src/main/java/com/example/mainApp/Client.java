@@ -1,41 +1,46 @@
 package com.example.mainApp;
 
-import java.io.*;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class Client {
+import java.io.IOException;
 
-    /**
-     * This class implements java socket client
-     *
-     * @author pankaj
-     */
+public class Client extends Application {
+    private static Stage stg;
 
-    public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException, InterruptedException {
-        //get the localhost IP address, if server is running on some other IP, you need to use that
-        InetAddress host = InetAddress.getLocalHost();
-        Socket socket = null;
-        ObjectOutputStream oos = null;
-        ObjectInputStream ois = null;
-        for (int i = 0; i < 5; i++) {
-            //establish socket connection to server
-            socket = new Socket(host.getHostName(), 9876);
-            //write to socket using ObjectOutputStream
-            oos = new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("Sending request to Socket Server");
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+            Scene scene = new Scene(root);
+            stg = primaryStage;
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.initStyle(StageStyle.DECORATED.UNDECORATED);
+            primaryStage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
-            if (i == 4){ oos.writeObject("exit");}
-            else {oos.writeObject("" + i);}
-            //read the server response message
-            ois = new ObjectInputStream(socket.getInputStream());
-            String message = (String) ois.readObject();
-            System.out.println("Message: " + message);
-            //close resources
-            ois.close();
-            oos.close();
-            Thread.sleep(100);
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    /*-----------------------------------------------------------------------------*/
+
+    public void changeScene(String fxml) throws IOException {
+        if (fxml.contains("lobby")) {
+            stg.hide();
+            Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+            stg.getScene().setRoot(pane);
+        } else {
+            Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+            stg.getScene().setRoot(pane);
         }
     }
 }

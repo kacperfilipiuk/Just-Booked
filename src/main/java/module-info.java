@@ -18,8 +18,12 @@ module com.example.mainApp {
 
     opens com.example.mainApp to javafx.fxml, java.base;
     exports com.example.mainApp;
-    opens com.example.mainApp.projekt_z_javy.entity to org.hibernate.orm.core, javafx.fxml, java.base;
-    exports com.example.mainApp.projekt_z_javy.entity;
-    exports com.example.mainApp.sql;
-    opens com.example.mainApp.sql to javafx.fxml;
+    opens com.example.mainApp.Entity to org.hibernate.orm.core, javafx.fxml, java.base;
+    exports com.example.mainApp.Entity;
+    exports com.example.mainApp.SQL;
+    opens com.example.mainApp.SQL to javafx.fxml;
+    exports com.example.mainApp.Controllers;
+    opens com.example.mainApp.Controllers to java.base, javafx.fxml;
+    exports com.example.mainApp.Hibernate;
+    opens com.example.mainApp.Hibernate to java.base, javafx.fxml;
 }

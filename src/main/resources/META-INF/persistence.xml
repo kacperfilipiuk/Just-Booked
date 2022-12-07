@@ -1,35 +1,17 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" >
     <persistence-unit name="my-persistence-unit">
-        <class>com.example.mainApp.projekt_z_javy.entity.Godziny</class>
-        <class>com.example.mainApp.projekt_z_javy.entity.Pokoje</class>
-        <class>com.example.mainApp.projekt_z_javy.entity.Rezerwacje</class>
-        <class>com.example.mainApp.projekt_z_javy.entity.Uzytkownicy</class>
-        <class>com.example.mainApp.projekt_z_javy.entity.Wiadomosci</class>
+        <class>com.example.mainApp.Entity.Godziny</class>
+        <class>com.example.mainApp.Entity.Pokoje</class>
+        <class>com.example.mainApp.Entity.Rezerwacje</class>
+        <class>com.example.mainApp.Entity.Uzytkownicy</class>
+        <class>com.example.mainApp.Entity.Wiadomosci</class>
         <properties>
-            <property name="toplink.jdbc.url"
-                      value="jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit"/>
-            <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="toplink.jdbc.user" value="dpbwovovhjsruv"/>
-            <property name="toplink.jdbc.password"
-                      value="20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf"/>
             <property name="hibernate.connection.url"
-                      value="jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit"/>
+                      value="jdbc:postgresql://localhost/"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.username" value="dpbwovovhjsruv"/>
+            <property name="hibernate.connection.username" value="***"/>
             <property name="hibernate.connection.password"
-                      value="20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf"/>
-            <property name="openjpa.ConnectionURL"
-                      value="jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit"/>
-            <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
-            <property name="openjpa.ConnectionUserName" value="dpbwovovhjsruv"/>
-            <property name="openjpa.ConnectionPassword"
-                      value="20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf"/>
-            <property name="eclipselink.jdbc.url"
-                      value="jdbc:postgresql://ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/de710thmop4rit"/>
-            <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="eclipselink.jdbc.user" value="dpbwovovhjsruv"/>
-            <property name="eclipselink.jdbc.password"
-                      value="20482d0224e13b90ddcba4fd4e828746739cadef005e44a9bbad4acb6a7b64cf"/>
+                      value="***"/>
         </properties>
     </persistence-unit>
 </persistence>
